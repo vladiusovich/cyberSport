@@ -3,11 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="415b8869-32d7-424e-94a0-e058b9bf9e00" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/js/chat-aside.js" afterPath="$PROJECT_DIR$/app/js/chat-aside.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scss/components/_chat--aside.scss" afterPath="$PROJECT_DIR$/app/scss/components/_chat--aside.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/scss/pages/_base.scss" afterPath="$PROJECT_DIR$/app/scss/pages/_base.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/css/all.css" afterPath="$PROJECT_DIR$/dist/css/all.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/all.js" afterPath="$PROJECT_DIR$/dist/js/all.js" />
     </list>
     <ignored path="cyber.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -71,8 +66,8 @@
       <file leaf-file-name="_placeholders.scss" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scss/mixins/_placeholders.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
-              <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+            <state relative-caret-position="521">
+              <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -475,12 +470,12 @@
       <workItem from="1479084371834" duration="6960000" />
       <workItem from="1479116687978" duration="14695000" />
       <workItem from="1479137290944" duration="2281000" />
-      <workItem from="1479139787659" duration="3150000" />
+      <workItem from="1479139787659" duration="4385000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201088000" />
+    <option name="totallyTimeSpent" value="202323000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -838,8 +833,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scss/mixins/_placeholders.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="35" column="21" selection-start-line="35" selection-start-column="21" selection-end-line="35" selection-end-column="21" />
+        <state relative-caret-position="521">
+          <caret line="55" column="0" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
           <folding />
         </state>
       </provider>
