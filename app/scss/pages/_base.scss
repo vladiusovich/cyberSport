@@ -16,6 +16,8 @@ body {
   background-color: rgba( $backgrond-color-secondary, .7 );
 
   background-blend-mode: multiply;
+
+  @extend %scroll-track;
 }
 
 

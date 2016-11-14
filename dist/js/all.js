@@ -3586,11 +3586,15 @@ var isToggle = false;
 function toggle() {
     var chat = document.getElementsByClassName("chat--aside")[0];
     var wrapper = document.getElementsByClassName("page-container")[0];
+    var w = document.documentElement.clientWidth;
 
     if (!isToggle) {
         console.log(chat);
         chat.style.transform = "translateX(0px)";
-        wrapper.style.marginLeft = "300px";
+        if (w > 900) {
+            wrapper.style.marginLeft = "300px";
+            chat.style.backgroundColor = "rgb(85, 85, 85)";
+        }
         isToggle = true
     }
     else {
