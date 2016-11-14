@@ -26,6 +26,19 @@
 }
 
 
+%search {
+  height: 36px;
+  padding: 10px 20px;
+  //border-radius: $border-radius;
+  border: none;
+
+  &:focus {
+    outline-color: $primary-color;
+  }
+}
+
+
+//Scroll Style
 %scroll-track {
   &::-webkit-scrollbar-button {
     background-repeat:no-repeat;

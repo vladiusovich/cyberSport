@@ -1,15 +1,34 @@
+.streams {
+  @extend %backgraund-secondary;
+  border: $border-style;
+  border-radius:  $border-radius;
+}
+
+.l-streams__search {
+  padding: 10px;
+
+}
+
+.date {
+
+}
+
 .streams__list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: 20px;
 }
 
-.streams__link {
-  display: block;
-  width: 150px;
-  height: 100px;
-  margin: 0 5px 10px;
-  background: #b6ffd8;
+.divider {
+  width: 95%;
+  margin: 0 auto;
+  border-bottom: $border-style;
+
+}
+
+.streams__item {
+  margin-bottom: 15px;
 }
 

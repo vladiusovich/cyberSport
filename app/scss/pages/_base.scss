@@ -1,5 +1,7 @@
 @import "main";
 @import "media";
+@import "stream-view-page";
+@import "streams-page";
 
 
 
@@ -7,7 +9,7 @@ body {
   color: $text-color;
   font-size: $base-font-size;
   font-family: $base-font-family;
-  font-weight: $base-font-weight;
+  font-weight: $regular-font-weight;
   line-height: $base-line-height;
 
   background: url(../img/background_main-page.jpg) no-repeat 60% 0%,  url(../img/background_secondary-overlay.png) no-repeat 0 0;

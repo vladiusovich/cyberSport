@@ -49,15 +49,13 @@
 
 .chat__avatar {
   float: left;
-  width: 40%;
-  min-width: 30px;
-  max-width: 80px;
+  width: 20%;
   height: auto;
   margin: 5px 10px 0 0;
 
   img {
+    width: 100%;
     border-radius: 50%;
-
   }
 }
 
@@ -66,6 +64,8 @@
  }
 
 .chat__messenge-content {
+  font-weight: $light-font-weight;
+
   color: #fff;;
 }
 
