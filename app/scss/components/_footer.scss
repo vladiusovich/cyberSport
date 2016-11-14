@@ -1,0 +1,9 @@
+.footer {
+  position: relative;
+  bottom: -5px;
+  margin: 0 auto;
+  @extend %backgraund-secondary;
+  @include border-style($border-style, $border-radius);
+  @include clearfix;
+}
+

@@ -1,0 +1,14 @@
+%item {
+   padding: 5px;
+ }
+
+.tech-support__item {
+  @extend %item;
+  display: inline-block;
+
+}
+
+.social__item {
+  @extend %item;
+  display: inline-block;
+}

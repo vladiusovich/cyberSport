@@ -1,0 +1,14 @@
+@mixin center-elem($parent, $chaild, $w: 100%, $h: 100px) {
+  #{$parent} {
+    position: relative;
+    width: $w;
+    height: $h;
+  }
+
+  #{$parent} > #{$chaild} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

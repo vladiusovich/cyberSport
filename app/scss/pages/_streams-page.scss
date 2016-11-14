@@ -1,0 +1,15 @@
+.streams__list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.streams__link {
+  display: block;
+  width: 150px;
+  height: 100px;
+  margin: 0 5px 10px;
+  background: #b6ffd8;
+}
+

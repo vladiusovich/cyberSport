@@ -1,0 +1,74 @@
+.chat--aside {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-color: rgba(200, 200, 200, 0.42);
+  border-radius: 0;
+  @extend %backgraund-secondary;
+  z-index: 5;
+  transform: translateX(-300px);
+  transition: all .5s;
+  will-change: transform;
+}
+
+.chat__tabs {
+  text-align: center;
+
+  > li {
+    display: inline-block;
+    width: 49%;
+    color: $heading-color;
+    @include border-style($border-style, $border-radius);
+    cursor: pointer;
+
+  }
+}
+
+.l-chat__toggle {
+  position: absolute;
+  top: 350px;
+  right: -53px;
+
+}
+
+.chat__toggle {
+  width: 75px;
+  height: 35px;
+  cursor: pointer;
+  font-size: $button-font-size;
+  @extend %button;
+  transform: rotate(90deg);
+
+  z-index: 1;
+  &:focus {
+    outline: none;
+  }
+}
+
+.chat__avatar {
+  float: left;
+  width: 40%;
+  min-width: 30px;
+  max-width: 80px;
+  height: auto;
+  margin: 5px 10px 0 0;
+}
+
+.chat--aside .chat__dialog {
+   height: 75%;
+ }
+
+.chat__messenge-content {
+  color: #fff;;
+}
+
+.chat__send-messenge {
+}
+
+.chat__input-text {
+  width: 102%;
+  min-height: 50px;
+  height: 15vh;
+}

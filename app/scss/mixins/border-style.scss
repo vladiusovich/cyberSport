@@ -1,0 +1,4 @@
+@mixin border-style($border-style, $border-radius) {
+  border: $border-style;
+  border-radius: $border-radius;
+}

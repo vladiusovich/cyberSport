@@ -1,0 +1,73 @@
+
+@media screen and (max-width: $screen-md){
+  body {
+    font-size: 14px !important;
+  }
+  .logo__link {
+    min-width:  400px !important;
+    height: 100px !important;
+  }
+
+
+}
+
+@media screen and (min-width: $screen-sm) and (min-width: $screen-lg){
+
+  .chat--aside .chat__dialog {
+    max-height: 65% !important;
+  }
+
+  .chat__send-messenge {
+  }
+  .chat__input-text {
+    //height: 60px !important;
+    //margin-top: 10px !important;
+
+  }
+}
+
+
+@media screen and  (max-width: $screen-sm){
+
+  .logo__link {
+    min-width: 250px !important;
+    height: 80px !important;
+  }
+
+  .top-nav__global, .registration {
+    font-size: .9rem;
+    //padding: 0 10px !important;
+    //border: solid 1px $primary-color !important;
+  }
+  .chat__user-name, .chat__time {
+    line-height: 20px;
+
+  }
+}
+
+@media screen and  (max-width: $screen-xs){
+
+  .chat--aside {
+    display: none;
+  }
+
+  .logo__link {
+    min-width:  300px !important;
+    height: 100px !important;
+  }
+
+  .nav__game-item {
+    width: 45% !important;
+    margin: 1% !important;
+  }
+
+  .news {
+    width: 100%;
+    margin: 0 !important;
+    border: none;
+  }
+
+  .news__list {
+    margin: 0 !important;
+  }
+}

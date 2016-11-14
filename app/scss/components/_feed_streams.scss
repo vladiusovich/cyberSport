@@ -1,0 +1,48 @@
+.feed-streams {
+  width: 100%;
+}
+
+%feed-streams__arrow {
+  height: 100px;
+  border: solid 2px black;
+}
+
+.feed-streams__arrow--left {
+  @extend %feed-streams__arrow;
+}
+
+.feed-streams__arrow--right {
+  @extend %feed-streams__arrow;
+
+}
+
+.l-feed-streams__content-streams {
+
+}
+
+.feed-streams__content-streams {
+  background: #aef1d7;
+}
+
+
+.feed-streams__content-streams {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+
+@mixin border($radius, $color, $widht) {
+  border: solid $widht $color;
+  border-radius: $radius;
+}
+
+.roop {
+  @include border(2px, #aaa, 2px);
+}
+
+.feed-streams__item {
+  width: 16%;
+  height: 100px;
+  margin: 0 10px;
+  background: #64ccff;
+}

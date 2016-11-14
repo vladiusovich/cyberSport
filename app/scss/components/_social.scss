@@ -1,0 +1,26 @@
+.social {
+  .link-item {
+
+    &:hover {
+      color: $link-hover-color;
+    }
+
+  }
+  .google {
+    background: url(../img/social-Google.png);
+    background-size: contain;
+  }
+  .youtube {
+    background: url(../img/social-YouTube.png);
+    background-size: contain;
+  }
+  .tumblr {
+    background: url(../img/social-Tumblr.png);
+    background-size: contain;
+  }
+  .facebook {
+    background: url(../img/social-Facebook.png);
+    background-size: contain;
+  }
+
+}

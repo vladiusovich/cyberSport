@@ -1,0 +1,4 @@
+@mixin align-center($line_height: 2rem) {
+  text-align: center;
+  line-height: $line_height;
+}
