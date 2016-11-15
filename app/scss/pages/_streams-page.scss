@@ -1,15 +1,54 @@
+.streams {
+  @extend %backgraund-secondary;
+  border: $border-style;
+  border-radius:  $border-radius;
+}
+
+.l-streams__search {
+  padding: 10px 10px 0 10px;
+}
+.date {
+
+}
+
 .streams__list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin: 0 20px 20px 20px;
 }
 
-.streams__link {
-  display: block;
-  width: 150px;
-  height: 100px;
-  margin: 0 5px 10px;
-  background: #b6ffd8;
+.divider {
+  margin: 15px auto;
+  border-bottom: $border-style;
+
 }
 
+.title-video {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px 0 10px 10px;
+  background: rgba(21, 20, 20, 0.5);
+
+}
+
+
+.responsive_16-9 {
+  width: 24%;
+  position: relative;
+  margin-bottom: 15px;
+  padding-bottom: 12%;
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
+}
+.responsive_16-9  iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

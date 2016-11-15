@@ -1,0 +1,8 @@
+
+input[type="search"] {
+  @extend %search;
+}
+
+input[type="date"] {
+  @extend %search;
+}

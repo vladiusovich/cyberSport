@@ -1,10 +1,7 @@
-
 %align-center-block {
   display: block;
   margin: 0 auto;
 }
-
-
 
 %button {
   padding: 5px 10px;
@@ -25,7 +22,18 @@
   }
 }
 
+%search {
+  height: 36px;
+  padding: 10px 20px;
+  //border-radius: $border-radius;
+  border: none;
 
+  &:focus {
+    outline-color: $primary-color;
+  }
+}
+
+//Scroll Style
 %scroll-track {
   &::-webkit-scrollbar-button {
     background-repeat:no-repeat;
@@ -62,6 +70,4 @@
 
 %backgraund-secondary {
   background-image:  url(../img/background_secondary.png);
-  background-color: rgba( $backgrond-color-secondary, .7 );
-  background-blend-mode: multiply;
 }
