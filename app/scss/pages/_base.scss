@@ -15,9 +15,6 @@ body {
   background: url(../img/background_main-page.jpg) no-repeat 60% 0%,  url(../img/background_secondary-overlay.png) no-repeat 0 0;
   background-size: cover;
   background-attachment: fixed;
-  background-color: rgba( $backgrond-color-secondary, .7 );
-
-  background-blend-mode: multiply;
 
   @extend %scroll-track;
 }
@@ -26,43 +23,6 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: $heading-color;
 }
-
-
-
-//h1 {
-//  font-size: 1.75rem;
-//  //line-height: 3.25rem;
-//  margin-top: 1.625rem;
-//  margin-bottom: 3.25rem;
-//}
-//h2 {
-//  font-size: 1.4375rem;
-//  //line-height: 1.625rem;
-//  margin-top: 1.625rem;
-//  margin-bottom: 1.625rem;
-//}
-//h3 {
-//  font-size: 1.1875rem;
-//  //line-height: 1.625rem;
-//  margin-top: 1.625rem;
-//  margin-bottom: 0rem;
-//}
-//h4 {
-//  font-size: 1rem;
-//  line-height: 1.625rem;
-//  margin-top: 1.625rem;
-//  margin-bottom: 0rem;
-//}
-//h5 {
-//  font-size: 1rem;
-//  //line-height: 1.625rem;
-//  margin-top: 1.625rem;
-//  margin-bottom: 0rem;
-//}
-//p, ul, ol, pre, table, blockquote {
-//  margin-top: 0rem;
-//  margin-bottom: 1.3rem;
-//}
 
 
 p::selection {
