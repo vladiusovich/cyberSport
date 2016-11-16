@@ -46,12 +46,13 @@ summary { /* 1 */
 /**
  * Add the correct display in IE 9-.
  */
-
+iframe,
 audio,
 canvas,
 progress,
 video {
   display: inline-block;
+  border: none;
 }
 
 /**

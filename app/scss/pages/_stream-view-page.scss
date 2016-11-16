@@ -1,7 +1,16 @@
 .stream-view {
+  height: 100vh;
+  @include clearfix;
+  @extend %backgraund-secondary;
+  padding: 10px;
+}
+
+.stream-view__video {
   width: 70%;
+  float: left;
 }
 
 .l-chat {
-  width: 30%;
+  width: 28%;
+  float: right;
 }
