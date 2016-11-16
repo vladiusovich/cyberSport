@@ -10,7 +10,6 @@
   float: left;
   padding-left: 10px;
   padding-right: 35px;
-  line-height: 30px;
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
   
@@ -19,8 +18,8 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    top: 7px;
-    right: 9px;
+    top: 2px;
+    right: 7px;
     background: url(../img/global.png);
     background-size: cover;
   }
@@ -30,7 +29,7 @@
 .registration {
   float: right;
   padding: 0 20px;
-  line-height: 30px;
+  color:$link-color;
   @extend %backgraund-secondary;
 
   @include border-style($border-style, $border-radius);
