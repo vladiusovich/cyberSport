@@ -17,7 +17,7 @@ function toggle() {
         isToggle = true
     }
     else {
-        chat.style.transform = "translateX(-309px)";
+        chat.style.transform = "translateX(-310px)";
         wrapper.style.marginLeft = "0";
         isToggle = false;
     }
