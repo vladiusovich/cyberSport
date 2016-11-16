@@ -38,7 +38,7 @@
   width: 75px;
   height: 35px;
   cursor: pointer;
-  font-size: $button-font-size;
+  font-size: $small-font-size;
   @extend %button;
   transform: rotate(90deg);
 
@@ -65,6 +65,7 @@
  }
 
 .chat__messenge-content {
+  font-size: $small-font-size;
   font-weight: $light-font-weight;
 
   color: #fff;;

@@ -1,6 +1,7 @@
 .footer {
   position: relative;
   width: 80%;
+  height: 40px;
   bottom: -5px;
   margin: 0 auto;
   @extend %backgraund-secondary;
@@ -8,10 +9,28 @@
   @include clearfix;
 }
 
-.pull-right {
+.tech-support {
+  line-height: 30px;
+}
+
+.social__item {
+  padding-top: 8px;
+}
+
+.copyright {
+  display: block;
+  padding: 0 10px;
+  line-height: 40px;
+}
+
+.footer .tech-support {
+  float: left;
+}
+
+.footer .copyright {
   float: right;
 }
 
-.pull-left {
-  float: left;
+.footer .social {
+  float: right;
 }

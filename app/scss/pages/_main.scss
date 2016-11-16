@@ -35,13 +35,22 @@
 .l-new__img {
 }
 
+.news__media-body {
+  time {
+    display: block;
+    font-size: $extra-small-font-size;
+  }
+}
+
 .news__heading {
+  font-size: 1.2rem;
   margin: 0;
   color: $text-color;
 }
 
 .news__preview-text {
   color: $text-color;
+  margin-top: 0;
 
 }
 

@@ -67,7 +67,7 @@
   margin-bottom: 10px;
   word-wrap: break-word;
   padding-top: 6px;
-  font-size: $input-font-size;
+  font-size: $small-font-size;
   word-wrap: break-word;
   box-sizing: border-box;
   @extend %scroll-track;
@@ -83,7 +83,7 @@
 .chat__button {
   @extend %align-center-block;
   @extend %button;
-  font-size: $button-font-size;
+  font-size: $small-font-size;
 
   &:focus {
     outline: none;
