@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="415b8869-32d7-424e-94a0-e058b9bf9e00" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/webResources.xml" afterPath="$PROJECT_DIR$/.idea/webResources.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/css/all.css" afterPath="$PROJECT_DIR$/dist/css/all.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/index.html" afterPath="$PROJECT_DIR$/dist/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/js/all.js" afterPath="$PROJECT_DIR$/dist/js/all.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main_page_csgo.html" afterPath="$PROJECT_DIR$/dist/main_page_csgo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main_page_dota.html" afterPath="$PROJECT_DIR$/dist/main_page_dota.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main_page_paragon.html" afterPath="$PROJECT_DIR$/dist/main_page_paragon.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/main_page_wot.html" afterPath="$PROJECT_DIR$/dist/main_page_wot.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/stream-view.html" afterPath="$PROJECT_DIR$/dist/stream-view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dist/streams-page.html" afterPath="$PROJECT_DIR$/dist/streams-page.html" />
-    </list>
+    <list default="true" id="415b8869-32d7-424e-94a0-e058b9bf9e00" name="Default" comment="" />
     <ignored path="cyber.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,7 +74,7 @@
       <file leaf-file-name="_placeholders.scss" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scss/mixins/_placeholders.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="181">
+            <state relative-caret-position="595">
               <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
               <folding />
             </state>
@@ -183,10 +171,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1358" />
-    <option name="y" value="-8" />
+    <option name="x" value="1337" />
+    <option name="y" value="394" />
     <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="height" value="799" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -213,8 +201,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -235,6 +221,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,14 +342,15 @@
       <workItem from="1479137290944" duration="2281000" />
       <workItem from="1479139787659" duration="3150000" />
       <workItem from="1479252932833" duration="700000" />
+      <workItem from="1479255048520" duration="5000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="201788000" />
+    <option name="totallyTimeSpent" value="201793000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1358" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="1337" y="394" width="1936" height="799" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3366702" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -646,7 +635,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
           <caret line="52" column="17" selection-start-line="52" selection-start-column="17" selection-end-line="52" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -698,7 +686,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scss/mixins/_placeholders.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
+        <state relative-caret-position="595">
           <caret line="35" column="14" selection-start-line="35" selection-start-column="14" selection-end-line="35" selection-end-column="14" />
           <folding />
         </state>
