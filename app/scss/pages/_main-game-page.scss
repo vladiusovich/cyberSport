@@ -21,7 +21,6 @@
     height: auto;
 }
 .game-left-content-video {
-    outline: 1px solid #fff;
     width: 100%;
     height: 300px;
 }
@@ -39,3 +38,8 @@
     line-height: 1.3em;
 }
 
+.video {
+	width: 100%;
+	height: 100%;
+    border: none;
+}
