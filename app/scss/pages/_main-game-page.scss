@@ -1,4 +1,4 @@
-.page-main-csgo {
+.main-game-page {
     background: url(../img/grid_csgo.png);
     background-size: cover;
     width: 80%;    
@@ -7,33 +7,35 @@
     display: flex;
     flex-direction: column;
 }
-.csgo-title h1 {
+.game-title h1 {
     margin-top: 0;
     
 
 }
-.csgo-content {
+.game-content {
     display: flex;
     justify-content: space-around;
 }
-.csgo-left-content {
+.game-left-content {
     width: 55%;
     height: auto;
 }
-.csgo-left-content-video {
+.game-left-content-video {
     outline: 1px solid #fff;
     width: 100%;
     height: 300px;
 }
-.csgo-right-content {
+.game-right-content {
     width: 35%;
     height: auto;
 }
-.csgo-right-content-img img{
+.game-right-content-img img{
     width: 100%;
+    margin-bottom: 20px;
 }
-.csgo-right-content-text p {
+.game-right-content-text p {
     color: #fff;
     text-align: justify;
+    line-height: 1.3em;
 }
 
