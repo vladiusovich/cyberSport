@@ -16,9 +16,12 @@
 .chat__tabs {
   text-align: center;
 
+
   > li {
     display: inline-block;
     width: 49%;
+    height: 40px;
+    line-height: 35px;
     color: $heading-color;
     @include border-style($border-style, $border-radius);
     box-sizing: border-box;
