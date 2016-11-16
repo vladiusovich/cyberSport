@@ -21,6 +21,7 @@
     width: 49%;
     color: $heading-color;
     @include border-style($border-style, $border-radius);
+    box-sizing: border-box;
     cursor: pointer;
 
   }
