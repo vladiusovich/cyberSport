@@ -1,30 +1,17 @@
+
+
+.embed-responsive-16by9 {
+  width: 100%;
+}
+
 .chat {
-  border: solid 1px black;
+  border: $border-style; // solid 1px black;
   border-radius:  5px;
   padding: 5px;
   padding-left: 0;
 }
 
-.chat-wrapper {
-  position: relative;
-  height: 50vh;
-}
 
-.head-container {
-  margin-top: -5px;
-  margin-right: -5px;
-  margin-bottom: -5px;
-  padding: 10px;
-  @include border-style($border-style, $border-radius);
-  box-sizing: border-box;
-}
-
-.chat__heading {
-  font-size: 1.1em;
-  margin: 0;
-  text-transform: uppercase;
-
-}
 
 .chat__messenge {
   margin-left: 5px;
@@ -34,8 +21,8 @@
 }
 
 .chat__dialog {
-  max-height: 60%;
-  margin-top: 10px;
+  max-height: 70%;
+  margin-top: 20px;
   overflow-y: scroll;
   @extend %scroll-track;
 
@@ -45,6 +32,7 @@
   margin-right: 5px;
   background: $backgrond-color-divide;
   @include clearfix;
+
 }
 
 .chat__messenge-content {
@@ -55,6 +43,7 @@
 
 .chat__user-name, .chat__time {
   display: block;
+
 }
 
 .chat__user-name {
@@ -71,8 +60,8 @@
 
 .chat__input-text {
   display: block;
-  width: 102%;
-  height: 8vh;
+  width: 100%;
+  height: 10%;
   padding: 20px;
   //margin-top: 30px;
   margin-bottom: 10px;
