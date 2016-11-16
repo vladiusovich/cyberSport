@@ -1,7 +1,6 @@
-
-
-
 .top-nav {
+  width: 80%;
+  margin: 0 auto;
   margin-bottom: 30px;
   @include clearfix;
 }
@@ -17,8 +16,8 @@
   &:after {
     content: "";
     position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     top: 2px;
     right: 7px;
     background: url(../img/global.png);

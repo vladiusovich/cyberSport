@@ -1,7 +1,7 @@
 //Colors
 $primary-color: #df8e46;
 //Variable
-$border-style: solid 3px #df8e46;
+$border-style: solid 2px #df8e46;
 $border-radius: 5px;
 
 //Typography
@@ -16,13 +16,17 @@ $button-shadow-color:  4px -3px 11px -2px rgba(128, 128, 128, 0.75);
 $backgrond-color-secondary: #555555;
 $backgrond-color-divide: rgba(16, 16, 17, 0.5);
 
-$base-font-family: Arial, sans-serif;
+
+@import url('https://fonts.googleapis.com/css?family=Exo+2');
+$base-font-family: 'Exo 2', Arial, sans-serif;;
 $base-font-size:  16px;;
 $input-font-size: 14px;
-$button-font-size: 12px;
-$base-line-height: 26px;
+$small-font-size: 14px;
+$extra-small-font-size: 12px;
+$base-line-height: 18px;
 
-$base-font-weight: 300;
+$regular-font-weight: 300;
+$light-font-weight: 100;
 
 $fixed-font-family: 'Andale Mono', AndaleMono, monospace;
 $fixed-font-size: 15px;
@@ -30,8 +34,6 @@ $fixed-line-height: 1.2;
 
 $heading-font-family: 'Roboto Condensed', sans-serif;
 $heading-font-weight: 700;
-
-
 
 //breakpoints
 // Extra small screen / phone
@@ -46,5 +48,5 @@ $screen-md:                  880px !default;
 // Large screen / wide desktop
 $screen-lg:                  1200px !default;
 
-$screen-lg-desktop:          $screen-lg-min !default;
+//$screen-lg-desktop:          $screen-lg-min !default;
 

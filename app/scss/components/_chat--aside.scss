@@ -21,6 +21,7 @@
     width: 49%;
     color: $heading-color;
     @include border-style($border-style, $border-radius);
+    box-sizing: border-box;
     cursor: pointer;
 
   }
@@ -37,7 +38,7 @@
   width: 75px;
   height: 35px;
   cursor: pointer;
-  font-size: $button-font-size;
+  font-size: $small-font-size;
   @extend %button;
   transform: rotate(90deg);
 
@@ -49,15 +50,13 @@
 
 .chat__avatar {
   float: left;
-  width: 40%;
-  min-width: 30px;
-  max-width: 80px;
+  width: 20%;
   height: auto;
   margin: 5px 10px 0 0;
 
   img {
+    width: 100%;
     border-radius: 50%;
-
   }
 }
 
@@ -66,6 +65,9 @@
  }
 
 .chat__messenge-content {
+  font-size: $small-font-size;
+  font-weight: $light-font-weight;
+
   color: #fff;;
 }
 

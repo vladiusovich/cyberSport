@@ -1,5 +1,3 @@
-
-
 .page-container {
   will-change: margin;
   transition: all .5s;
@@ -30,15 +28,33 @@
   margin-bottom: 10px;
   padding: 10px;
   background: $backgrond-color-divide;
+  font-size: 14px;
+}
+
+.news-item:last-child {
+  margin-bottom: 0;
+
+}
+
+.l-new__img {
+}
+
+.news__media-body {
+  time {
+    display: block;
+    font-size: $extra-small-font-size;
+  }
 }
 
 .news__heading {
-  margin-top: 0;
+  font-size: 1.2rem;
+  margin: 0;
   color: $text-color;
 }
 
 .news__preview-text {
   color: $text-color;
+  margin-top: 0;
 
 }
 
@@ -68,6 +84,6 @@
 }
 
 .l-download {
-  margin-top: 30px;
-  margin-bottom: 30px;
+  display: block;
+  margin: 30px auto;
 }
