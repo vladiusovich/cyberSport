@@ -1,7 +1,3 @@
-.idea files
-###################
-*.html
-*.css
-*.js
 .idea/
+dist/
 
