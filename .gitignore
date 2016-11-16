@@ -1,5 +1,5 @@
 .idea files
 ###################
-dist/
+dist/*
 .idea/
 
