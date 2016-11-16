@@ -19,6 +19,10 @@
   margin: 0 20px 20px 20px;
 }
 
+.streams__item {
+  width: 24%;
+}
+
 .divider {
   margin: 15px auto;
   border-bottom: $border-style;
@@ -32,23 +36,9 @@
   bottom: 0;
   padding: 10px 0 10px 10px;
   background: rgba(21, 20, 20, 0.5);
-
 }
-
 
 .responsive_16-9 {
-  width: 24%;
-  position: relative;
-  margin-bottom: 15px;
-  padding-bottom: 12%;
-  padding-top: 25px;
-  height: 0;
-  overflow: hidden;
+  @extend %responsive_16-9;
 }
-.responsive_16-9  iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
+

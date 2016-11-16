@@ -23,6 +23,12 @@
 .game-left-content-video {
     width: 100%;
     height: 300px;
+    position: relative;
+    margin-bottom: 15px;
+    padding-bottom: 12%;
+    padding-top: 25px;
+    height: 0;
+    overflow: hidden;
 }
 .game-right-content {
     width: 35%;
@@ -39,7 +45,13 @@
 }
 
 .video {
-	width: 100%;
-	height: 100%;
-    border: none;
+    //width: 100%;
+    //height: 100%;
+    //border: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
+
