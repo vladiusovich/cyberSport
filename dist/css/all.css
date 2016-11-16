@@ -3047,10 +3047,8 @@ body::-webkit-resizer, .chat__dialog::-webkit-resizer, .chat__input-text::-webki
 body::-webkit-scrollbar, .chat__dialog::-webkit-scrollbar, .chat__input-text::-webkit-scrollbar {
   width: 4px; }
 
-.news, .streams, .main-game-page, .footer, .top-nav__global, .registration, .chat--aside {
-  background: #444444;
-  background-image: -webkit-repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 10px, transparent 0, transparent 20px);
-  background-image: repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1) 10px, transparent 0, transparent 20px); }
+.news, .streams, .footer, .top-nav__global, .registration, .chat--aside {
+  background-image: url(../img/background_secondary.png); }
 
 .responsive_16-9 {
   position: relative;
@@ -3227,7 +3225,9 @@ body::-webkit-scrollbar, .chat__dialog::-webkit-scrollbar, .chat__input-text::-w
   -webkit-border-radius: 5px;
           border-radius: 5px;
   padding: 5px;
-  padding-left: 0; }
+  padding-left: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box; }
 
 .chat__messenge {
   margin-left: 5px;
