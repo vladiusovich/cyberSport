@@ -1,6 +1,7 @@
 .main-game-page {
-    background: url(../img/grid_csgo.png);
-    background-size: cover;
+    //background: url(../img/grid_csgo.png);
+    //background-size: cover;
+    @extend %backgraund-secondary;
     width: 80%;    
     height: auto;
     margin: 0 auto 20px auto;
