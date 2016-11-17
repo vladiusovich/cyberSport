@@ -8,6 +8,7 @@
 .top-nav__global {
   position: relative;
   float: left;
+  line-height: 40px;
   padding-left: 10px;
   padding-right: 35px;
   @extend %backgraund-secondary;
@@ -18,7 +19,7 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    top: 2px;
+    top: 13px;
     right: 7px;
     background: url(../img/global.png);
     background-size: cover;
@@ -28,6 +29,7 @@
 
 .registration {
   float: right;
+  line-height: 40px;
   padding: 0 20px;
   color:$link-color;
   @extend %backgraund-secondary;

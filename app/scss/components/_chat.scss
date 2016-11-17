@@ -1,16 +1,10 @@
-
-
-.embed-responsive-16by9 {
-  width: 100%;
-}
-
 .chat {
+  height: 80vh;
   border: $border-style; // solid 1px black;
   border-radius:  5px;
   padding: 5px;
   padding-left: 0;
 }
-
 
 
 .chat__messenge {
@@ -21,6 +15,7 @@
 }
 
 .chat__dialog {
+  height: 40vh;
   max-height: 70%;
   margin-top: 20px;
   overflow-y: scroll;
@@ -43,7 +38,6 @@
 
 .chat__user-name, .chat__time {
   display: block;
-
 }
 
 .chat__user-name {
