@@ -62,7 +62,8 @@
 }
 
 .chat--aside .chat__dialog {
-   height: 75%;
+   //height: 75%;
+  height: calc(100% - 180px);
  }
 
 .chat__messenge-content {
@@ -72,11 +73,11 @@
   color: #fff;;
 }
 
-.chat__send-messenge {
+.chat--aside .chat__send-messenge {
+  bottom: 70px;
 }
 
-.chat__input-text {
-  width: 102%;
-  min-height: 50px;
-  height: 15vh;
+.chat--aside .chat__input-text {
+  width: 100%;
+  height: 50px;
 }
