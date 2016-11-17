@@ -10,8 +10,9 @@
 .video-slider img{
   height: 80px;
   margin: auto 15px;
+  transition: all .1s;
   &:hover  {
-    height: 110px;
+    transform: scale(.9);
   }
 }
 .video-item{
