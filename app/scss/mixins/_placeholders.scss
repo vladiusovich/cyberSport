@@ -20,6 +20,10 @@
     text-decoration: none;
     //transform: scale(1.05);
   }
+
+  &:focus {
+    outline-color: $primary-color;
+  }
 }
 
 %search {

@@ -4,6 +4,11 @@ a {
   //text-transform: none;
   &:hover {
     text-decoration: none;
+  }  &:focus {
+       outline-color: $primary-color;
+     }
+  &:focus {
+    outline-color: $primary-color;
   }
 }
 
