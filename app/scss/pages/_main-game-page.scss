@@ -1,26 +1,26 @@
 .main-game-page {
-    //background: url(../img/grid_csgo.png);
-    //background-size: cover;
-    @extend %backgraund-secondary;
-    width: 80%;    
+   
+    width: 85%;    
     height: auto;
-    margin: 0 auto 30px auto;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
+    margin: -50px auto 30px auto;
 }
 .game-title h1 {
     margin: 0;
+    margin-left: 20px;
     line-height: 1em;
 }
 .game-content {
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
+     background: url(../img/grid_csgo.png);
+    background-size: cover;
+    //@extend %backgraund-secondary;
+    padding: 20px;
+    box-sizing: border-box;
 }
 .game-left-content {
-    width: 55%;
+    width: 56%;
     height: auto;
 }
 .game-left-content-video {
@@ -34,7 +34,7 @@
     overflow: hidden;
 }
 .game-right-content {
-    width: 40%;
+    width: 42%;
     height: auto;
 }
 .game-right-content-img img{

@@ -32,7 +32,7 @@
   position: absolute;
   top: 320px;
   right: -35px;
-
+@extend %backgraund-secondary;
 }
 
 .chat__toggle {
@@ -45,6 +45,7 @@
   z-index: 1;
   &:focus {
     outline: none;
+    
   }
 }
 

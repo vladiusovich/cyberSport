@@ -1,8 +1,8 @@
 .video-slider {
   display: flex;
   justify-content: space-between;
-  width: 80%;
-  margin: 0 auto 50px;
+  width: 85%;
+  margin: -60px auto 50px;
   padding: 15px 0;
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
