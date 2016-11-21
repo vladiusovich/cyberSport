@@ -2,6 +2,8 @@
   @extend %backgraund-secondary;
   border: $border-style;
   border-radius:  $border-radius;
+    width: 80%;
+    margin: auto;
 }
 
 .l-streams__search {

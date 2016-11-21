@@ -3,6 +3,9 @@
   @include clearfix;
   @extend %backgraund-secondary;
   padding: 25px;
+    width: 80%;
+    margin: auto;
+    box-sizing: border-box;
 }
 
 .stream-view__video {
