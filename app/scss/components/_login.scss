@@ -1,8 +1,9 @@
 .login-block {
   width: 80%;
   margin: 0 auto 50px;
-  padding: 0 0 25px;
+  padding: 10px 0 0px;
   text-align: center;
+  height: 400px;
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
 }
@@ -14,11 +15,12 @@
 }
 .login-input p{
   color: $link-color;
-  margin-bottom: 5px;
+//  margin-bottom: 35px;
 }
 .login-input input{
   width: 100%;
   height: 25px;
+  margin-bottom: 20px;
   color: $link-color;
   border-color: $primary-color;
   border-style: solid;
