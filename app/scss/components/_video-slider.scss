@@ -17,6 +17,15 @@
 }
 .video-item{
   margin: auto 0;
+  &:hover  {
+    background-color: rgba(53, 53, 53, 1);
+  }
+}
+.video-item img{
+  margin: auto auto;
+  &:hover  {
+    transform: scale(1);
+  }
 }
 .video-item p{
   width: 156px;
@@ -26,4 +35,7 @@
   text-align: center;
   overflow: hidden;
   margin-bottom: 0;
+  &:hover  {
+    color: $link-hover-color;
+  }
 }
