@@ -1,11 +1,14 @@
 .stream-view {
-  height: 100vh;
+ // height: 100vh;
   @include clearfix;
   @extend %backgraund-secondary;
   padding: 25px;
-    width: 85%;
-    margin: auto;
-    box-sizing: border-box;
+  width: 85%;
+  box-sizing: border-box;
+  border-color: $primary-color;
+  border-style: solid;
+  border-radius:$border-radius;
+  margin: -60px auto 50px;
 }
 
 .stream-view__video {
@@ -14,6 +17,15 @@
 }
 
 .l-chat {
+  height: 418px;
   width: 28%;
   float: right;
+  border-color: $primary-color;
+  border-style: solid;
+  border-radius:$border-radius;
+}
+
+.chat-container-stream{
+  position: relative;
+  height: 100%;
 }
