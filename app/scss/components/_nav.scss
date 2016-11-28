@@ -81,15 +81,8 @@
 
 .game-menu__link {
   display: block;
-  padding: 5px;
+  //padding: 5px;
   text-align: center;
-
-
-  &:hover {
-    cursor: pointer;
-    color: lighten( $link-color, 50% );
-    background: rgba(53, 53, 53, 0.85);
-  }
 }
 
 .logo {
@@ -98,8 +91,14 @@
 .game-menu__item{
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
-  height: 30px;
+  padding-top: 10px;
+  height: 32px;
   margin-bottom: 2px;
+  &:hover {
+    cursor: pointer;
+    color: lighten( $link-color, 50% );
+    background:rgba(53, 53, 53, 1);
+  }
 }
 .logo__link {
   display: block;
