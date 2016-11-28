@@ -1,9 +1,8 @@
 .registration-block {
   width: 80%;
-  margin: 0 auto 50px;
+  margin: -60px auto 50px;
   padding: 10px 0 15px;
   text-align: center;
-  //height: 400px;
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
 }
