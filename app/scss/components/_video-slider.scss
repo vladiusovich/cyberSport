@@ -1,41 +1,51 @@
 .video-slider {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 85%;
-  margin: -60px auto 50px;
-  padding: 15px 0;
+  margin: 0 auto 50px;
+  padding: 15px 6px;
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
 }
-.video-slider img{
-  height: 80px;
-  margin: auto 15px;
+
+.video-item {
+  position: relative;
+  width: 18%;
   transition: all .1s;
+
+  &:hover  {
+    z-index: 999;
+    transform: scale(1.05);
+  }
+
+}
+
+.video-item img {
+  width: 100%;
+  object-fit: cover;
+
+}
+
+.video-slider__arrow {
+  width: 45px;
+  transition: all .1s;
+  transform: scale(.7);
+
   &:hover  {
     transform: scale(.9);
   }
 }
-.video-item{
-  margin: auto 0;
-  &:hover  {
-    background-color: rgba(53, 53, 53, 1);
-  }
-}
-.video-item img{
-  margin: auto auto;
-  &:hover  {
-    transform: scale(1);
-  }
-}
-.video-item p{
-  width: 156px;
-  height: 20px;
-  color: $link-color;
-  margin-top: -3px;
+
+
+.video-slider__title {
+  position: absolute;
+  width: 100%;
   text-align: center;
-  overflow: hidden;
-  margin-bottom: 0;
-  &:hover  {
-    color: $link-hover-color;
-  }
+  bottom: 5px;
+  margin: 0;
+  padding: 0 5px;
+  font-size: $extra-small-font-size;
+  color: $link-color;
+
 }
