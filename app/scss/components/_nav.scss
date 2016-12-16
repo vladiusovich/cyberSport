@@ -8,7 +8,7 @@
 .top-nav__global {
   position: relative;
   float: left;
-  line-height: 40px;
+  line-height: 30px;
   padding-left: 10px;
   padding-right: 35px;
   @extend %backgraund-secondary;
@@ -19,7 +19,7 @@
     position: absolute;
     width: 15px;
     height: 15px;
-    top: 13px;
+    top: 8px;
     right: 7px;
     background: url(../img/global.png);
     background-size: cover;
@@ -28,14 +28,58 @@
 }
 
 .registration {
+  position: relative;
+  width: 150px;
   float: right;
-  line-height: 40px;
+  line-height: 30px;
   padding: 0 20px;
   color:$link-color;
-  @extend %backgraund-secondary;
+  text-align: center;
 
+  @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
+
+  &:hover .login-menu {
+    display: block;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -7px;
+    background: url(../img/iconDoor.png) no-repeat center right;
+    width: 45px;
+    height: 45px;
+    transform: scale(.5);
+  }
 }
+
+
+.login-menu {
+  display: none;
+  position: absolute;
+  width: 100%;
+  top: 101%;
+  left: 0;
+  z-index: 99;
+}
+
+.login-menu__item {
+  width: 100%;
+  @extend .game-menu__item;
+  margin-top: 5px;
+}
+
+ .login-menu__link {
+  @extend .game-menu__link;
+  padding: 0 !important;
+
+}
+
+
+
+
 
 .l-nav {
   width: 100%;
