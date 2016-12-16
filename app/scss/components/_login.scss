@@ -1,0 +1,78 @@
+.flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.loginAvatar {
+    background-image: url(../img/background_secondary.png);
+    background-color: rgba(85, 85, 85, 0.7);
+    background-blend-mode: multiply;
+}
+
+.loginAvatar div:last-of-type a,
+.loginAvatar {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: 3px solid #df8e46;
+}
+
+.loginAvatar {
+    -ms-flex-flow: column nowrap;
+    flex-flow: column nowrap;
+    padding-top: 45px;
+    margin-bottom: 63px;
+    border-radius: 10px;
+}
+
+.loginAvatar div:last-of-type {
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.loginAvatar .flex:first-of-type  {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.loginAvatar div:first-of-type div:last-of-type { 
+    -ms-flex-preferred-size: 50%; 
+    flex-basis: 25%;
+    margin-top: -20px;
+}
+
+.loginAvatar .flex:first-of-type a {
+    margin-left: -25%;
+    margin-right: 5%;
+}
+
+.loginAvatar h2 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.loginAvatar span {
+    color: #df8e46;
+    display: block;
+    font-size: 25px;
+    margin-top: 25px;
+}
+
+.loginAvatar  .flex:last-of-type {
+    -ms-flex-flow: row wrap;
+    flex-flow: row wrap;
+    margin-top: 36px;
+    margin-bottom: 31px;
+}
+
+.loginAvatar div:last-of-type a {
+    display: block;
+    font-size: 30px;
+    border-radius: 0;
+    box-shadow: 2px 3px 8.01px 0.99px rgba(0, 3, 1, 0.55);
+    text-align: center;
+    padding: 42px 0;
+    width: 470px;
+    margin-bottom: 20px;
+}

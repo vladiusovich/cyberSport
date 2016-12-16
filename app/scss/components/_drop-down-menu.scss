@@ -1,0 +1,38 @@
+.registration a {
+    text-align: center;
+    padding: 0 30px;
+}
+
+.registration .icon {
+    background-image: url(../img/iconDoor.png);
+    background-position: center right;
+    background-repeat: no-repeat;
+}
+
+.registration  .login  {
+    padding: 0 50px;
+}
+
+.registration ul ul {
+    display: none;
+    position: fixed;
+}
+
+.registration ul ul li {
+    margin-top: 9px;
+}
+
+.registration ul ul a {
+    display: block;
+    padding: 0 55px;
+    border-radius: 5px;
+    border: 3px solid #df8e46;
+    background-image: url(../img/background_secondary.png);
+    background-color: rgba(85, 85, 85, 0.7);
+    background-blend-mode: multiply;
+    margin-left: -12px;
+}
+
+.registration ul > li:hover > ul {
+    display: block;
+}
