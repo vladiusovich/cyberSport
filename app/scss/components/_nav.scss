@@ -27,51 +27,75 @@
 
 }
 
-.registration {
+.account-option {
   position: relative;
-  width: 150px;
+  min-width: 150px;
   float: right;
   line-height: 30px;
   padding: 0 20px;
-  color:$link-color;
+  color: $link-color;
   text-align: center;
 
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
-
-  &:hover .login-menu {
-    display: block;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: -7px;
-    background: url(../img/iconDoor.png) no-repeat center right;
-    width: 45px;
-    height: 45px;
-    transform: scale(.5);
-  }
 }
 
 
-.login-menu {
+.account-option__account-name {
+  display: inline-block;
+  cursor: pointer;
+  &:hover {
+    color: #ffffff;
+  }
+}
+
+.account-option__account-name:hover .account-menu {
+  display: block;
+}
+
+.account-option__account-exit {
+  @extend .account-option__account-name;
+}
+
+  //&::after {
+  //  content: "";
+  //  position: absolute;
+  //  right: 0;
+  //  top: -7px;
+  //  background: url(../img/iconDoor.png) no-repeat center right;
+  //  width: 45px;
+  //  height: 45px;
+  //  transform: scale(.5);
+  //}
+
+
+.login {
+  @extend .account-option__account-name;
+}
+
+.registration {
+  @extend .account-option__account-name;
+}
+
+
+.account-menu {
   display: none;
   position: absolute;
-  width: 100%;
+  width: 50%;
   top: 101%;
   left: 0;
   z-index: 99;
 }
 
-.login-menu__item {
+.account-menu__item {
   width: 100%;
   @extend .game-menu__item;
+  padding: 0;
   margin-top: 5px;
+  font-size: $small-font-size;
 }
 
- .login-menu__link {
+ .account-menu__link {
   @extend .game-menu__link;
   padding: 0 !important;
 
