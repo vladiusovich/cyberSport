@@ -9,7 +9,7 @@
   @extend %backgraund-secondary;
   z-index: 5;
   transform: translateX(-310px);
-  transition: all .5s;
+  transition: all cubic-bezier(.62,.28,.23,.99) 0.3s;
   will-change: transform;
 }
 

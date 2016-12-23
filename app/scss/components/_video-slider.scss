@@ -12,7 +12,7 @@
 .video-item {
   position: relative;
   width: 18%;
-  transition: all .1s;
+  transition: all cubic-bezier(.62,.28,.23,.99) 0.1s;
 
   &:hover  {
     z-index: 999;
@@ -33,11 +33,11 @@
 
 .video-slider__arrow {
   width: 45px;
-  transition: all .1s;
+  transition: all cubic-bezier(.62,.28,.23,.99) 0.1s;
   transform: scale(.7);
 
   &:hover  {
-    transform: scale(.9);
+    transform: scale(.8);
   }
 }
 

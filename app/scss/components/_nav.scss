@@ -161,7 +161,7 @@
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
   margin-bottom: 2px;
-  transition: all .1s;
+  transition: all cubic-bezier(.62,.28,.23,.99) 0.2s;
 
 
   &:hover {
