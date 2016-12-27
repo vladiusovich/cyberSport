@@ -17,6 +17,19 @@
     height: 100px !important;
   }
 
+  .logo__link {
+    min-width: 250px !important;
+    height: 80px !important;
+  }
+
+  .logo {
+    margin-top: 100px;
+  }
+
+  .news-page {
+    margin: 20px auto 50px !important;
+  }
+
 
 }
 
@@ -41,14 +54,13 @@
     display: none !important;
   }
 
-  .logo__link {
-    min-width: 250px !important;
-    height: 80px !important;
-  }
+
 
   .video-slider {
     padding: 5px 6px !important;
   }
+
+
 
   .top-nav__global, .registration {
     font-size: .9rem;
@@ -57,7 +69,6 @@
   }
   .chat__user-name, .chat__time {
     line-height: 20px;
-
   }
 }
 
@@ -65,6 +76,10 @@
 
   .chat--aside {
     display: none !important;
+  }
+
+  .logo {
+    display: none;
   }
 
   .logo__link {
