@@ -19,7 +19,7 @@
   > li {
     display: inline-block;
     width: 49%;
-    line-height: 40px;
+    line-height: 30px;
     color: $heading-color;
     @include border-style($border-style, $border-radius);
     box-sizing: border-box;

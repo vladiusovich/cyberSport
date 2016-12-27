@@ -1,7 +1,6 @@
 .top-nav {
   width: 85%;
-  margin: 0 auto;
-  margin-bottom: 30px;
+  margin: 20px auto 30px;
   @include clearfix;
 }
 
@@ -25,6 +24,11 @@
     background-size: cover;
   }
 
+}
+
+.create-news {
+  @extend .account-option;
+  margin-right: 5px;
 }
 
 .account-option {
@@ -57,17 +61,6 @@
   @extend .account-option__account-name;
 }
 
-  //&::after {
-  //  content: "";
-  //  position: absolute;
-  //  right: 0;
-  //  top: -7px;
-  //  background: url(../img/iconDoor.png) no-repeat center right;
-  //  width: 45px;
-  //  height: 45px;
-  //  transform: scale(.5);
-  //}
-
 
 .login {
   @extend .account-option__account-name;
@@ -81,7 +74,7 @@
 .account-menu {
   display: none;
   position: absolute;
-  width: 50%;
+  width: 100%;
   top: 101%;
   left: 0;
   z-index: 99;

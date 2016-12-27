@@ -18,10 +18,32 @@
 }
 
 .news-item {
+  position: relative;
   margin-bottom: 10px;
   padding: 10px;
   background: $backgrond-color-divide;
   font-size: 14px;
+}
+
+.news__edit-post {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px;
+
+  form {
+    display: inline-block;
+
+  }
+
+  input {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+    border: none;
+    background: none;
+  }
 }
 
 .news-item:last-child {
