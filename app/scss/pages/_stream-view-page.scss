@@ -4,10 +4,9 @@
   @extend %backgraund-secondary;
   padding: 25px;
   width: 85%;
+  border: $border-style;
   box-sizing: border-box;
-  border-color: $primary-color;
-  border-style: solid;
-  border-radius:$border-radius;
+  border-radius: $border-radius;
   margin: -60px auto 50px;
 }
 
@@ -20,8 +19,7 @@
   height: 418px;
   width: 28%;
   float: right;
-  border-color: $primary-color;
-  border-style: solid;
+  border: $border-style;
   border-radius:$border-radius;
 }
 

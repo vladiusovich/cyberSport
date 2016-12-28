@@ -26,21 +26,7 @@
   }
 }
 
-input {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: solid 1px $primary-color;
-  color: $link-color;
-  background-color: rgba(85, 85, 85, 0.83);
 
-  &::selection {
-    //background: $button-shadow-color;
-  }
-
-  &:focus {
-    outline-color: $primary-color;
-  }
-}
 
 %search {
   padding: 10px 20px;
@@ -51,17 +37,6 @@ input {
   }
 }
 
-select  {
-  padding: 10px;
-  margin-bottom: 10px;
-  border: solid 1px $primary-color;
-  color: $link-color;
-  background-color: rgba(85, 85, 85, 0.83);
-
-  &:focus {
-    outline: none;
-  }
-}
 
 //Scroll Style
 %scroll-track {
