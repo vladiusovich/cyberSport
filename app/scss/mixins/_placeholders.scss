@@ -10,9 +10,9 @@
   border-radius: 5px;
   background: $button-color;
 
+
   @include border-style($border-style, $border-radius);
   color: $heading-color;
-  box-shadow: $button-shadow-color;
   letter-spacing: 3px;
   cursor: pointer;
   transition: all .1s;

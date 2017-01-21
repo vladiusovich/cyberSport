@@ -22,3 +22,9 @@ function toggle() {
     }
 }
 
+
+//set bottom of message dialog
+$(document).ready(function(){
+    $('.chat__dialog').animate({
+        scrollTop: $('.chat__dialog')[0].scrollHeight}, 500);
+}); 
