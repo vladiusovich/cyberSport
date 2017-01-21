@@ -13,7 +13,7 @@
     margin-top: 20px;
     display: flex;
     justify-content: space-between;
-     background: url(../img/grid_csgo.png);
+    @extend %backgraund-secondary;
     background-size: cover;
     //@extend %backgraund-secondary;
     padding: 20px;

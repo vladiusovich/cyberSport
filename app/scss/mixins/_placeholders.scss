@@ -9,6 +9,7 @@
   text-decoration: none;
   border-radius: 5px;
   background: $button-color;
+
   @include border-style($border-style, $border-radius);
   color: $heading-color;
   box-shadow: $button-shadow-color;
@@ -75,10 +76,10 @@
 
 %backgraund-secondary {
   //background-image:  url(../img/background_secondary.png);
-  background-color: #444444;
-  background-image: repeating-linear-gradient(45deg,
-          hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 10px,
-          transparent 0, transparent 20px);
+  background-color: $backgrond-color-secondary;
+  //background-image: repeating-linear-gradient(45deg,
+  //        hsla(0,0%,100%,.1), hsla(0,0%,100%,.1) 10px,
+  //        transparent 0, transparent 20px);
 }
 
 

@@ -1,4 +1,15 @@
 
+
+@media screen and (orientation: landscape) and (max-width: $screen-md) {
+  .chat--aside {
+    display: none !important;
+  }
+
+  .logo {
+    display: none  !important;
+  }
+}
+
 @media screen and (max-width: $screen-md){
   body {
     //font-size: 14px !important;
@@ -48,7 +59,7 @@
 }
 
 
-@media screen and  (max-width: $screen-sm){
+@media screen and (max-width: $screen-sm){
 
   .video-slider {
     display: none !important;
@@ -72,14 +83,23 @@
   }
 }
 
-@media screen and  (max-width: $screen-xs){
+@media screen and (max-width: $screen-xs){
 
   .chat--aside {
     display: none !important;
   }
 
+  .top-nav {
+    width: 93% !important;
+    margin: 5px auto 5px !important;
+  }
+
+  .account-option {
+    min-width: inherit !important;
+  }
+
   .logo {
-    display: none;
+    display: none  !important;
   }
 
   .logo__link {
