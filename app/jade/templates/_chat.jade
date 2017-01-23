@@ -2,20 +2,79 @@
     .l-chat__toggle
         button.chat__toggle.button(onclick="toggle()") Ч<br/>А<br/>Т
     ul.chat__tabs
-        li.chat__world Мир
-        li.chat__team Команда
-    .chat-container
-        ul.chat__dialog
+        li(data-toggle="tab" href="#world-chat").chat__world Мир
+        li(data-toggle="tab" href="#team-chat").chat__team.active Команда
+    .chat-container.tab-content
+        ul#world-chat.chat__dialog.tab-pane.fade.in.active
             li.chat__messenge
+                a.chat_ban-actions
+                    i.fa.fa-ban(aria-hidden="true")
                 .chat__user
                     .chat__avatar
                         img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
                     em.chat__user-name Marcus_loo
                     em.chat__time 21:32
                 p.chat__messenge-content.
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+                    WORLD CHAT! HI
 
                 li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
+                    .chat__user
+                        .chat__avatar
+                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                        em.chat__user-name Vlad
+                        em.chat__time 21:32
+                    p.chat__messenge-content.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+
+                li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
+                    .chat__user
+                        .chat__avatar
+                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                        em.chat__user-name Serg
+                        em.chat__time 21:32
+                    p.chat__messenge-content.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+
+                li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
+                    .chat__user
+                        .chat__avatar
+                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                        em.chat__user-name Iten
+                        em.chat__time 21:32
+                    p.chat__messenge-content.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+
+                li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
+                    .chat__user
+                        .chat__avatar
+                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                        em.chat__user-name Mark
+                        em.chat__time 21:32
+                    p.chat__messenge-content.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+
+                li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
+                    .chat__user
+                        .chat__avatar
+                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                        em.chat__user-name Lucy
+                        em.chat__time 21:32
+                    p.chat__messenge-content.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+
+                li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
                     .chat__user
                         .chat__avatar
                             img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
@@ -25,6 +84,43 @@
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
 
                 li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
+                    .chat__user
+                        .chat__avatar
+                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                        em.chat__user-name John
+                        em.chat__time 21:32
+                    p.chat__messenge-content.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+
+
+                li.chat__messenge
+                    a.chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
+                    .chat__user
+                        .chat__avatar
+                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                        em.chat__user-name Stin
+                        em.chat__time 21:32
+                    p.chat__messenge-content.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
+
+        ul#team-chat.chat__dialog.tab-pane.fade
+            li.chat__messenge
+                a(data-peer=12).chat_ban-actions
+                    i.fa.fa-ban(aria-hidden="true")
+                .chat__user
+                    .chat__avatar
+                        img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
+                    em.chat__user-name Pen
+                    em.chat__time 21:32
+                p.chat__messenge-content.
+                    TEAM CHAT
+
+                li.chat__messenge
+                    a(data-peer=143).chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
                     .chat__user
                         .chat__avatar
                             img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
@@ -34,61 +130,45 @@
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
 
                 li.chat__messenge
+                    a(data-peer=1223).chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
                     .chat__user
                         .chat__avatar
                             img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
-                        em.chat__user-name Marcus_loo
+                        em.chat__user-name Marc
                         em.chat__time 21:32
                     p.chat__messenge-content.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
 
                 li.chat__messenge
+                    a(data-peer=134).chat_ban-actions
+                        i.fa.fa-ban(aria-hidden="true")
                     .chat__user
                         .chat__avatar
                             img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
-                        em.chat__user-name Marcus_loo
+                        em.chat__user-name Xanam
                         em.chat__time 21:32
                     p.chat__messenge-content.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
 
-                li.chat__messenge
-                    .chat__user
-                        .chat__avatar
-                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
-                        em.chat__user-name Marcus_loo
-                        em.chat__time 21:32
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
-
-                li.chat__messenge
-                    .chat__user
-                        .chat__avatar
-                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
-                        em.chat__user-name Marcus_loo
-                        em.chat__time 21:32
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
-
-                li.chat__messenge
-                    .chat__user
-                        .chat__avatar
-                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
-                        em.chat__user-name Marcus_loo
-                        em.chat__time 21:32
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
-
-
-                li.chat__messenge
-                    .chat__user
-                        .chat__avatar
-                            img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
-                        em.chat__user-name Marcus_loo
-                        em.chat__time 21:32
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
 
 
         .chat__send-messenge
             textarea(name="text", cols="40", rows="5", placeholder="Введите сообщение").chat__input-text
             button.chat__button Отправить
+
+.ban-actions-menu
+
+    form(action="/context-path/ServletName" method="post")
+        ul.ban-actions__list Бан на:
+            li
+                #[input(type="radio" name="ban" value="1")] 1 час
+            li
+                #[input(type="radio" name="ban" value="2")] 2 часа
+            li
+                #[input(type="radio" name="ban" value="4")] 4 часа
+            li
+                #[input(type="radio" name="ban" value="inf")] Вечность
+
+     #[input(type="submit", value="Забанить").ban-actions__act]
+
