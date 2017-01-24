@@ -5,7 +5,7 @@
         li(data-toggle="tab" href="#world-chat").chat__world Мир
         li(data-toggle="tab" href="#team-chat").chat__team.active Команда
     .chat-container.tab-content
-        ul#world-chat.chat__dialog.tab-pane.fade.in.active
+        ul#world-chat.chat__dialog.tab-pane.fade.in
             li.chat__messenge
                 a.chat_ban-actions
                     i.fa.fa-ban(aria-hidden="true")
@@ -106,7 +106,7 @@
                     p.chat__messenge-content.
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus, consectetur non ea laboriosam officiis rem quas error architecto repellat!
 
-        ul#team-chat.chat__dialog.tab-pane.fade
+        ul#team-chat.chat__dialog.tab-pane.fade.in.active
             li.chat__messenge
                 a(data-peer=12).chat_ban-actions
                     i.fa.fa-ban(aria-hidden="true")
@@ -162,13 +162,13 @@
     form(action="/context-path/ServletName" method="post")
         ul.ban-actions__list Бан на:
             li
-                #[input(type="radio" name="ban" value="1")] 1 час
+                #[input(type="radio" name="ban" id="ban-1" value="1")] 1 час
             li
-                #[input(type="radio" name="ban" value="2")] 2 часа
+                #[input(type="radio" name="ban" id="ban-2" value="2")] 2 часа
             li
-                #[input(type="radio" name="ban" value="4")] 4 часа
+                #[input(type="radio" name="ban" id="ban-3" value="4")] 4 часа
             li
-                #[input(type="radio" name="ban" value="inf")] Вечность
+                #[input(type="radio" name="ban" id="ban-4" value="inf")] Вечность
 
      #[input(type="submit", value="Забанить").ban-actions__act]
 

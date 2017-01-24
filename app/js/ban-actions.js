@@ -1,17 +1,50 @@
 
+(function () {
+
+})();
+
+var user, userName;
+
 $( ".chat_ban-actions" ).click(function() {
     // var peer = $(this).attr("data-peer");
 
     var menu = $(".ban-actions-menu");
     menu.css("display", "none");
 
-    var user = $(this).next();
-    var user_name = user.find(".chat__user-name");
-    console.log(user_name.text());
+    user = $(this).next();
+    userName = user.find(".chat__user-name").text();
 
     var position = $(this).offset();
     display_ban_actions(position.top, position.left);
 
+})
+
+$( ".ban-actions__act" ).click(function() {
+
+
+    var banOption = $("input[type='radio']:checked").val();
+
+    if (banOption == undefined) {
+        return;
+    }
+
+    console.log(banOption + "  -- " + userName);
+
+    $.ajax({
+        type: "POST",
+        url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
+        contentType: "application/json; charset=utf-8",
+        data: {banOption: banOption, userName: userName},
+        dataType: "json",
+        success: function (result) {
+            console.log('It worked!');
+            //  returning something
+            console.log('result... ' + result);
+        },
+        error: function (result) {
+            console.log('Error :(');
+        }
+    });
 });
 
 
@@ -47,3 +80,4 @@ $(document).ready(function(){
     });
 
 });
+
