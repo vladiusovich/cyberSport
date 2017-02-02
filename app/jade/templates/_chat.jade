@@ -194,6 +194,8 @@
 .ban-actions-menu
 
     form(action="/context-path/ServletName" method="post")
+        a
+            i.ban-actions-menu__close.fa.fa-times(aria-hidden="true")
         ul.ban-actions__list Бан на:
             li
                 #[input(type="radio" name="ban" id="ban-1" value="1")] 1 час

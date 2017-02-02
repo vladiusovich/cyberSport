@@ -3,12 +3,17 @@ var banActions = (function () {
     var user, userName;
     var menu = $(".ban-actions-menu");
 
-    function getBanMenu() {
+    function getBanMenu(e) {
+        e.stopPropagation();
         menu.css("display", "none");
         user = $(this).next();
         userName = user.find(".chat__user-name").text();
         var position = $(this).offset();
-        display_ban_actions(position.top, position.left);
+        display_ban_actions(position.left, position.top);
+    }
+
+    function closeMenu() {
+        menu.css("display", "none");
     }
 
     function sendData() {
@@ -38,11 +43,13 @@ var banActions = (function () {
 
     function display_ban_actions(x, y) {
         var menu = $(".ban-actions-menu");
+        var menuWidth = menu.css("width");
+        var left = (x + 20);
         var styles = {
             display: "block",
             opacity: 1,
-            top: x - 30,
-            left: y + 30
+            top: y + 25,
+            left: left
         };
 
         if (menu.css("display") == "none") {
@@ -59,6 +66,7 @@ var banActions = (function () {
     return {
         displayMenu: getBanMenu,
         sendData: sendData,
+        closeMenu: closeMenu,
         getMenu: (function () {
             return menu;
         })()
@@ -74,6 +82,7 @@ var banActions = (function () {
 $(document).ready(function(){
     $( ".chat_ban-actions" ).click(banActions.displayMenu);
     $( ".ban-actions__act" ).click(banActions.sendData);
+    $( ".ban-actions-menu__close" ).click(banActions.closeMenu);
 
     $(document).scroll(function () {
         banActions.getMenu.css("display", "none");
@@ -86,6 +95,12 @@ $(document).ready(function(){
 
 });
 
+
+window.onclick = function(event) {
+    if (!$(event.target).closest(banActions.getMenu).length) {
+        banActions.getMenu.css("display", "none");
+    }
+}
 
 
 

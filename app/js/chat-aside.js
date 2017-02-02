@@ -29,4 +29,4 @@ $(document).ready(function(){
     //     scrollTop: $('.chat__dialog')[0].scrollHeight}, 500);
     //
 
-}); 
+});
