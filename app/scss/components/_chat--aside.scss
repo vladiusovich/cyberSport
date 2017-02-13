@@ -85,7 +85,7 @@
   font-size: $small-font-size;
   font-weight: $light-font-weight;
 
-  color: #fff;;
+  color: $text-color;
 }
 
 .chat--aside .chat__send-messenge {
@@ -100,6 +100,7 @@
 .chat__button {
   text-transform: none;
 }
+
 
 
 .ban-actions-menu {
@@ -143,3 +144,5 @@
   }
 
 }
+
+

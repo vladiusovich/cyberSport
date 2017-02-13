@@ -144,3 +144,88 @@
 
 
 }
+
+@media not (min-width: 800px) {
+
+  //.nav {
+  //  .nav__game-item {
+  //    &:hover  {
+  //      cursor: pointer;
+  //    }
+  //  }
+  //  &:hover .nav__game-menu {
+  //    display: block;
+  //  }
+  //}
+
+}
+
+@media screen and (max-width: 800px) {
+
+  //.nav {
+  //  display: none;
+  //}
+
+  .flex-menu {
+    display: block !important;
+    position: relative;
+    padding: 10px;
+    margin: 10px 5px;
+    background: $primary-color;
+  }
+
+  .nav__game-item {
+    display: block !important;
+    width: 100% !important;
+    background: $button-color;
+
+    & img {
+      display: none;
+    }
+
+    &:hover .nav__game-menu {
+      //display: none !important;
+    }
+  }
+
+  .nav__game-menu {
+    position: relative !important;
+  }
+
+  .game-menu__link {
+    padding: 5px !important;
+  }
+
+  .game-menu__item {
+    margin: 0 !important;
+  }
+
+  .nav__game-item--cs > a::before {
+    content: "CS";
+    display: block;
+    width: 100%;
+    color: $text-color;
+  }
+
+  .nav__game-item--dota > a::before {
+    content: "dota";
+    display: block;
+    width: 100%;
+    color: $text-color;
+  }
+
+  .nav__game-item--paragon > a::before {
+    content: "Paragon";
+    display: block;
+    width: 100%;
+    color: $text-color;
+  }
+
+  .nav__game-item--wot > a::before {
+    content: "World of tanks";
+    display: block;
+    width: 100%;
+    color: $text-color;
+  }
+
+}

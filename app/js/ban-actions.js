@@ -61,8 +61,6 @@ var banActions = (function () {
         }
     }
 
-
-
     return {
         displayMenu: getBanMenu,
         sendData: sendData,
@@ -80,6 +78,7 @@ var banActions = (function () {
 
 
 $(document).ready(function(){
+    $(".flexnav").flexNav({'hoverIntent': false});
     $( ".chat_ban-actions" ).click(banActions.displayMenu);
     $( ".ban-actions__act" ).click(banActions.sendData);
     $( ".ban-actions-menu__close" ).click(banActions.closeMenu);
@@ -92,9 +91,17 @@ $(document).ready(function(){
         banActions.getMenu.css("display", "none");
     });
 
+    $(".flexnav").flexNav();
+
+
+// Удалить рекламу н веременном сервере
+    // $('body > div').filter(function(){
+    //         return $(this).css("height") === "65px";
+    //     }).remove();
+    // $('body > center').remove();
+    // $('body > div[style~="opacity:"]').remove();
 
 });
-
 
 window.onclick = function(event) {
     if (!$(event.target).closest(banActions.getMenu).length) {
@@ -103,38 +110,4 @@ window.onclick = function(event) {
 }
 
 
-
-/*
-
-// Hide the modal dialog when someone clicks outside of it.
-$(".ban-actions-menu").bind( "clickoutside", function(event){
-    if ( banActions.getMenu.css("display") == "block") {
-        console.log(banActions.getMenu.css("display"));
-        // $(this).hide();
-    }
-});
-
-$(document.body).click(function(e){
-    var $box = banActions.getMenu;
-    var isBlock = false;
-    console.log(e.target);
-
-    if(e.target.class !== '.ban-actions-menu' && !$.contains($box[0], e.target) && isBlock) {
-        $box.remove();
-        isBlock = true;
-    }
-
-});
-
- $(document).click(function(e) {
- var target = e.target;
-
- if (!$(target).is('.ban-actions-menu') && !$(target).parents().is('.ban-actions-menu')) {
- $('.ban-actions-menu').hide();
- }
- });
-
-
-
-*/
 

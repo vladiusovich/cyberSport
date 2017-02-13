@@ -12,7 +12,7 @@
   padding-right: 35px;
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
-  
+
   &:after {
     content: "";
     position: absolute;
@@ -98,11 +98,11 @@
 
 
 
-.l-nav {
+.l-navigation {
   width: 100%;
 }
 
-.nav {
+.navigation {
   text-align: center;
   margin-bottom: -3px;
 }
@@ -117,9 +117,9 @@
     cursor: pointer;
   }
 
-  &:hover .nav__game-menu {
-    display: block;
-  }
+  //&:hover .nav__game-menu {
+  //  display: block;
+  //}
 
   img {
     max-width: 100%;
@@ -130,8 +130,8 @@
 
 
 .nav__game-menu {
-  position: absolute;
-  display: none;
+  //position: absolute;
+  //display: none;
   top: 100%;
   left: 0;
   width: 100%;
@@ -145,6 +145,7 @@
   text-align: center;
   padding: 16px;
 }
+
 
 .logo {
 
