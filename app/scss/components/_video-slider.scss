@@ -1,4 +1,5 @@
 .video-slider {
+  //display: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,7 +14,7 @@
   position: relative;
   width: 18%;
   transition: all cubic-bezier(.62,.28,.23,.99) 0.1s;
-
+  z-index: 1;
   &:hover  {
     z-index: 999;
     transform: scale(1.05);

@@ -168,12 +168,13 @@
   min-height: 50px;
   overflow: visible; }
 .oldie .flexnav li:hover > ul {
-  display: block;
+  //display: block;
   width: 100%;
   overflow: visible; }
 .oldie .flexnav li:hover > ul li {
-  width: 100%;
-  float: none; }
+  //width: 100%;
+  //float: none;
+}
 .oldie .flexnav li a {
   border-left: 1px solid #acaca1;
   border-bottom: none;

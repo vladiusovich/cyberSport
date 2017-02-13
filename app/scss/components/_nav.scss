@@ -1,3 +1,9 @@
+.header {
+  position: relative;
+  min-height: 300px;
+  z-index: 5;
+}
+
 .top-nav {
   width: 85%;
   margin: 20px auto 30px;
@@ -105,21 +111,28 @@
 .navigation {
   text-align: center;
   margin-bottom: -3px;
+
+  & ::after {
+    display: block;
+    content: "";
+    clear: both;
+  }
 }
 
 .nav__game-item {
   position: relative;
   display: inline-block;
   width: 21%;
+  z-index: 1000;
 
  // @include border-style($border-style, $border-radius);
   &:hover  {
     cursor: pointer;
   }
 
-  //&:hover .nav__game-menu {
-  //  display: block;
-  //}
+  &:hover .nav__game-menu {
+    display: block;
+  }
 
   img {
     max-width: 100%;

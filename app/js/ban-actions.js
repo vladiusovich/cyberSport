@@ -1,13 +1,13 @@
 
 var banActions = (function () {
-    var user, userName;
+    var userName;
     var menu = $(".ban-actions-menu");
 
     function getBanMenu(e) {
         e.stopPropagation();
         menu.css("display", "none");
-        user = $(this).next();
-        userName = user.find(".chat__user-name").text();
+        userName = $(this).parent().find(".chat__user").find(".chat__user-name").text();
+        console.log(userName);
         var position = $(this).offset();
         display_ban_actions(position.left, position.top);
     }
@@ -16,29 +16,7 @@ var banActions = (function () {
         menu.css("display", "none");
     }
 
-    function sendData() {
-        var banOption = $("input[type='radio']:checked").val();
 
-        if (banOption == undefined) {
-            return;
-        }
-        console.log(banOption + "  -- " + userName);
-        $.ajax({
-            type: "POST",
-            url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
-            contentType: "application/json; charset=utf-8",
-            data: {banOption: banOption, userName: userName},
-            dataType: "json",
-            success: function (result) {
-                console.log('It worked!');
-                //  returning something
-                console.log('result... ' + result);
-            },
-            error: function (result) {
-                console.log('Error :(');
-            }
-        });
-    }
 
 
     function display_ban_actions(x, y) {
@@ -61,6 +39,31 @@ var banActions = (function () {
         }
     }
 
+    function sendData() {
+        var banOption = $("input[type='radio']:checked").val();
+
+        if (banOption == undefined) {
+            return;
+        }
+        console.log(banOption + "  -- " + userName);
+        $.ajax({
+            type: "POST",
+            url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
+            contentType: "application/json; charset=utf-8",
+            data: {banOption: banOption, userName: userName},
+            dataType: "json",
+            success: function (result) {
+                console.log('It worked!');
+                //  returning something
+                console.log('result... ' + result);
+
+            },
+            error: function (result) {
+                console.log('Error :(');
+            }
+        });
+    }
+
     return {
         displayMenu: getBanMenu,
         sendData: sendData,
@@ -78,7 +81,9 @@ var banActions = (function () {
 
 
 $(document).ready(function(){
+
     $(".flexnav").flexNav({'hoverIntent': false});
+
     $( ".chat_ban-actions" ).click(banActions.displayMenu);
     $( ".ban-actions__act" ).click(banActions.sendData);
     $( ".ban-actions-menu__close" ).click(banActions.closeMenu);
@@ -91,7 +96,6 @@ $(document).ready(function(){
         banActions.getMenu.css("display", "none");
     });
 
-    $(".flexnav").flexNav();
 
 
 // Удалить рекламу н веременном сервере
@@ -102,6 +106,14 @@ $(document).ready(function(){
     // $('body > div[style~="opacity:"]').remove();
 
 });
+
+//
+//
+// $(chatWindow).append('<li class="chat__messenge"><a class="chat_ban-actions" onClick='$( ".chat_ban-actions" ).click(banActions.displayMenu);'><i aria-hidden="true" class="fa fa-ban"></i></a><div class="chat__user">' +
+//     '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
+//     '<em class="chat__user-name">' + name +'</em>' +
+//     '<em class="chat__time">' + time + '</em></div>' +
+//     '<p class="chat__messenge-content">' + text + ' [' + room + '/' + counterIds + ']' + '</p></li>');
 
 window.onclick = function(event) {
     if (!$(event.target).closest(banActions.getMenu).length) {

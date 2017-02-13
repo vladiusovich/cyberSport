@@ -1,23 +1,3 @@
-// var isClickMenu = false;
-// var isClickItem = false;
-//
-//     $(document).ready(function(){
-//     $(".touch-button").click(function () {
-//         var menu = $(this).parent().parent().find(".nav");
-//
-//         if (menu.length != 0 && isClickMenu == false) {
-//             menu[0].style.display = 'block';
-//             isClickMenu = true;
-//                 console.log(menu[0].style.display);
-//         } else {
-//             menu[0].style.display = 'none';
-//             isClickMenu = false;
-//         };
-//
-//         $(this).parent().find(".nav__game-menu").css("display", "block");
-//     });
-// });
-
 
 /*
  FlexNav.js 1.3.3
@@ -160,4 +140,4 @@
         return $(window).on('resize', resizer);
     };
 
-}).call(this); 
+}).call(this);
