@@ -9,6 +9,22 @@
             input(type="password" size="40", placeholder="Пароль")
             input(type="password" size="40", placeholder="Повторите пароль")
         fieldset
+            legend Выбор игр
+            ul.game-checker
+                li
+                    input#cs-check(type="checkbox")
+                    label(for="cs-check") CS Go
+                li
+                    input#paragon-check(type="checkbox")
+                    label(for="paragon-check") Paragon
+                li
+                    input#dota-check(type="checkbox")
+                    label(for="dota-check") Dota
+                li
+                    input#wot-check(type="checkbox")
+                    label(for="wot-check") World of tanks
+
+        fieldset
             select.input-option
                 option(value="2") Австралия
                 option(value="3") Австрия

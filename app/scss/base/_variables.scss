@@ -1,7 +1,7 @@
 //Colors
 $primary-color: #df8e46;
 //Variable
-$border-style: solid 1px #df8e46;
+$border-style: solid 1px $primary-color;
 $border-radius: 5px;
 
 //Typography
@@ -20,7 +20,8 @@ $backgrond-color-divide: rgba(0, 0, 0, 0.66);
 
 @import url('https://fonts.googleapis.com/css?family=Exo+2');
 $base-font-family: 'Exo 2', Arial, sans-serif;;
-$base-font-size:  16px;;
+$base-font-size:  16px;
+$heading-font-size:  1.2rem;
 $input-font-size: 14px;
 $small-font-size: 14px;
 $extra-small-font-size: 12px;

@@ -1,3 +1,8 @@
+
+input {
+  box-sizing: border-box;
+}
+
 input[type="search"] {
   @extend %search;
 }

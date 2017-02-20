@@ -3,6 +3,8 @@
   margin: auto;
   padding: 10px 0 15px;
   text-align: center;
+  font: $base-font-family;
+  color: $primary-color;
   @extend %backgraund-secondary;
   @include border-style($border-style, $border-radius);
 
@@ -17,15 +19,80 @@
   align-items: center;
 
   fieldset {
-    width: 30%;
+    max-width: 30%;
     margin: 0 auto;
     border: none;
     input {
       width: 100%;
       margin-bottom: 5px;
     }
+
+    legend {
+      font-size: $heading-font-size;
+    }
   }
 }
+
+.registration-form {
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    display:none;
+  }
+  input[type="checkbox"] + label,
+  input[type="radio"] + label {
+    font: $base-font-family;
+    color: $primary-color;
+    cursor: pointer;
+  }
+  input[type="checkbox"] + label::before,
+  input[type="radio"] + label::before {
+    content: "";
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    margin: 0 5px 0 0;
+    background-image: url(http://uniformjs.com/images/sprite.png);
+    background-repeat: no-repeat;
+  }
+  input[type="checkbox"] + label::before {
+    background-position: -38px -260px;
+  }
+  input[type="radio"] + label::before {
+    background-position: 0px -279px;
+  }
+  input[type="checkbox"]:checked + label::before {
+    background-position: -114px -260px;
+  }
+  input[type="radio"]:checked + label::before {
+    background-position: -108px -279px;
+  }
+  input[type="checkbox"]:disabled + label::before {
+    background-position: -152px -260px;
+  }
+  input[type="checkbox"]:checked:disabled + label::before {
+    background-position: -171px -260px;
+  }
+  input[type="radio"]:disabled + label::before {
+    background-position: -144px -279px;
+  }
+  input[type="radio"]:checked:disabled + label::before {
+    background-position: -162px -279px;
+  }
+}
+
+.game-checker {
+  margin: 0 auto;
+  padding: 5px;
+  border: $border-style;
+  border-radius: $border-radius;
+
+
+  & li {
+    text-align: left;
+  }
+}
+
 
 
 
