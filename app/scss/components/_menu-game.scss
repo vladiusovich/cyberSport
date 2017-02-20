@@ -1,0 +1,40 @@
+.menu-game {
+  position: relative;
+  margin-bottom: 100px;
+
+}
+
+.menu-game__item {
+  > img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.menu-game__wrap {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-25%, -50%);
+}
+
+.menu-game__game-logo {
+    > img {
+      width: 60%;
+    }
+}
+
+.menu-game__button-wrap {
+  position: absolute;
+ bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu-game__link {
+  padding: .4em 1.8em;
+  font-size: $heading-font-size;
+  color: $link-color;
+  border: $border-style;
+  border-radius: $border-radius;
+}

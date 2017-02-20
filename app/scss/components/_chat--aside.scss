@@ -6,7 +6,7 @@
   left: 0;
   border-color: rgba(200, 200, 200, 0.42);
   border-radius: 0;
-  @extend %backgraund-secondary;
+  background: $backgrond-color-secondary;
   z-index: 15;
   transform: translateX(-310px);
   transition: all cubic-bezier(.62,.28,.23,.99) 0.3s;
@@ -37,7 +37,6 @@
   position: absolute;
   top: 320px;
   right: -35px;
-@extend %backgraund-secondary;
 }
 
 .chat__toggle {
@@ -45,8 +44,8 @@
   width: 35px;
   cursor: pointer;
   font-size: $small-font-size;
-    font-weight: bold;
-  @extend %button;
+  font-weight: bold;
+  border: none;
   z-index: 1;
   &:focus {
     outline: none;

@@ -1,31 +1,19 @@
 a {
+  color: $link-color;
   cursor: pointer;
   text-decoration: none;
-  //text-transform: none;
   &:hover {
     text-decoration: none;
-  }  &:focus {
+  }
+  &:focus {
        outline-color: $primary-color;
      }
-  &:focus {
-    outline-color: $primary-color;
-  }
 }
 
-%link {
-  color: red;
-}
-
-.link {
-  @extend %link;
-}
-
-.link--left {
-  float: left;
-}
 
 .link--social {
   display: block;
+  color: $primary-color;
   background: #ead68e;
   border-radius: 50%;
   width: 25px;

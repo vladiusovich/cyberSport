@@ -13,10 +13,6 @@ body {
   font-weight: $regular-font-weight;
   line-height: $base-line-height;
 
-  background: url(../img/background_main-page.jpg) no-repeat 60% 0%,  url(../img/background_secondary-overlay.png) no-repeat 0 0;
-  background-size: cover;
-  background-attachment: fixed;
-
   @extend %scroll-track;
 }
 
@@ -31,12 +27,6 @@ p::selection {
   background: #d6d6d6;
 }
 
-a {
-  color: $link-color;
-  &:hover {
-    color: $link-hover-color;
-  }
-}
 
 
 /// TEMP!!!!!

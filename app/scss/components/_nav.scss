@@ -1,12 +1,10 @@
 .header {
   position: relative;
-  min-height: 300px;
-  z-index: 5;
 }
 
 .top-nav {
-  width: 85%;
-  margin: 20px auto 30px;
+  margin: 0 auto 50px;
+  color: $primary-color;
   @include clearfix;
 }
 
@@ -16,8 +14,15 @@
   line-height: 30px;
   padding-left: 10px;
   padding-right: 35px;
+  color: inherit;
   @extend %backgraund-secondary;
-  @include border-style($border-style, $border-radius);
+
+  a {
+    color: inherit;
+    &:hover {
+      color: $link-color;
+    }
+  }
 
   &:after {
     content: "";
@@ -43,19 +48,22 @@
   float: right;
   line-height: 30px;
   padding: 0 20px;
-  color: $link-color;
+  color: $primary-color;
   text-align: center;
-
   @extend %backgraund-secondary;
-  @include border-style($border-style, $border-radius);
+
 }
 
 
 .account-option__account-name {
   display: inline-block;
   cursor: pointer;
-  &:hover {
-    color: #ffffff;
+
+  a {
+    color: inherit;
+    &:hover {
+      color: $link-color;
+    }
   }
 }
 
