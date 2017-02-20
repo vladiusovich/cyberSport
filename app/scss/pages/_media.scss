@@ -3,3 +3,24 @@
     margin-bottom: 30px;
   }
 }
+
+@media screen and (max-width: 500px){
+  .menu-game__link {
+    font-size: .7em !important;
+  }
+
+  .account-option, .create-news,.top-nav__global {
+    float: none !important;
+    text-align: center !important;
+  }
+
+  .footer .tech-support {
+    font-size: .8em !important;
+  }
+
+  .social {
+    float: none !important;
+    text-align: center !important;
+  }
+
+}

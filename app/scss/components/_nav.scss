@@ -1,9 +1,10 @@
 .header {
   position: relative;
+  margin: 0 auto 50px;
+
 }
 
 .top-nav {
-  margin: 0 auto 50px;
   color: $primary-color;
   @include clearfix;
 }
