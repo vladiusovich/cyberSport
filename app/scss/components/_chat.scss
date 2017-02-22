@@ -73,20 +73,29 @@
   padding: 20px;
   //margin-top: 30px;
   margin-bottom: 10px;
+  color: $text-color-dark;
   word-wrap: break-word;
   padding-top: 6px;
   font-size: $small-font-size;
   word-wrap: break-word;
   box-sizing: border-box;
-  @extend %scroll-track;
   border: none;
   border-bottom: solid 1px #e4e6e9;
   background: rgba(255, 255, 255, 0.75);
   resize: none;
+  @extend %scroll-track;
 
   &:focus {
     outline: 0;
   }
+
+}
+
+textarea {
+  &::-webkit-input-placeholder {color:$placeholder-color;}
+  &::-moz-placeholder          {color:$placeholder-color;}/* Firefox 19+ */
+  &:-moz-placeholder           {color:$placeholder-color;}/* Firefox 18- */
+  &:-ms-input-placeholder      {color:$placeholder-color;}
 }
 
 .chat__button {

@@ -6,32 +6,130 @@
 
 
 
-body {
-  color: $text-color;
-  font-size: $base-font-size;
-  font-family: $base-font-family;
-  font-weight: $regular-font-weight;
-  line-height: $base-line-height;
-
-  //@extend %scroll-track;
-}
-
-
-h1, h2, h3, h4, h5, h6 {
-  color: $heading-color;
-}
-
-
-p::selection {
-  color: #000000;
-  background: #d6d6d6;
-}
-
-
-
-/// TEMP!!!!!
-
-
-//body > div:nth-last-child(2) {
-//  display: none;
+//body {
+//  color: $text-color;
+//  font-size: $base-font-size;
+//  font-family: $base-font-family;
+//  font-weight: $regular-font-weight;
+//  line-height: $base-line-height;
+//
 //}
+//
+//
+//h1, h2, h3, h4, h5, h6 {
+//  //color: $heading-color;
+//}
+//
+//
+//p::selection {
+//  color: #000000;
+//  background: #d6d6d6;
+//}
+
+
+
+/*
+
+--- Vertical Rhythm Tool - http://soqr.fr/vertical-rhythm/ ---
+           Font-size : 14px  Line-height : 1.6
+
+*/
+
+html {
+  font-size: 62.5%;
+
+}
+body {
+  font-family: $base-font-family;
+  font-size: 1.4em;
+  line-height: 1.6;
+  color: $text-color;
+}
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+td,
+th,
+textarea,
+caption {
+  font-size: 1em; /* equiv 14px */
+  line-height: 1.6;
+  //margin: 0 0 1.6em 0;
+}
+h1 {
+  font-size:  1.8571em; /* equiv 26px */
+  line-height: 1.723;
+  margin: 0;
+}
+h2 {
+  font-size:  1.7143em; /* equiv 24px */
+  line-height: 1.8666;
+  margin: 0;
+}
+
+h2.block-title {
+  font-size:  1.343em; /* equiv 24px */
+  line-height: 2.2;
+  margin: 0;
+}
+h3 {
+  font-size:  1.5714em; /* equiv 22px */
+  line-height:  1.0182;
+  margin: 0;
+}
+h4 {
+  font-size:  1.4286em; /* equiv 20px */
+  line-height:  1.12;
+  margin: 0;
+}
+h5 {
+  font-size:  1.2857em; /* equiv 18px */
+  line-height:  1.2444;
+  margin: 0 0  1.2444em 0;
+  margin: 0;
+}
+h6 {
+  font-size:  1.1429em; /* equiv 16px */
+  line-height:  1.4;
+  margin: 0;
+}
+
+
+/* avoid supp margin on nested elements */
+li p,
+li ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+/* you shall not pass */
+textarea,
+table,
+td,
+th,
+code,
+pre,
+samp,
+div,
+p {
+  word-wrap: break-word;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  -o-hyphens: auto;
+  hyphens: auto;
+}
+code,
+pre,
+samp {
+  white-space: pre-wrap;
+  font-family: consolas, 'DejaVu Sans Mono', courier, monospace;
+}
+code {
+  line-height: 1;
+}
+table {
+  margin-bottom: 1.6em;
+}

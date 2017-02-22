@@ -5,12 +5,14 @@ $table-background-color: #fbfbfb;
 $border-color: #EDEDED;
 //Variable
 $border-style: solid 1px $border-color;
+$border-style-opocity-low: solid 1px rgba(237, 237, 237, 0.3);
 $border-radius: 8px;
 
-//Typography
 $heading-color: #df8e46;
-$text-color: #dddddd;
+$text-color: #a2a2a2;
+$text-color-lite: #e4e4e4;
 $text-color-dark: #080808;
+$placeholder-color: #2c2c2c;
 $link-color: #ededed;
 $link-hover-color: saturate($link-color, 20%);
 $link-visited-color: #4d82ff;
@@ -20,17 +22,18 @@ $button-shadow-color:  4px -3px 11px -2px rgba(128, 128, 128, 0.75);
 $backgrond-color-first: #2b2c32;
 $backgrond-color-secondary:  #2b2c32;
 //$backgrond-color-secondary: rgba(39, 39, 39, 1);
+$tag-color: #68061d;
 
 $backgrond-color-divide: rgba(0, 0, 0, 0.66);
 //$backgrond-color-divide: rgba(16, 16, 17, 0.5);
 
 
 @import url('https://fonts.googleapis.com/css?family=Exo+2');
-$base-font-family: 'Exo 2', Arial, sans-serif;;
+$base-font-family: 'Exo 2', Arial, sans-serif;
 $base-font-size:  16px;
 $heading-font-size:  1.2em;
 $input-font-size: 14px;
-$small-font-size: 14px;
+$small-font-size: 12px;
 $extra-small-font-size: 12px;
 $base-line-height: 18px;
 
