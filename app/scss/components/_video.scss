@@ -6,7 +6,6 @@
     margin-top: 0;
   }
 
-
 }
 
 
@@ -20,6 +19,7 @@
   flex-direction: column;
   height: 225px;
   overflow-y: scroll;
+  @extend %scroll-track;
 }
 
 .videos__item {
