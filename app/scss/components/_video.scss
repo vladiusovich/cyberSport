@@ -1,0 +1,48 @@
+.videos {
+  @extend %backgraund-secondary;
+  height: 320px;
+
+  h2 {
+    margin-top: 0;
+  }
+
+
+}
+
+
+.videos__wrap {
+  padding: 0 20px;
+}
+
+
+.videos__list {
+  display: flex;
+  flex-direction: column;
+  height: 225px;
+  overflow-y: scroll;
+}
+
+.videos__item {
+  width: 100%;
+}
+
+.videos__preview {
+  float: left;
+  width: 40%;
+  @extend %responsive_16-9;
+}
+
+.videos__name {
+  display: block;
+  font-size: 1em;
+  padding: .3em 1em;
+  margin-bottom: 1em;
+}
+
+.videos__data {
+  display: block;
+  font-size: 1em;
+  padding: .3em 1em;
+}
+
+

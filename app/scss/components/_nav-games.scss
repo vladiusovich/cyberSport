@@ -1,0 +1,19 @@
+.nav-games {
+  width: 100%;
+  @extend %backgraund-secondary;
+}
+
+.nav-games__item {
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+  border: 1px solid #8e6f8b;
+  border-color: transparent transparent transparent #8e6f8b;
+
+}
+
+.nav-games__link {
+  display: block;
+  padding: .5em;
+  font-size: $backgrond-color-secondary;
+}

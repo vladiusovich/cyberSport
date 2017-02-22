@@ -1,0 +1,59 @@
+.streams {
+  margin-bottom: 50px;
+
+  @extend %backgraund-secondary;
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.streams__wrap {
+  padding: 0 20px;
+}
+
+.streams__container {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.streams__video-viewer {
+  width: 55%;
+  margin-right: 3%;
+  @extend %responsive_16-9;
+}
+
+
+.streams__list {
+  display: flex;
+  flex-direction: column;
+  width: 42%;
+  max-height: 270px;
+  overflow-y: scroll;
+}
+
+
+.streams__item {
+  width: 100%;
+}
+
+
+.streams__preview {
+  float: left;
+  width: 40%;
+  @extend %responsive_16-9;
+}
+
+.streams__name {
+  display: block;
+  font-size: 1em;
+  padding: .3em 1em;
+  margin-bottom: 1em;
+}
+
+.streams__data {
+  display: block;
+  font-size: 1em;
+  padding: .3em 1em;
+}

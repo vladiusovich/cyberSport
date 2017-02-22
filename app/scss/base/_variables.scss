@@ -1,5 +1,7 @@
 //Colors
 $primary-color: #df8e46;
+$table-border-color: #e5e5e5;
+$table-background-color: #fbfbfb;
 $border-color: #EDEDED;
 //Variable
 $border-style: solid 1px $border-color;
@@ -8,13 +10,17 @@ $border-radius: 8px;
 //Typography
 $heading-color: #df8e46;
 $text-color: #dddddd;
+$text-color-dark: #080808;
 $link-color: #ededed;
 $link-hover-color: saturate($link-color, 20%);
 $link-visited-color: #4d82ff;
 $button-color:  rgba(39, 39, 39, 0.88);
 $button-shadow-color:  4px -3px 11px -2px rgba(128, 128, 128, 0.75);
 
-$backgrond-color-secondary: rgba(39, 39, 39, 1);
+$backgrond-color-first: #2b2c32;
+$backgrond-color-secondary:  #2b2c32;
+//$backgrond-color-secondary: rgba(39, 39, 39, 1);
+
 $backgrond-color-divide: rgba(0, 0, 0, 0.66);
 //$backgrond-color-divide: rgba(16, 16, 17, 0.5);
 
