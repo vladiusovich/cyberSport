@@ -1,4 +1,5 @@
 .matches {
+  padding-bottom: 15px;
   @extend %backgraund-secondary;
 }
 
@@ -7,6 +8,9 @@
 }
 
 .matches__table {
+  max-height: 500px;
+  overflow-y: scroll;
+  @extend %scroll-track;
   table {
     width: 100%;
     font-size: .8em;
@@ -21,6 +25,11 @@
   th,td {
     padding: .5em;
     text-align: center;
+
+    img {
+      width: 50%;
+      height: auto;
+    }
   }
 
   td, th {
@@ -34,7 +43,5 @@
     color: $text-color-dark;
     background: $table-background-color;
   }
-
-
 }
 

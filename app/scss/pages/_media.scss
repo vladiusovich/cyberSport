@@ -24,3 +24,19 @@
   }
 
 }
+
+@media screen and (max-width: 900px){
+  .news__item {
+    width: 48% !important;
+    margin-bottom: 30px;
+    border-bottom: $border-style-opocity-low;
+  }
+}
+
+@media screen and (max-width: 600px){
+  .news__item {
+    width: 100% !important;
+    margin-bottom: 30px;
+    border-bottom: $border-style-opocity-low;
+  }
+}
