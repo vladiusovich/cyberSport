@@ -82,27 +82,6 @@ var banActions = (function () {
 
 $(document).ready(function(){
 
-    $(function() {
-        $('.news__header,[class*="col-"]').matchHeight({
-            byRow: true,
-            property: 'height',
-            target: null,
-            remove: false
-        });
-    });
-
-    $(function() {
-        $('[class*="col-"]').matchHeight({
-            byRow: true,
-            property: 'height',
-            target: null,
-            remove: false
-        });
-    });
-
-
-
-
 
     $(".flexnav").flexNav({'hoverIntent': false});
 

@@ -1,4 +1,9 @@
 @media screen and (min-width: 992px){
+
+  .flex-center {
+    height: 90vh !important;
+  }
+
   .menu-game > .row:first-child {
     margin-bottom: 30px;
   }
@@ -26,10 +31,15 @@
 }
 
 @media screen and (max-width: 900px){
+
   .news__item {
     width: 48% !important;
     margin-bottom: 30px;
     border-bottom: $border-style-opocity-low;
+  }
+
+  .news__arrow-l, .news__arrow-r {
+    display: none !important;
   }
 }
 

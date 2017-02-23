@@ -9,7 +9,8 @@
 
 .matches__table {
   max-height: 500px;
-  overflow-y: scroll;
+  //overflow-y: scroll;
+  //padding-right: 1em;
   @extend %scroll-track;
   table {
     width: 100%;

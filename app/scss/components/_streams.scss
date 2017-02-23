@@ -7,8 +7,9 @@
 }
 
 .streams__wrap {
-  padding: 0 20px;
+  padding: 0 1em;
 }
+
 
 .streams__container {
   display: flex;
@@ -27,16 +28,19 @@
   display: flex;
   flex-direction: column;
   width: 42%;
-  margin-bottom: 15px;
+  margin-bottom: 1em;
   max-height: 270px;
-  overflow-y: scroll;
+  //overflow-y: scroll;
   @extend %scroll-track;
 }
 
 
 .streams__item {
+  position: relative;
   width: 90%;
   margin-bottom: 1em;
+
+  @include clearfix;
 
   &:not(:last-child) {
     border-bottom: $border-style-opocity-low;
@@ -46,9 +50,17 @@
 
 .streams__preview {
   float: left;
+  //display: inline-block;
+  //left: 0;
   width: 40%;
   margin-right: 1em;
   @extend %responsive_16-9;
+}
+
+.streams__item-info-wrap {
+  float: right;
+  width: 54%;
+
 }
 
 .streams__name {
@@ -61,5 +73,5 @@
 .streams__data {
   display: block;
   font-size: .8em;
-  padding: .3em 1em;
+  padding: .3em 1em .3em 0;
 }
