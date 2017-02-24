@@ -37,11 +37,16 @@
 
 .news__arrow-l {
   left: 1em;
-  transform: rotate(180deg);
+  img {
+    float: right;
+  }
 }
 
 .news__arrow-r {
   right: 1em;
+  img {
+    float: left;
+  }
 }
 
 
@@ -115,8 +120,8 @@ p.news__previev {
 
 .news__data {
   position: absolute;
-  bottom: 1em;
-  margin-left: 1.2em;
+  bottom: 0;
+  margin-left: 1em;
   
   &::before {
     content: "";
