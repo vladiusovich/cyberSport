@@ -1,6 +1,37 @@
+@media screen and (max-width: $screen-xs){
+  .news__item {
+    //width: 100% !important;
+  }
+}
+
+@media screen and (max-width: $screen-sm){
+  .news__item {
+    width: 100% !important;
+  }
+}
+
 @media screen and (max-width: $screen-md - 1){
   .streams__list {
-    display: none !important; 
+    display: none !important;
+  }
+
+  .streams__list {
+    display: none !important;
+  }
+
+  .videos__list {
+    width: 100%;
+    display: block !important;
+
+  }
+  .videos__item {
+    width: 45% !important;
+    //padding: 2em;
+    margin-right: 2em;
+    float: left !important;
+  }
+  .chat--aside {
+    display: none!important;
   }
 }
 
@@ -16,7 +47,13 @@
   }
 }
 
-@media screen and (max-width: 500px){
+@media screen and (max-width: $screen-xs){
+
+  .news__preview-text {
+    max-height: 80px !important;
+    margin-bottom: 10px !important;
+  }
+
   .menu-game__link {
     font-size: .7em !important;
   }
@@ -34,28 +71,52 @@
     float: none !important;
     text-align: center !important;
   }
+}
+
+@media screen and (min-width: $screen-md){
+
+  .row {
+    margin-bottom: 30px !important;
+  }
+
+  .row .row {
+    margin-bottom: 0 !important;
+  }
 
 }
 
-@media screen and (max-width: 992px){
-
-  .row {
-    margin-bottom: 0 !important;
-  }
+@media screen and (max-width: $screen-md){
 
   .row > [class*="col-"] {
     margin-bottom: 2em !important;
   }
 
+  .row {
+    margin-bottom: 0 !important;
+  }
+
 }
 
-@media screen and (max-width: 900px){
+@media screen and (max-width: $screen-md){
 
-  .news__item {
-    width: 48% !important;
-    margin-bottom: 30px;
-    border-bottom: $border-style-opocity-low;
+  .news__container {
+    width: 100% !important;
+    margin: 0 !important;
+
   }
+  .news__item {
+    width: 100% !important;
+    &:not(:last-child) {
+      margin-bottom: 1em !important;
+      border-bottom: $border-style-opocity-low;
+    }
+
+  }
+
+  .news__preview-text {
+    max-height: 70px !important;
+  }
+
 
   .news__arrow-l, .news__arrow-r {
     display: none !important;
@@ -65,7 +126,7 @@
 @media screen and (max-width: 600px){
   .news__item {
     width: 100% !important;
-    margin-bottom: 30px;
+    margin-bottom: 30px !important;
     border-bottom: $border-style-opocity-low;
   }
 }

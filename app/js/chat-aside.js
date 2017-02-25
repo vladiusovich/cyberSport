@@ -1,6 +1,7 @@
 var toggleChat =   document.getElementsByClassName("chat__toggle")[0];
 
 var isToggle = false;
+var screenMd = 1024;
 
 function toggle() {
     var chat = document.getElementsByClassName("chat--aside")[0];
@@ -10,7 +11,7 @@ function toggle() {
     if (!isToggle) {
         console.log(chat);
         chat.style.transform = "translateX(0px)";
-        if (w > 900) {
+        if (w > screenMd) {
             wrapper.style.marginLeft = "300px";
         }
         isToggle = true
