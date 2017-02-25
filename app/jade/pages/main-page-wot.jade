@@ -1,12 +1,14 @@
-extends ../templates/_page-template
+extends ../templates/page-templates/_template-main-page-wot
 
 block title
-    title World Of Tanks
+    title CS GO
 
 block chat
     include ../templates/_chat
-block content
+block header
+    include ../templates/_nav-games
     include ../templates/_header
+block content
     include ../templates/_main-wot
 block footer
     include ../templates/_footer

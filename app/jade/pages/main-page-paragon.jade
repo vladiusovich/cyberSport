@@ -1,12 +1,14 @@
-extends ../templates/_page-template
+extends ../templates/page-templates/_template-main-page-paragon
 
 block title
-    title Paragon
+    title CS GO
 
 block chat
     include ../templates/_chat
-block content
+block header
+    include ../templates/_nav-games
     include ../templates/_header
+block content
     include ../templates/_main-paragon
 block footer
     include ../templates/_footer

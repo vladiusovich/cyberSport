@@ -1,12 +1,14 @@
-extends ../templates/_page-template
+extends ../templates/page-templates/_template-main-page-dota
 
 block title
-    title Dota 2
+    title CS GO
 
 block chat
     include ../templates/_chat
-block content
+block header
+    include ../templates/_nav-games
     include ../templates/_header
+block content
     include ../templates/_main-dota
 block footer
     include ../templates/_footer

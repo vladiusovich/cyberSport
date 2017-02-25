@@ -1,0 +1,33 @@
+$gradient-background: linear-gradient(rgba(22, 32, 36, 0.2), rgba(6, 11, 12, 0.5));
+
+$backgrond-main: $gradient-background, url("../img/background_main-page.jpeg");
+$backgrond-CS: $gradient-background, url("../img/background-csgo.jpg");
+$backgrond-wot: $gradient-background, url("../img/background-wot.jpg");
+$backgrond-paragon: $gradient-background, url("../img/background-paragon.jpg");
+$backgrond-dota: $gradient-background, url("../img/background-dota.jpg");
+
+
+.main-background {
+  background-image: $backgrond-main;
+  background-size: cover;
+}
+
+.cs-background {
+  background-image: $backgrond-CS;
+  background-size: cover;
+}
+
+.wot-background {
+  background-image: $backgrond-wot;
+  background-size: cover;
+}
+
+.paragon-background {
+  background-image: $backgrond-paragon;
+  background-size: cover;
+}
+
+.dota-background {
+  background-image: $backgrond-dota;
+  background-size: cover;
+}

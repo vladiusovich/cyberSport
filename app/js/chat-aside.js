@@ -12,7 +12,7 @@ function toggle() {
         console.log(chat);
         chat.style.transform = "translateX(0px)";
         if (w > screenMd) {
-            wrapper.style.marginLeft = "300px";
+            // wrapper.style.marginLeft = "300px";
         }
         isToggle = true
     }
