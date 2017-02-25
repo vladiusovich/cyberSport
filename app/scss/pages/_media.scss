@@ -1,7 +1,14 @@
-@media screen and (min-width: 992px){
+@media screen and (max-width: $screen-md - 1){
+  .streams__list {
+    display: none !important; 
+  }
+}
+
+
+@media screen and (min-width: $screen-md){
 
   .flex-center {
-    height: 90vh !important;
+    //height: 100vh !important;
   }
 
   .menu-game > .row:first-child {
@@ -26,6 +33,18 @@
   .social {
     float: none !important;
     text-align: center !important;
+  }
+
+}
+
+@media screen and (max-width: 992px){
+
+  .row {
+    margin-bottom: 0 !important;
+  }
+
+  .row > [class*="col-"] {
+    margin-bottom: 2em !important;
   }
 
 }

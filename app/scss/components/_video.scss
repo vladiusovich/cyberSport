@@ -1,4 +1,5 @@
 .videos {
+  height: 100%;
   @extend %backgraund-secondary;
 
   h2 {
@@ -10,7 +11,6 @@
 
 .videos__wrap {
   padding: 0 1em;
-  min-height: 323px;
   padding-bottom: 1em;
 }
 
@@ -19,15 +19,9 @@
   @extend .streams__list;
   width: 100%;
   margin-bottom: 0;
-  //display: flex;
-  //flex-direction: column;
-  //height: 270px;
-  //overflow-y: scroll;
-  //@extend %scroll-track;
 }
 
 .videos__item {
-  //width: 100%;
   @extend .streams__item;
 }
 

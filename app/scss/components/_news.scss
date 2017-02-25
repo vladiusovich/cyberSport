@@ -82,9 +82,9 @@
 p.news__previev {
   line-height: 1.4;
   color: $text-color;
-  height: 120px;
+  max-height: 105px;
   overflow: hidden;
-  margin-bottom: 55px;
+  margin-bottom: 2rem;
   line-height: 25px;
   text-overflow: ellipsis;
 
@@ -119,8 +119,9 @@ p.news__previev {
 }
 
 .news__data {
-  position: absolute;
+  position: relative;
   bottom: 0;
+  vertical-align: middle;
   margin-left: 1em;
   
   &::before {
@@ -128,7 +129,7 @@ p.news__previev {
     position: absolute;
     display: inline-block;
     left: -18px;
-    top: 4px;
+    top: 1px;
     width: 14px;
     height: 14px;
     background: url("../img/clock-data.png");
