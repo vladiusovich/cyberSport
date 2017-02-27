@@ -1,0 +1,118 @@
+.commands {
+  position: absolute;
+  top: 20%;
+  left: 25%;
+  padding: 0 1em;
+  transform: translate(-20%, 0%);
+  background: #2b2c32;
+  border: $border-style;
+  border-radius: $border-radius;
+  color: $primary-color;
+
+
+  display: flex;
+  flex-direction: row;
+  align-content: stretch;
+  width: 90%;
+  & > div {
+    width: 50%;
+  }
+
+}
+
+.commands__team {
+  & > span {
+    display: block;
+    height: 50px;
+    font-size: 2.5rem;
+  }
+}
+
+.team__list {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  overflow-y: scroll;
+  padding: 1em;
+}
+
+.team__item {
+  margin-bottom: .5em;
+
+  a {
+    display: inline-block;
+    width: 15%;
+    margin-right: 1em;
+    border: $border-style;
+    border-radius: $border-radius;
+
+
+  }
+
+  img {
+    width: 100%;
+    border-radius: $border-radius;
+
+  }
+
+  span {
+    font-size: 2rem;
+  }
+}
+
+.search-wrap {
+  position: relative;
+  height: 50px;
+
+}
+
+input[type="search"] {
+  //position: absolute;
+  width: 100%;
+  border: none;
+  background: transparent;
+}
+
+.search_button {
+  position: absolute;
+  top: 3px;
+  right: -3px;
+  width: 35px;
+  height: 35px;
+  border: none;
+  background: url("../img/search.png") no-repeat;
+  background-size: contain;
+}
+
+
+.search__list {
+  @extend .team__list;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.search__item {
+  width: 30%;
+  margin-bottom: .5em;
+
+  a {
+    display: inline-block;
+    width: 50%;
+    margin-right: .5em;
+    border: $border-style;
+    border-radius: $border-radius;
+
+  }
+
+  img {
+    width: 100%;
+    border-radius: $border-radius;
+  }
+
+  span {
+    font-size: 2rem;
+  }
+
+}

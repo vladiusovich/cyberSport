@@ -50,3 +50,65 @@
                 button.personal-data__button.personal-data__button--stretch(onclick="") Команды
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
                 button.personal-data__button.personal-data__button--stretch(onclick="") Уведомления
+
+mixin team__item()
+    li.team__item
+            a
+                img(src="../img/user-img.jpg")
+            span.name Puuuu
+
+mixin search__item()
+    li.search__item
+        a
+            img(src="../img/user-img.jpg")
+        span.name Puuuu
+
+
+.commands
+    .commands__team
+        span Члены комманды
+        ul.team__list
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+            +team__item()
+    .commands__search
+        .search-wrap
+            input(type="search", placeholder="Поиск")
+            button().search_button
+        ul.search__list
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+            +search__item()
+
