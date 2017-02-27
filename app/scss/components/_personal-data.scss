@@ -56,9 +56,11 @@ table.user_data__common {
 
 
 .personal-data__button {
+
 }
 
 .personal-data__button--stretch {
+  @extend %button;
   display: block;
   margin: auto;
   width: 60%;

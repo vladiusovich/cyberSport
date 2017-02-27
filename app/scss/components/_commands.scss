@@ -1,9 +1,24 @@
-.commands {
+.l-commands {
   position: absolute;
-  top: 20%;
+  top: 25%;
   left: 0%;
+  transform: translate(5%,0);
+
+  .close {
+    position: absolute;
+    color: #000000;
+    width: 30px;
+     height: 30px;
+    right: 0;
+    border-radius: 50%;
+    top: 0;
+    background: $primary-color;
+  }
+}
+
+.commands {
+  position: relative;
   padding: 0 1em;
-  transform: translate(5%, 0%);
   background: #2b2c32;
   border: $border-style;
   border-radius: $border-radius;
@@ -15,7 +30,8 @@
   width: 90%;
 
   & > div {
-    width: 50%;
+    display: inline-block;
+    width: calc( 50% - 1em );
   }
 }
 
@@ -110,3 +126,4 @@ input[type="search"] {
   }
 
 }
+
