@@ -101,6 +101,7 @@ textarea {
 .chat__button {
   @extend %align-center-block;
   @extend %button;
+
   font-size: $small-font-size;
 
   &:focus {

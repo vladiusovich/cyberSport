@@ -30,17 +30,20 @@
 
   & > div {
     display: inline-block;
-    width: calc( 50%  );
+    width: 50%;
   }
 }
 
 .commands__team {
-  padding: 0 1em;
+  padding: 0 0 1em 1em;
   & > span {
     display: block;
-    height: 50px;
-
+    height: 4.2rem;
     font-size: 2.5rem;
+    border-bottom: $border-style;
+    margin-bottom: .5em;
+    margin-left: -15px;
+    padding-left: 15px;
   }
 }
 
@@ -74,7 +77,9 @@
 
 .search-wrap {
   position: relative;
-  height: 50px;
+  height: 4.2rem;
+  border-bottom: $border-style;
+
 
 }
 
@@ -82,6 +87,10 @@ input[type="search"] {
   width: 100%;
   border: none;
   background: transparent;
+  &:focus {
+    outline: none;
+    border-bottom-color: $primary-color-focus;
+  }
 }
 
 .search_button {

@@ -123,10 +123,13 @@
   }
 }
 
-@media screen and (min-width: $screen-md   ){
-  .personal-data {
-    height: 100vh !important;
+@media screen and (min-width: 1300px ){
+  .personal-data,
+  .registration-block,
+  .login-block {
+    margin-bottom: 50vh !important;
   }
+
 }
 
 @media screen and (max-width: 600px){

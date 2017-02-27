@@ -1,4 +1,14 @@
+html {
+  height: 100%;
+}
+
+body {
+  position: relative;
+  min-height: 100%;
+}
+
 .page-container {
+  min-height: 100%;
   will-change: margin;
   transition: all cubic-bezier(.62,.28,.23,.99) 0.3s;
 }
@@ -6,4 +16,7 @@
 .wrapper {
   max-width: $screen-extra-lg;
   margin: 0 auto;
+  min-height: 100%;
+  position: relative;
 }
+

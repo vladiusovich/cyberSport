@@ -1,16 +1,15 @@
-extends ../templates/page-templates/_template-main-page-CS
+extends ../templates/page-templates/_template-registration
 
 block title
-    title Login
+    title Регистрация
 
 block chat
-    include ../templates/_chat
-block content
+    include ../templates/_chat.jade
+block header
+    include ../templates/_nav-games
     include ../templates/_header
+block content
     include ../templates/_registration
 block footer
     include ../templates/_footer
-
-//
-   Created by Алина on 21.11.2016.
 

@@ -1,16 +1,12 @@
 .registration-block {
-  width: 80%;
-  margin: auto;
+  width: 50%;
+  margin: 0 auto 2rem;
   padding: 10px 0 15px;
   text-align: center;
   font: $base-font-family;
   color: $primary-color;
   @extend %backgraund-secondary;
-  @include border-style($border-style, $border-radius);
-
-
 }
-
 
 .registration-form {
   display: flex;
@@ -19,79 +15,64 @@
   align-items: center;
 
   fieldset {
-    max-width: 30%;
+    max-width: 50%;
     margin: 0 auto;
     border: none;
+
     input {
       width: 100%;
       margin-bottom: 5px;
+      border-color: transparent transparent $primary-color transparent;
+      background: transparent;
+
+      &:focus {
+        outline: none;
+        border-bottom-color: $primary-color-focus;
+      }
+
+    }
+
+    input[type="checkbox"] {
+      width: 13px;
+    }
+
+    input + label {
+      margin-left: .5em;
     }
 
     legend {
       font-size: $heading-font-size;
+      border: none;
+      margin-bottom: 0;
     }
   }
 }
 
-.registration-form {
 
-  input[type="checkbox"],
-  input[type="radio"] {
-    display:none;
-  }
-  input[type="checkbox"] + label,
-  input[type="radio"] + label {
-    font: $base-font-family;
-    color: $primary-color;
-    cursor: pointer;
-  }
-  input[type="checkbox"] + label::before,
-  input[type="radio"] + label::before {
-    content: "";
-    display: inline-block;
-    height: 18px;
-    width: 18px;
-    margin: 0 5px 0 0;
-    background-image: url(http://uniformjs.com/images/sprite.png);
-    background-repeat: no-repeat;
-  }
-  input[type="checkbox"] + label::before {
-    background-position: -38px -260px;
-  }
-  input[type="radio"] + label::before {
-    background-position: 0px -279px;
-  }
-  input[type="checkbox"]:checked + label::before {
-    background-position: -114px -260px;
-  }
-  input[type="radio"]:checked + label::before {
-    background-position: -108px -279px;
-  }
-  input[type="checkbox"]:disabled + label::before {
-    background-position: -152px -260px;
-  }
-  input[type="checkbox"]:checked:disabled + label::before {
-    background-position: -171px -260px;
-  }
-  input[type="radio"]:disabled + label::before {
-    background-position: -144px -279px;
-  }
-  input[type="radio"]:checked:disabled + label::before {
-    background-position: -162px -279px;
-  }
-}
+
 
 .game-checker {
   margin: 0 auto;
-  padding: 5px;
-  border: $border-style;
-  border-radius: $border-radius;
-
+  padding: 1em;
+  //border: $border-style;
+  border-color: transparent transparent $primary-color transparent;
 
   & li {
     text-align: left;
+
   }
 }
+
+.input-option {
+  background: transparent;
+  cursor: pointer;
+
+  option {
+    color: $text-color-dark;
+    cursor: pointer;
+  }
+}
+
 
 
 

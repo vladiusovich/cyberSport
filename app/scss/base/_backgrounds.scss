@@ -13,32 +13,34 @@ $backgrond-personal-page: $gradient-background, url("../img/background-personal-
 .main-background {
   background-image: $backgrond-main;
   background-size: cover;
+  background-attachment: fixed;
 }
 
 .cs-background {
+  @extend .main-background;
   background-image: $backgrond-CS;
-  background-size: cover;
 }
 
 .wot-background {
+    @extend .main-background;
   background-image: $backgrond-wot;
-  background-size: cover;
 }
 
 .paragon-background {
+  @extend .main-background;
   background-image: $backgrond-paragon;
-  background-size: cover;
 }
 
 .dota-background {
+  @extend .main-background;
   background-image: $backgrond-dota;
   background-size: cover;
 }
 
-
-
 .personal-page-background {
-  background-image: $backgrond-dota;
+    @extend .main-background;
+  background-image: $backgrond-main;
   //background-image: $backgrond-personal-page;
-  background-size: cover;
+
+
 }
