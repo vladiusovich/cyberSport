@@ -17,6 +17,6 @@ $(document).ready(function() {
         });
     });
 
-    $(".videos__list, .streams__list, .matches__table").mCustomScrollbar();
+    $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar();
 
 })
