@@ -6,7 +6,10 @@
   margin: auto;
 }
 
+
+
 .menu-game__item {
+
   &:hover  {
 
   }
@@ -77,10 +80,11 @@
   padding: .8em 1.8em;
   font-size: $heading-font-size;
   color: $link-color;
-  border: $border-style;
+  border: $border-style-main-menu;
   border-radius: $border-radius;
   transition: .1s ease;
   &:hover  {
     background: $link-hover-color;
   }
 }
+

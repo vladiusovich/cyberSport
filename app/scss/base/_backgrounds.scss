@@ -7,6 +7,9 @@ $backgrond-paragon: $gradient-background, url("../img/background-paragon.jpg");
 $backgrond-dota: $gradient-background, url("../img/background-dota.jpg");
 
 
+$backgrond-personal-page: $gradient-background, url("../img/background-personal-page.jpg");
+
+
 .main-background {
   background-image: $backgrond-main;
   background-size: cover;
@@ -29,5 +32,13 @@ $backgrond-dota: $gradient-background, url("../img/background-dota.jpg");
 
 .dota-background {
   background-image: $backgrond-dota;
+  background-size: cover;
+}
+
+
+
+.personal-page-background {
+  background-image: $backgrond-dota;
+  //background-image: $backgrond-personal-page;
   background-size: cover;
 }

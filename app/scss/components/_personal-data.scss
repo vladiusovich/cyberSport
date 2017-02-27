@@ -1,0 +1,66 @@
+
+
+.personal-data {
+  padding: 2em;
+  margin-bottom: 3rem;
+  background: #2b2c32;
+  color: $primary-color;
+;
+}
+
+.personal-page__user-img {
+  text-align: center;
+}
+
+.personal-data__button--service {
+  text-align: center;
+
+   a {
+     color: $primary-color;
+     text-decoration: underline;
+
+     &:hover {
+       color: $link-hover-color;
+     }
+   }
+}
+
+.user_data__login-l {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 2em;
+}
+.user_data__login {
+}
+
+
+table.user_data__common {
+
+  tr {
+    margin-bottom: 1.5em;
+  }
+
+  td {
+    vertical-align: top;
+  }
+
+  td:first-child {
+    width: 30%;
+  }
+
+  td:last-child {
+    align-items: right;
+  }
+}
+
+
+
+.personal-data__button {
+}
+
+.personal-data__button--stretch {
+  display: block;
+  margin: auto;
+  width: 60%;
+
+}

@@ -1,12 +1,14 @@
-extends ../templates/page-templates/_template-main-page-CS
+extends ../templates/page-templates/_template-personal-page
 
 block title
-    title Personal page
+    title Личный кабинет
 
 block chat
     include ../templates/_chat.jade
+block header
+    include ../templates/_nav-games
+    include ../templates/_header
 block content
-    include ../templates/_header.jade
-    include ../templates/_login.jade
+    include ../templates/_personal-page
 block footer
-    include ../templates/_footer.jade
+    include ../templates/_footer

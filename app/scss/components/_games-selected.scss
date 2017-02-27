@@ -1,0 +1,66 @@
+.games-selected {
+  width: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  //display: none;
+}
+
+.games-selected {
+
+  [class*="games-selected__item--hover"] {
+    width: calc( 50% - 1em);
+    margin: .5em .5em;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &:last-child, &:first-child {
+      border: $border-style;
+    }
+  }
+  img {
+    width: 100%;
+  };
+}
+
+
+//.games-selected__item--hover-cs {
+//  position: relative;
+//  &::before {
+//    content: "";
+//    position: absolute;
+//    width: 100%;
+//    height: 100%;
+//    background: rgba(148, 35, 155, 0.3);
+//    mix-blend-mode: multiply;;
+//  }
+//
+//}
+//
+//.games-selected__item--hover-dota {
+//  @extend .menu-game__item--hover-cs;
+//  &::before {
+//    background: rgba(0, 15, 31, 0.3);
+//  }
+//
+//}
+//
+//.games-selected__item--hover-paragon {
+//  @extend .menu-game__item--hover-cs;
+//  &::before {
+//    background: rgba(170, 25, 25, 0.3);
+//  }
+//
+//}
+//
+//
+//.games-selected__item--hover-wot {
+//  @extend .menu-game__item--hover-cs;
+//  &::before {
+//    background: rgba(40, 134, 133, 0.3);
+//  }
+//
+//}

@@ -123,6 +123,12 @@
   }
 }
 
+@media screen and (min-width: $screen-md   ){
+  .personal-data {
+    height: 100vh !important;
+  }
+}
+
 @media screen and (max-width: 600px){
   .news__item {
     width: 100% !important;
@@ -130,3 +136,4 @@
     border-bottom: $border-style-opocity-low;
   }
 }
+

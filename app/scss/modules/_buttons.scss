@@ -1,19 +1,18 @@
 button {
-  //@extend %button;
-  padding: 0.6em 1.7em;
+  @extend %button;
+  padding: 1em 1.7em;
   text-transform: uppercase;
   text-decoration: none;
-  border-radius: 5px;
-  background: rgba(39, 39, 39, 0.88);
-  color: #df8e46;
-  letter-spacing: 3px;
+  //border-radius: 5px;
+  background: $backgrond-color-first;
+  color: $primary-color;
   cursor: pointer;
   transition: all .1s;
 }
 
 button.button--search {
   @extend %button;
-  padding: 8px 8px !important;
+  padding: 1em 1em !important;
   font-size: 18px;
 }
 
