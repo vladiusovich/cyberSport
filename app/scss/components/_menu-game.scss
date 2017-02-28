@@ -7,7 +7,6 @@
 }
 
 
-
 .menu-game__item {
 
   &:hover  {
@@ -17,6 +16,10 @@
     width: 100%;
     height: auto;
   }
+}
+
+.menu-game__item--hover-dota  .menu-game__wrap {
+  width: 20%;
 }
 
 .menu-game__item--hover-cs {
@@ -58,14 +61,16 @@
 
 .menu-game__wrap {
   position: absolute;
+  width: 30%;
+
   top: 40%;
   left: 50%;
-  transform: translate(-25%, -50%);
+  transform: translate(-50%, -50%);
 }
 
 .menu-game__game-logo {
     > img {
-      width: 60%;
+      width: 100%;
     }
 }
 
