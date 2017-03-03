@@ -71,6 +71,19 @@
     float: none !important;
     text-align: center !important;
   }
+
+  .registration-block, .login-block  {
+    width: auto !important;
+    margin: 0 auto 2rem !important;
+  }
+
+  .registration-form fieldset {
+    max-width: 100% !important;
+  }
+
+  .login-input {
+    width: 90% !important;
+  }
 }
 
 @media screen and (min-width: $screen-md){
@@ -95,10 +108,6 @@
     margin-bottom: 0 !important;
   }
 
-}
-
-@media screen and (max-width: $screen-md){
-
   .news__container {
     width: 100% !important;
     margin: 0 !important;
@@ -121,6 +130,11 @@
   .news__arrow-l, .news__arrow-r {
     display: none !important;
   }
+
+  .registration-block, .login-block {
+    width: 90% !important;
+    margin: 0 auto 2rem !important;
+  }
 }
 
 @media screen and (min-width: 1300px ){
@@ -130,6 +144,12 @@
     margin-bottom: 50vh !important;
   }
 
+}
+
+@media screen and (min-width: $screen-md) {
+  .login-block {
+    margin-bottom: 50vh !important;
+  }
 }
 
 @media screen and (max-width: 600px){

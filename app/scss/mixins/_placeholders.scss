@@ -8,22 +8,20 @@
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 5px;
-  background: $button-color;
-
-
-  @include border-style($border-style, 0);
+  background: linear-gradient(rgba(12, 12, 12, 0.81), rgba(30, 30, 30, 0.84));
+  border: none;
+  border-top: $border-style;
   color: $heading-color;
-  //letter-spacing: 3px;
+  color: $text-color-lite;
   cursor: pointer;
   transition: all .1s;
 
   &:hover {
     text-decoration: none;
-    //transform: scale(1.05);
   }
 
   &:focus {
-    outline-color: $primary-color;
+    outline-color: $border-color-button;
   }
 }
 
@@ -31,8 +29,6 @@
 
 %search {
   padding: 10px 20px;
-  //border-radius: $border-radius;
-
   &:focus {
     outline-color: $primary-color;
   }

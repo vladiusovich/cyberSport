@@ -6,36 +6,6 @@
 @import "../base/_backgrounds";
 
 
-
-//body {
-//  color: $text-color;
-//  font-size: $base-font-size;
-//  font-family: $base-font-family;
-//  font-weight: $regular-font-weight;
-//  line-height: $base-line-height;
-//
-//}
-//
-//
-//h1, h2, h3, h4, h5, h6 {
-//  //color: $heading-color;
-//}
-//
-//
-//p::selection {
-//  color: #000000;
-//  background: #d6d6d6;
-//}
-
-
-
-/*
-
---- Vertical Rhythm Tool - http://soqr.fr/vertical-rhythm/ ---
-           Font-size : 14px  Line-height : 1.6
-
-*/
-
 html {
   font-size: 62.5%;
 
@@ -58,7 +28,6 @@ textarea,
 caption {
   font-size: 1em; /* equiv 14px */
   line-height: 1.6;
-  //margin: 0 0 1.6em 0;
 }
 h1 {
   font-size:  1.8571em; /* equiv 26px */
@@ -89,7 +58,6 @@ h4 {
 h5 {
   font-size:  1.2857em; /* equiv 18px */
   line-height:  1.2444;
-  margin: 0 0  1.2444em 0;
   margin: 0;
 }
 h6 {
@@ -98,8 +66,6 @@ h6 {
   margin: 0;
 }
 
-
-/* avoid supp margin on nested elements */
 li p,
 li ul {
   margin-top: 0;

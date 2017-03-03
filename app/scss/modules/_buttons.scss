@@ -3,11 +3,10 @@ button {
   padding: .5em 1.7em;
   text-transform: uppercase;
   text-decoration: none;
-  //border-radius: 5px;
   background: $backgrond-color-first;
   color: $primary-color;
   cursor: pointer;
-  transition: all .1s;
+  transition: all .2s;
 }
 
 button.button--search {

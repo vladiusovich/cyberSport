@@ -37,17 +37,17 @@
             .col-lg-4.col-md-4
                 .games-selected
                     .games-selected__item--hover-cs
-                        img(src="../img/cs-go_item.png" alt="")
+                        img(src="../img/cs-go_item.jpg" alt="")
                     .games-selected__item--hover-wot
-                        img(src="../img/wot_item.png" alt="wot")
+                        img(src="../img/wot_item.jpg" alt="wot")
                     .games-selected__item.games-selected__item--hover-paragon
-                        img(src="../img/paragon_item.png" alt="paragon")
+                        img(src="../img/paragon_item.jpg" alt="paragon")
                         .games-selected__wrap
                     .games-selected__item.games-selected__item--hover-dota
-                        img(src="../img/dota_item.png" alt="dota")
+                        img(src="../img/dota_item.jpg" alt="dota")
         .row
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
-                button().personal-data__button.personal-data__button--stretch(onclick="$('#myModal').modal('toggle');") Команды
+                button().personal-data__button.personal-data__button--stretch(onclick="$('#commandsModal').modal('toggle');") Команды
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
                 button.personal-data__button.personal-data__button--stretch(onclick="") Уведомления
 
@@ -63,7 +63,7 @@ mixin search__item()
             img(src="../img/user-img.jpg")
         span.name Puuuu
 
-.l-commands.modal.fade#myModal()
+.l-commands.modal.fade#commandsModal
     .commands
         .commands__team
             span Члены команды
@@ -86,8 +86,11 @@ mixin search__item()
                 +team__item()
         .commands__search
             .search-wrap
-                input(type="search", placeholder="Поиск")
-                button().search_button
+                .input-wrap
+                    input(type="search", placeholder="Поиск")
+                    button().search_button
+            button(onclick="$('#commandsModal').modal('toggle');").close X
+
             ul.search__list
                 +search__item()
                 +search__item()

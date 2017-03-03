@@ -13,24 +13,19 @@
   will-change: transform;
 }
 
-.chat__tabs {
-  text-align: center;
+.chat__wrap {
+  padding-left: 7px;
+  font-size: 1.8rem;
 
-  > li {
+  .chat__team {
     display: inline-block;
     width: 49%;
     line-height: 30px;
     color: $heading-color;
-    @include border-style($border-style, $border-radius);
     box-sizing: border-box;
-    cursor: pointer;
   }
 }
 
-.chat__tabs > li.active {
-  border-color: $link-hover-color;
-  color: $link-hover-color;
-}
 
 
 .l-chat__toggle {

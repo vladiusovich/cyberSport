@@ -108,3 +108,18 @@ textarea {
     outline: none;
   }
 }
+
+.chat_ban-actions {
+  &::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url("../img/ban-ico.png");
+    background-size: cover;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
+
+}

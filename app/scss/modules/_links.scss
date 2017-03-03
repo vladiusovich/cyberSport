@@ -8,6 +8,8 @@ a {
   &:focus {
        outline-color: $primary-color;
      }
+
+  transition: .2s ease;
 }
 
 

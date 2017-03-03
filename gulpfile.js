@@ -12,6 +12,8 @@ const assets = require("gulp-assets");
 const autoprefixer = require('gulp-autoprefixer');// Подключаем библиотеку для автоматического добавления префиксов
 const gulps = require("gulp-series");
 var notify = require("gulp-notify");
+const imagemin = require('gulp-imagemin');
+var gzip = require('gulp-gzip');
 
 
 
@@ -29,6 +31,7 @@ gulp.task("sass", function () {
         .pipe(gulpIf(isDevelopment, sourcemaps.write()))
         .pipe(concat('all.css'))
         .pipe(gulp.dest('dist/css')) // Выгружаем результата в папку app/css
+        // .pipe(gzip()
         .pipe(browserSync.reload({stream: true})); // Обновляем CSS на странице при изменении
 });
 
@@ -47,6 +50,7 @@ gulp.task('jade', function() {
 gulp.task('scripts', function() {
     return gulp.src('app/js/*.js')
         .pipe(concat('all.js'))
+        // .pipe(gzip())
         .pipe(gulp.dest('dist/js'));
 });
 
@@ -73,6 +77,12 @@ gulp.task('watch', ['browser-sync', 'sass', 'jade', 'scripts'], function() {
 
 });
 
+gulp.task('compress', function () {
+    gulp.src('app/img/*')
+        .pipe(imagemin())
+        .pipe(gulp.dest('dist/img'))
+});
+
 
 
 // gulp.task('default', ['watch']);
@@ -83,6 +93,6 @@ gulp.task('clean', function () {
 
 
 
-gulp.task('build', ['clean', 'assets', 'watch']);
+gulp.task('build', ['clean', 'compress', 'watch']);
 
 // gulp.task('build', gulp.series('clean', gulp.parallel('assets', 'watch')));
