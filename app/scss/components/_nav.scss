@@ -9,6 +9,12 @@
   @include clearfix;
 }
 
+.main-logo {
+  img {
+    width: 50%;
+  }
+}
+
 .top-nav__global {
   position: relative;
   float: left;
