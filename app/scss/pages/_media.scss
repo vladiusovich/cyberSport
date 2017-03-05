@@ -100,6 +100,12 @@
 
 @media screen and (max-width: $screen-md){
 
+  .header {
+    .row > [class*="col-"] {
+      margin-bottom: 0 !important;
+    }
+  }
+
   .row > [class*="col-"] {
     margin-bottom: 2em !important;
   }
@@ -158,5 +164,19 @@
     margin-bottom: 30px !important;
     border-bottom: $border-style-opocity-low;
   }
+}
+
+
+@media screen and (max-width: $screen-sm){
+
+  .navbar-brand {
+    float: none !important;
+  }
+  .account-option {
+    text-align: center !important;
+    float: none !important;
+    line-height: inherit !important;
+  }
+
 }
 

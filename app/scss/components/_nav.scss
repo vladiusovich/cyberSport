@@ -1,29 +1,45 @@
 .header {
   position: relative;
+  //height: 55px;
   margin: 0 auto 50px;
+  @extend %backgraund-secondary;
+
+  .row {
+    margin: 0 !important;
+    [class*="col"] {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+  }
+
+  button.navbar-toggle {
+    background: wheat;
+  }
 
 }
 
 .top-nav {
   color: $primary-color;
-  @include clearfix;
 }
 
-.main-logo {
-  img {
-    width: 50%;
+.navbar-brand {
+  display: block;
+  padding: .7em .7em;
+  a {
+    display: block;
+    text-align: center;
+  }
+  img{
+    width: 100px;
   }
 }
 
-.top-nav__global {
-  position: relative;
-  float: left;
-  line-height: 30px;
-  padding-left: 10px;
-  padding-right: 35px;
-  color: inherit;
-  @extend %backgraund-secondary;
+.navbar-toggler-right {
+  position: absolute;
+  right: 1rem;
+}
 
+.top-nav__global {
   a {
     color: inherit;
     &:hover {
@@ -50,22 +66,13 @@
 }
 
 .account-option {
-  position: relative;
-  min-width: 150px;
+  line-height: 50px;
   float: right;
-  line-height: 30px;
-  padding: 0 20px;
-  color: $primary-color;
-  text-align: center;
-  @extend %backgraund-secondary;
-
 }
 
 
 .account-option__account-name {
-  display: inline-block;
   cursor: pointer;
-
   a {
     color: inherit;
     &:hover {
@@ -75,13 +82,11 @@
 }
 
 .account-option__account-name:hover .account-menu {
-  display: block;
 }
 
 .account-option__account-exit {
   @extend .account-option__account-name;
 }
-
 
 .login {
   @extend .account-option__account-name;
@@ -90,7 +95,6 @@
 .registration {
   @extend .account-option__account-name;
 }
-
 
 .account-menu {
   display: none;
@@ -114,10 +118,6 @@
   padding: 0 !important;
 
 }
-
-
-
-
 
 .l-navigation {
   width: 100%;
@@ -157,26 +157,10 @@
 }
 
 
-.nav__game-menu {
-  //position: absolute;
-  //display: none;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0);
-  z-index: 999;
-
-}
-
 .game-menu__link {
   display: block;
   text-align: center;
   padding: 16px;
-}
-
-
-.logo {
-
 }
 
 .game-menu__item {
@@ -185,22 +169,49 @@
   margin-bottom: 2px;
   transition: all cubic-bezier(.62,.28,.23,.99) 0.2s;
 
-
   &:hover {
     cursor: pointer;
     color: #fff;
     background-color: rgb(27, 26, 25);
   }
-  
 }
 
 .logo__link {
   display: block;
   width: 100%;
-  //min-width:  850px;
   margin: -80px auto 0 auto;
   height: 330px;
   background-image: url(../img/logo2.png);
   background-size: cover;
   background-position: center;
+}
+
+.nav-games {
+  //width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  @extend %backgraund-secondary;
+}
+
+.nav-games__item {
+  align-items: center;
+  //width: 24%;
+  &:hover {
+    box-shadow: inset 0 -3px $border-color-button;
+  }
+  transition: all .2s;
+}
+
+.nav-games__link {
+  display: block;
+  width: 100%;
+  padding: 2em 3em;
+  text-align: center;
+  &:hover {
+    color: $text-color-lite;
+  }
 }
