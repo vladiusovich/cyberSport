@@ -1,5 +1,5 @@
 
-var banActions = (function () {
+var BanAction = (function () {
     var userName;
     var menu = $(".ban-actions-menu");
 
@@ -72,30 +72,52 @@ var banActions = (function () {
             return menu;
         })()
     }
-
-
 })();
-
-
-
 
 
 $(document).ready(function(){
 
 
-    $(".flexnav").flexNav({'hoverIntent': false});
-
-    // $( ".chat_ban-actions" ).click(banActions.displayMenu);
-    // $( ".ban-actions__act" ).click(banActions.sendData);
-
+//Отправка сообщения на сервер. Чат
     $( ".chat__button" ).click(function () {
+        var dataMessage = $("#chat__input-text").val();
 
+        if (dataMessage == undefined || dataMessage == "") {
+            return;
+        }
+        console.log(dataMessage);
+        $.ajax({
+            type: "POST",
+            url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
+            contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+            data: {dataMessage: dataMessage},
+            dataType: "json",
+            success: function (result) {
+                console.log('It worked!');
+                appendMessage(dataMessage);
+                //  returning something
+                console.log('result... ' + result);
+
+            },
+            error: function (result) {
+                console.log('Error :(');
+            }
+        });
+    });
+
+
+
+
+
+
+
+//Добавление сообщения в чат. Добавление обработчиков на кнопки бана
+    var appendMessage = function (dataMessage) {
         // var messege = $('<li class="chat__messenge"><a class="chat_ban-actions"><i aria-hidden="true" class="fa fa-ban"></i></a><div class="chat__user">' +
         // '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
         // '<em class="chat__user-name">' + name +'</em>' +
         // '<em class="chat__time">' + time + '</em></div>' +
         // '<p class="chat__messenge-content">' + text + ' [' + room + '/' + counterIds + ']' + '</p></li>');
-
 
         var messege = $('<li class="chat__messenge"><a class="chat_ban-actions"></a><div class="chat__user">' +
             '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
@@ -103,46 +125,44 @@ $(document).ready(function(){
             '<em class="chat__time">' + 12 + '</em></div>' +
             '<p class="chat__messenge-content">' + 234 + ' [' + 324234 + '/' + 234235 + ']' + '</p></li>');
 
-
-
         var chatBanButton = messege.find(".chat_ban-actions");
         var chatSendDataButton = $('html').find(".ban-actions__act");
-        chatBanButton.off("click", banActions.displayMenu).on("click", banActions.displayMenu);
-        chatSendDataButton.off("click", banActions.sendData).on("click", banActions.sendData);
+        chatBanButton.off("click", BanAction.displayMenu).on("click", BanAction.displayMenu);
+        chatSendDataButton.off("click", BanAction.sendData).on("click", BanAction.sendData);
 
         $("#team-chat").append(messege);
         // $(chatWindow).append(messege);
-    });
 
-    $( ".ban-actions-menu__close" ).click(banActions.closeMenu);
+    }
+
+
+
+
+
+
+    $( ".ban-actions-menu__close" ).click(BanAction.closeMenu);
 
     $(document).scroll(function () {
-        banActions.getMenu.css("display", "none");
+        BanAction.getMenu.css("display", "none");
     });
 
     $(".chat__dialog").scroll(function () {
-        banActions.getMenu.css("display", "none");
+        BanAction.getMenu.css("display", "none");
     });
 
-
-
 // Удалить рекламу н веременном сервере
-    // $('body > div').filter(function(){
-    //         return $(this).css("height") === "65px";
-    //     }).remove();
-    // $('body > center').remove();
-    // $('body > div[style~="opacity:"]').remove();
-
+    /*
+    $('body > div').filter(function(){
+            return $(this).css("height") === "65px";
+        }).remove();
+    $('body > center').remove();
+    $('body > div[style~="opacity:"]').remove();
+*/
 });
 
-
-//
-//
-
-
 window.onclick = function(event) {
-    if (!$(event.target).closest(banActions.getMenu).length) {
-        banActions.getMenu.css("display", "none");
+    if (!$(event.target).closest(BanAction.getMenu).length) {
+        BanAction.getMenu.css("display", "none");
     }
 }
 
