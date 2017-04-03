@@ -36,25 +36,36 @@ $(document).ready(function() {
 
     newsNav.on("click", function (e) {
         var headerHeight = $(".news__header").css("height");
-        console.log(headerHeight);
-        var arrowDeriction = e.target.parentNode;
         var newsContainer = $(".news__container");
+        var arrowDeriction = e.target.parentNode;
         var newsPosts = $(".news__container").children();
+        var arrowClassName = arrowDeriction.className;
 
-        if (arrowDeriction.className == "news__arrow-l") {
+        if (arrowClassName == "news__arrow-l") {
             newsDeriction = 'priv';
-            sendAjaxNews();
-        } else if (arrowDeriction.className == "news__arrow-r") {
+            sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
+        } else if (arrowClassName == "news__arrow-r") {
             newsDeriction = 'next';
-            sendAjaxNews();
+            sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
         } else return;
 
+        function replaceNewsPosts() {
+            newsContainer.css("opacity", 0);
+            setTimeout(function () {
+                var parseNews = $.parseHTML(resultTemp);
+                newsPosts.remove();
+                // console.log(parseNews.find('span'));
+                newsContainer.append(parseNews);
+                $(".news__header").height(headerHeight);
+                newsContainer.css("opacity", 1);
+            },300);
+        }
 
-
-        function sendAjaxNews() {
+        function sendAjaxNews(methodName, newsDeriction, callback) {
             $.ajax({
                 type: "POST",
-                url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
+                url: methodName, // Вызываемый метод на сервере
+                // url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
                 contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
                 data: {newsDeriction: newsDeriction},
                 dataType: "json",
@@ -65,18 +76,7 @@ $(document).ready(function() {
 
                 },
                 error: function (result) {
-                    newsContainer.css("opacity", 0);
-                    setTimeout(function () {
-                        var parseNews = $.parseHTML(resultTemp);
-                        newsPosts.remove();
-                        // console.log(parseNews.find('span'));
-                        newsContainer.append(parseNews);
-                        $(".news__header").height(headerHeight);
-                        newsContainer.css("opacity", 1);
-
-                    },300);
-
-
+                    callback();
                 }
             });
         }
