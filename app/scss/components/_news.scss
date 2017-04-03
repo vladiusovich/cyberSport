@@ -17,6 +17,9 @@
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: stretch;
+
+  opacity: 1;
+  transition: .3s ease;
 }
 
 .news__arrow-l, .news__arrow-r {
@@ -53,6 +56,7 @@
 .news__item {
   position: relative;
   width: 30%;
+
 }
 
 

@@ -1,5 +1,5 @@
 //Playlist for streams
-(function () {
+/*(function () {
     var videoName = $('#streams .videos__name');
     videoName.click(function () {
         var ref = $(this).attr('data-ref');
@@ -8,4 +8,4 @@
         iframe.attr("src", ref);
         videoViewerIrame.replaceWith(iframe);
     });
-}());
+}());*/
