@@ -68,14 +68,15 @@
 }
 
 .account-option {
-  line-height: 50px;
   float: right;
 }
 
 
 .account-option__account-name {
   cursor: pointer;
-  a {
+  > a {
+    display: inline-block;
+    padding: 1em 0;
     color: inherit;
     &:hover {
       color: $link-color;
@@ -92,11 +93,37 @@
 
 .login {
   @extend .account-option__account-name;
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+
+  &:hover .account-option__actions-list  {
+    display: block;
+  }
 }
+
+.account-option__actions-list {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background: $backgrond-color-divide;
+}
+
+.account-option__item {
+
+}
+
+.account-option__link {
+  display: block;
+  padding: 1em 1em 1em .5em;
+
+}
+
 
 .registration {
   @extend .account-option__account-name;
 }
+
 
 .account-menu {
   display: none;
