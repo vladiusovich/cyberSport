@@ -1,5 +1,6 @@
 .news {
   height: 100%;
+  overflow: hidden;
   @extend %backgraund-secondary;
 }
 

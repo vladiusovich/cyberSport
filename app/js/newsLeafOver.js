@@ -33,8 +33,11 @@ var resultTemp = `<div class="news__item">
 $(document).ready(function() {
     var newsNav = $(".news");
     var newsDeriction = 'next';
+    var isLoaded = true;
+
 
     newsNav.on("click", function (e) {
+        if (!isLoaded) return;
         var headerHeight = $(".news__header").css("height");
         var newsContainer = $(".news__container");
         var arrowDeriction = e.target.parentNode;
@@ -51,14 +54,17 @@ $(document).ready(function() {
 
         function replaceNewsPosts() {
             newsContainer.css("opacity", 0);
+
             setTimeout(function () {
                 var parseNews = $.parseHTML(resultTemp);
                 newsPosts.remove();
-                // console.log(parseNews.find('span'));
                 newsContainer.append(parseNews);
                 $(".news__header").height(headerHeight);
                 newsContainer.css("opacity", 1);
+                isLoaded = true;
             },300);
+            isLoaded = false;
+
         }
 
         function sendAjaxNews(methodName, newsDeriction, callback) {
