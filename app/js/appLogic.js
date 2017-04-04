@@ -163,10 +163,7 @@ $(document).ready(function() {
                 var position = $(e.target).offset();
                 var x = position.left;
                 var y = position.top;
-
                 var menu = $(".ban-actions-menu");
-                var menuWidth = menu.css("width");
-
                 var styles = {
                     display: "block",
                     opacity: 1,
