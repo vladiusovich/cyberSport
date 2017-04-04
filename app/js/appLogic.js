@@ -31,59 +31,63 @@ var resultTempForNewsBlock = `<div class="news__item">
 
 
 $(document).ready(function() {
-    var newsDeriction = 'next';
-    var isLoaded = true;
-    // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
-    $(".news").on("click", function (e) {
-        if (!isLoaded) return;
-        var headerHeight = $(".news__header").css("height");
-        var newsContainer = $(".news__container");
-        var newsPosts = $(".news__container").children();
-        var arrowDeriction = e.target.parentNode;
-        var arrowClassName = arrowDeriction.className;
+    //Обновление новосте при нажатии на стрелки
+    (function () {
+        var newsDeriction = 'next';
+        var isLoaded = true;
+        // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
+        $(".news").on("click", function (e) {
+            if (!isLoaded) return;
+            var headerHeight = $(".news__header").css("height");
+            var newsContainer = $(".news__container");
+            var newsPosts = $(".news__container").children();
+            var arrowDeriction = e.target.parentNode;
+            var arrowClassName = arrowDeriction.className;
 
-        if (arrowClassName == "news__arrow-l") {
-            newsDeriction = 'priv';
-            sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
-        } else if (arrowClassName == "news__arrow-r") {
-            newsDeriction = 'next';
-            sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
-        } else return;
+            if (arrowClassName == "news__arrow-l") {
+                newsDeriction = 'priv';
+                sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
+            } else if (arrowClassName == "news__arrow-r") {
+                newsDeriction = 'next';
+                sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
+            } else return;
 
-        function replaceNewsPosts() {
-            newsContainer.css("opacity", 0);
-            setTimeout(function () {
-                var parseNews = $.parseHTML(resultTempForNewsBlock);
-                newsPosts.remove();
-                newsContainer.append(parseNews);
-                $(".news__header").height(headerHeight);
-                newsContainer.css("opacity", 1);
-                isLoaded = true;
-            },300);
-            isLoaded = false;
-        }
+            function replaceNewsPosts() {
+                newsContainer.css("opacity", 0);
+                setTimeout(function () {
+                    var parseNews = $.parseHTML(resultTempForNewsBlock);
+                    newsPosts.remove();
+                    newsContainer.append(parseNews);
+                    $(".news__header").height(headerHeight);
+                    newsContainer.css("opacity", 1);
+                    isLoaded = true;
+                },300);
+                isLoaded = false;
+            }
 
-        function sendAjaxNews(methodName, newsDeriction, callback) {
-            $.ajax({
-                type: "POST",
-                url: methodName, // Вызываемый метод на сервере
-                // url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
-                contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
-                data: {newsDeriction: newsDeriction},
-                dataType: "json",
-                success: function (result) {
-                    console.log(newsDeriction);
-                    //  returning something
-                    console.log('result... ' + result);
+            function sendAjaxNews(methodName, newsDeriction, callback) {
+                $.ajax({
+                    type: "POST",
+                    url: methodName, // Вызываемый метод на сервере
+                    // url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
+                    contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+                    data: {newsDeriction: newsDeriction},
+                    dataType: "json",
+                    success: function (result) {
+                        console.log(newsDeriction);
+                        //  returning something
+                        console.log('result... ' + result);
 
-                },
-                error: function (result) {
-                    callback();
-                }
-            });
-        }
+                    },
+                    error: function (result) {
+                        callback();
+                    }
+                });
+            }
 
-    });
+        });
+
+    })();
 
     //Кнопка бана
     var BanAction = (function () {
@@ -102,7 +106,6 @@ $(document).ready(function() {
         function closeMenu() {
             menu.css("display", "none");
         }
-
 
         function displayBanActions(x, y) {
             var menu = $(".ban-actions-menu");
@@ -123,6 +126,7 @@ $(document).ready(function() {
 
             }
         }
+
 
         function sendData() {
             var banOption = $("input[type='radio']:checked").val();
@@ -149,6 +153,43 @@ $(document).ready(function() {
             });
         }
 
+        //Клик на кнопку бана(всплывающее окно)
+        $(".chat-container").on("click", function (e) {
+            var chatBanButton = $(this).find(".chat_ban-actions");
+            var tName = e.target.className;
+            if (tName === "chat_ban-actions") {
+                userName =  $(e.target).parent().find(".chat__user-name").text();
+                console.log(userName);
+                var position = $(e.target).offset();
+                var x = position.left;
+                var y = position.top;
+
+                var menu = $(".ban-actions-menu");
+                var menuWidth = menu.css("width");
+
+                var styles = {
+                    display: "block",
+                    opacity: 1,
+                    top: y + 25,
+                    left: x + 20
+                };
+
+                if (menu.css("display") == "none") {
+                    menu.css(styles);
+
+                } else {
+                    menu.css( {display: "none"} );
+
+                }
+            }
+            var chatSendDataButton = $('html').find(".ban-actions__act");
+            chatSendDataButton.off("click", BanAction.sendData).on("click", BanAction.sendData);
+
+
+        });
+
+
+
         return {
             displayMenu: getBanMenu,
             sendData: sendData,
@@ -159,7 +200,23 @@ $(document).ready(function() {
         }
     })();
 
-    //Отправка сообщения на сервер. Чат
+    $( ".ban-actions-menu__close" ).click(BanAction.closeMenu);
+
+    $(document).scroll(function () {
+        BanAction.getMenu.css("display", "none");
+    });
+
+    $(".chat__dialog").scroll(function () {
+        BanAction.getMenu.css("display", "none");
+    });
+    //Вообще перестает отображать банменю
+    // window.onclick = function(event) {
+    // if (!$(event.target).closest($(".ban-actions-menu")).length) {
+    //     $(".ban-actions-menu").css( {display: "none"} );
+    // }
+    // };
+
+    //Отправка сообщения на сервер. ЧAT
     (function () {
         var chatDialog = $(".chat__dialog");
         function isBottom() {
@@ -171,12 +228,17 @@ $(document).ready(function() {
             return true;
         }
 
+        //Кнопка для скролла вниз.Спустить скролл вниз
         function scrollDown(el) {
             el.animate({ scrollTop: el.prop("scrollHeight")}, 400);
         }
 
+        $(document).ready(function() {
+            scrollDown(chatDialog);
+        });
 
-        $(".chat__dialog").scroll(function () {
+        //Кнопка для скролла вниз. Если скролл не внизу то показать кнопку. Иначе скрыть
+        chatDialog.scroll(function () {
             var buttonToBottom = $(".chat-container__toBottom");
             var isB = isBottom();
             if (!isB) {
@@ -186,8 +248,9 @@ $(document).ready(function() {
             }
         });
 
+        //Кнопка для скролла вниз. Обработчик нажатия
         $("#toBottom").on("click", function (e) {
-            chatDialog.animate({ scrollTop: chatDialog.prop("scrollHeight")}, 400);
+            scrollDown(chatDialog);
         })
 
         $( ".chat__button" ).click(function () {
@@ -221,31 +284,6 @@ $(document).ready(function() {
             });
         });
     })();
-
-    //Клик на кнопку бана(всплывающее окно)
-    $(".chat-container").on("click", function (e) {
-        var chatBanButton = $(this).find(".chat_ban-actions");
-        var chatSendDataButton = $('html').find(".ban-actions__act");
-        chatBanButton.off("click", BanAction.displayMenu).on("click", BanAction.displayMenu);
-        chatSendDataButton.off("click", BanAction.sendData).on("click", BanAction.sendData);
-    });
-
-    $( ".ban-actions-menu__close" ).click(BanAction.closeMenu);
-
-    $(document).scroll(function () {
-        BanAction.getMenu.css("display", "none");
-    });
-
-    $(".chat__dialog").scroll(function () {
-        BanAction.getMenu.css("display", "none");
-    });
-
-    window.onclick = function(event) {
-        if (!$(event.target).closest(BanAction.getMenu).length) {
-            BanAction.getMenu.css("display", "none");
-        }
-    }
-
 
 
 
@@ -328,7 +366,7 @@ $(document).ready(function() {
             isToggle = false;
         }
     }
-    window.toggle = toggle;
+        window.toggle = toggle;
 })();
 
 //Playlist for streams
