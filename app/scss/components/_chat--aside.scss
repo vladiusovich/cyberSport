@@ -95,6 +95,41 @@
   text-transform: none;
 }
 
+.l-chat-container__toBottom {
+  position: absolute;
+  bottom: 60px;
+  left: 45%;
+  visibility: hidden;
+  //transform: translateX(-50%);
+  transition: .1s ease;
+}
+
+.chat-container__toBottom {
+}
+
+.chat-container__toBottom.isScrolled {
+  visibility: visible;
+  transform: translateY(-180%);
+}
+
+.toBottom {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  padding: 0;
+  background: $table-background-color;
+  opacity: 0.8;
+
+  //background: url("/dist/img/down-arrow.svg") no-repeat;
+  background-position: 0 0;
+  background-size: contain;
+  img {
+    display: block;
+    width: 100%;
+    padding: .5em;
+    height:auto;
+  }
+}
 
 
 .ban-actions-menu {

@@ -160,48 +160,69 @@ $(document).ready(function() {
     })();
 
     //Отправка сообщения на сервер. Чат !!!!!!!!!!!!!!!!!!! Доделай кнопку
-    $( ".chat__button" ).click(function () {
-        var dataMessage = $("#chat__input-text").val();
+    (function () {
+        var chatDialog = $(".chat__dialog");
+        function isBottom() {
+            var isBottom = true;
+            var scrollBottom = $(".chat__dialog").scrollTop() + $(".chat__dialog").height();
+            console.log("scrollBottom: " + scrollBottom );
+            console.log($(".chat__dialog").prop("scrollHeight"));
 
-        if (dataMessage == undefined || dataMessage == "") {
-            return;
+            if (scrollBottom !== $(".chat__dialog").prop("scrollHeight")) {
+                return false;
+            }
+            return true;
         }
-        console.log(dataMessage);
-        $.ajax({
-            type: "POST",
-            url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
-            contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
-            data: {dataMessage: dataMessage},
-            dataType: "json",
-            success: function (result) {
-                console.log('It worked!');
-                appendMessage(dataMessage);
-                $(".chat__dialog").animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 200);
-                //  returning something
-                console.log('result... ' + result);
 
-            },
-            error: function (result) {
-                //Тест. Потом убрать
-                //Ессли проскролили сообщения то при добалении новой не скролить вниз. Отобразить кнопку для скролинга вниз
-                (function () {
-                    var scrollBottom = $(".chat__dialog").scrollTop() + $(".chat__dialog").height();
-                    console.log("scrollBottom: " + scrollBottom );
-                    console.log($(".chat__dialog").prop("scrollHeight"));
 
-                    if (scrollBottom !== $(".chat__dialog").prop("scrollHeight")) {
-                        return;
-                    }
-                    $(".chat__dialog").animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 400);
-
-                })();
-
-                //Тест. Потом убрать
-                appendMessage(dataMessage);
-                console.log('Error :(');
+        $(".chat__dialog").scroll(function () {
+            var buttonToBottom = $(".chat-container__toBottom");
+            var isB = isBottom();
+            if (!isB) {
+                buttonToBottom.addClass("isScrolled");
+            } else {
+                buttonToBottom.removeClass("isScrolled");
             }
         });
-    });
+
+        $("#toBottom").on("click", function (e) {
+            chatDialog.animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 400);
+        })
+
+        $( ".chat__button" ).click(function () {
+            var dataMessage = $("#chat__input-text").val();
+
+            if (dataMessage == undefined || dataMessage == "") {
+                return;
+            }
+            console.log(dataMessage);
+            $.ajax({
+                type: "POST",
+                url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
+                contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+                data: {dataMessage: dataMessage},
+                dataType: "json",
+                success: function (result) {
+                    console.log('It worked!');
+                    appendMessage(dataMessage);
+                    chatDialog.animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 400);
+                    //  returning something
+                    console.log('result... ' + result);
+
+                },
+                error: function (result) {
+                    //Тест. Потом убрать
+                    //Ессли проскролили сообщения то при добалении новой не скролить вниз. Отобразить кнопку для скролинга вниз
+                        if (!isBottom()) return;
+                    chatDialog.animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 400);
+                    //Тест. Потом убрать
+                    appendMessage(dataMessage);
+                    console.log('Error :(');
+                }
+            });
+        });
+    })();
+
     //Клик на кнопку бана(всплывающее окно)
     $(".chat-container").on("click", function (e) {
         var chatBanButton = $(this).find(".chat_ban-actions");
@@ -310,5 +331,18 @@ $(document).ready(function() {
     }
     window.toggle = toggle;
 })();
+
+//Playlist for streams
+(function () {
+    var streams = $('.streams');
+    streams.find('.videos__name').click(function () {
+        var ref = $(this).attr('data-ref');
+
+        var videoViewerIrame = $('#stream-viewer iframe');
+        var iframe = $('<iframe frameborder="0" allowfullscreen></iframe>');
+        iframe.attr("src", ref);
+        videoViewerIrame.replaceWith(iframe);
+    });
+}());
 
 
