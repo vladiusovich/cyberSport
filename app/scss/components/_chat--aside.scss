@@ -101,7 +101,7 @@
   left: 45%;
   visibility: hidden;
   //transform: translateX(-50%);
-  transition: .1s ease;
+  transition: .1s ease .1s;
 }
 
 .chat-container__toBottom {
@@ -127,7 +127,7 @@
     display: block;
     width: 100%;
     padding: .5em;
-    height:auto;
+    height: auto;
   }
 }
 

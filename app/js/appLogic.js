@@ -159,19 +159,20 @@ $(document).ready(function() {
         }
     })();
 
-    //Отправка сообщения на сервер. Чат !!!!!!!!!!!!!!!!!!! Доделай кнопку
+    //Отправка сообщения на сервер. Чат
     (function () {
         var chatDialog = $(".chat__dialog");
         function isBottom() {
             var isBottom = true;
-            var scrollBottom = $(".chat__dialog").scrollTop() + $(".chat__dialog").height();
-            console.log("scrollBottom: " + scrollBottom );
-            console.log($(".chat__dialog").prop("scrollHeight"));
-
-            if (scrollBottom !== $(".chat__dialog").prop("scrollHeight")) {
+            var scrollBottom = chatDialog.scrollTop() + chatDialog.height();
+            if (scrollBottom !== chatDialog.prop("scrollHeight")) {
                 return false;
             }
             return true;
+        }
+
+        function scrollDown(el) {
+            el.animate({ scrollTop: el.prop("scrollHeight")}, 400);
         }
 
 
@@ -186,7 +187,7 @@ $(document).ready(function() {
         });
 
         $("#toBottom").on("click", function (e) {
-            chatDialog.animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 400);
+            chatDialog.animate({ scrollTop: chatDialog.prop("scrollHeight")}, 400);
         })
 
         $( ".chat__button" ).click(function () {
@@ -203,18 +204,16 @@ $(document).ready(function() {
                 data: {dataMessage: dataMessage},
                 dataType: "json",
                 success: function (result) {
-                    console.log('It worked!');
                     appendMessage(dataMessage);
-                    chatDialog.animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 400);
-                    //  returning something
-                    console.log('result... ' + result);
+                    if (!isBottom()) return;
+                    scrollDown(chatDialog);
 
                 },
                 error: function (result) {
                     //Тест. Потом убрать
                     //Ессли проскролили сообщения то при добалении новой не скролить вниз. Отобразить кнопку для скролинга вниз
-                        if (!isBottom()) return;
-                    chatDialog.animate({ scrollTop: $(".chat__dialog").prop("scrollHeight")}, 400);
+                    if (!isBottom()) return;
+                    scrollDown(chatDialog);
                     //Тест. Потом убрать
                     appendMessage(dataMessage);
                     console.log('Error :(');
@@ -260,9 +259,9 @@ $(document).ready(function() {
 
         var messege = $('<li class="chat__messenge"><a class="chat_ban-actions"></a><div class="chat__user">' +
             '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
-            '<em class="chat__user-name">' + 34 +'</em>' +
-            '<em class="chat__time">' + 12 + '</em></div>' +
-            '<p class="chat__messenge-content">' + 234 + ' [' + 324234 + '/' + 234235 + ']' + '</p></li>');
+            '<em class="chat__user-name">' + "Poollooer" +'</em>' +
+            '<em class="chat__time">' + "12:25" + '</em></div>' +
+            '<p class="chat__messenge-content">' + "кэшированию информации, чтобы на их платформах контент предоставлялся пользователю с оптимальной скоростью. Поэтому использование АМ"  + '</p></li>');
 
         var chatBanButton = messege.find(".chat_ban-actions");
         var chatSendDataButton = $('html').find(".ban-actions__act");
