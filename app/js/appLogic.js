@@ -210,26 +210,15 @@ $(document).ready(function() {
 
     //Вообще перестает отображать банменю
     window.onclick = function(event) {
-    if (!$(event.target).closest($(".ban-actions-menu")).length) {
-        $(".ban-actions-menu").css( {display: "none"} );
-    }
+        if (!$(event.target).closest($(".ban-actions-menu")).length) {
+            $(".ban-actions-menu").css( {display: "none"} );
+        }
     };
-
-    // $('body').click(function(event) {
-    //     console.log(event.target);
-    //     var banActionsMenu = $(".ban-actions-menu");
-    //     console.log($(event.target).closest($(".ban-actions-menu")).length);
-    //     if (!$(event.target).closest(banActionsMenu).length && banActionsMenu.css("display") == "block") {
-    //         console.log(banActionsMenu.css("display"));
-    //         banActionsMenu.css( {display: "none"} );
-    //     }
-    //
-    // });
-
 
     //Отправка сообщения на сервер. ЧAT
     (function () {
         var chatDialog = $(".chat__dialog");
+
         function isBottom() {
             var isBottom = true;
             var scrollBottom = chatDialog.scrollTop() + chatDialog.height();
@@ -239,7 +228,7 @@ $(document).ready(function() {
             return true;
         }
 
-        //Кнопка для скролла вниз.Спустить скролл вниз
+        //Спустить скролл вниз
         function scrollDown(el) {
             el.animate({ scrollTop: el.prop("scrollHeight")}, 400);
         }
@@ -330,9 +319,7 @@ $(document).ready(function() {
             target: null,
             remove: false
         });
-    });
 
-    $(function () {
         $('[class*="col-"]').matchHeight({
             byRow: true,
             property: 'height',
@@ -340,6 +327,8 @@ $(document).ready(function() {
             remove: false
         });
     });
+
+
 
     $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar();
 
