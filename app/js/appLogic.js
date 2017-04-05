@@ -19,7 +19,7 @@ var resultTempForNewsBlock = `<div class="news__item">
                       <div class="news__img"><img alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg"></div>
                       <div class="news_tag">Новости</div>
                       <h4 class="news__header">Новая статьяу</h4>
-                      <p class="news__preview-text">
+                      <p class="news_   _preview-text">
                         Винсент «Happy» Шопенгауэр
                         создает новую команду в рамках
                         грядущего французского решафла.
@@ -155,6 +155,7 @@ $(document).ready(function() {
 
         //Клик на кнопку бана(всплывающее окно)
         $(".chat-container").on("click", function (e) {
+            e.stopPropagation();
             var chatBanButton = $(this).find(".chat_ban-actions");
             var tName = e.target.className;
             if (tName === "chat_ban-actions") {
@@ -206,12 +207,25 @@ $(document).ready(function() {
     $(".chat__dialog").scroll(function () {
         BanAction.getMenu.css("display", "none");
     });
+
     //Вообще перестает отображать банменю
-    // window.onclick = function(event) {
-    // if (!$(event.target).closest($(".ban-actions-menu")).length) {
-    //     $(".ban-actions-menu").css( {display: "none"} );
-    // }
-    // };
+    window.onclick = function(event) {
+    if (!$(event.target).closest($(".ban-actions-menu")).length) {
+        $(".ban-actions-menu").css( {display: "none"} );
+    }
+    };
+
+    // $('body').click(function(event) {
+    //     console.log(event.target);
+    //     var banActionsMenu = $(".ban-actions-menu");
+    //     console.log($(event.target).closest($(".ban-actions-menu")).length);
+    //     if (!$(event.target).closest(banActionsMenu).length && banActionsMenu.css("display") == "block") {
+    //         console.log(banActionsMenu.css("display"));
+    //         banActionsMenu.css( {display: "none"} );
+    //     }
+    //
+    // });
+
 
     //Отправка сообщения на сервер. ЧAT
     (function () {
