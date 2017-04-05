@@ -267,16 +267,14 @@ $(document).ready(function() {
                 data: {dataMessage: dataMessage},
                 dataType: "json",
                 success: function (result) {
+                    if (isBottom()) scrollDown(chatDialog);
                     appendMessage(dataMessage);
-                    if (!isBottom()) return;
-                    scrollDown(chatDialog);
 
                 },
                 error: function (result) {
                     //Тест. Потом убрать
                     //Ессли проскролили сообщения то при добалении новой не скролить вниз. Отобразить кнопку для скролинга вниз
-                    if (!isBottom()) return;
-                    scrollDown(chatDialog);
+                    if (isBottom()) scrollDown(chatDialog);
                     //Тест. Потом убрать
                     appendMessage(dataMessage);
                     console.log('Error :(');

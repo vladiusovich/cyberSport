@@ -119,10 +119,12 @@
   padding: 0;
   background: $table-background-color;
   opacity: 0.8;
-
   //background: url("/dist/img/down-arrow.svg") no-repeat;
   background-position: 0 0;
   background-size: contain;
+  &:focus {
+    outline: none !important;
+  }
   img {
     display: block;
     width: 100%;
