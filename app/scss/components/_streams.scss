@@ -71,8 +71,16 @@
   display: block;
   font-size: 1em;
   line-height: 1.2;
+  color: $text-color;
+
   cursor: pointer;
   //margin: 1em 0 2em 0;
+  transition: .2s ease;
+
+  &:hover {
+    color: $text-color-lite;
+  }
+
 }
 
 .streams__data {

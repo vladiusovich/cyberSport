@@ -1,3 +1,22 @@
+mixin streamVideo(ref, srcImg)
+    .streams__item
+        .streams__preview
+            img(data-ref=ref,src=srcImg,frameborder="0", allowfullscreen)
+        .streams__item-info-wrap
+            a(data-ref=ref).videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
+            span.videos__data 5 февраля, воскресенье
+
+mixin VideoGalary(ref)
+    .videos__item
+        .videos__preview
+            img(data-ref=ref,src="https://i.kinja-img.com/gawker-media/image/upload/s--G76fDOkv--/c_scale,fl_progressive,q_80,w_800/nvr33pslf0ukv1mtn6w2.png",frameborder="0", allowfullscreen)
+        .videos__item-info-wrap
+            a(data-ref=ref).videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
+            span.videos__data 5 февраля, воскресенье
+
+
+
+
 .container-fluid
     .row
         .col-lg-8.col-md-8
@@ -11,75 +30,23 @@
                                     iframe(src="https://player.twitch.tv/?autoplay=false&channel=dota2ruhub")
                             .col-lg-6.col-md-6
                                 .streams__list
-                                    .streams__item
-                                        .streams__preview
-                                            iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                                        .streams__item-info-wrap
-                                            span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                            span.videos__data 5 февраля, воскресенье
+                                    +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                                    +streamVideo("https://www.youtube.com/watch?v=kQ2R8C8gTc0", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                                    +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                                    +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                                    +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
 
-                                    .streams__item
-                                        .streams__preview
-                                            iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                                        .streams__item-info-wrap
-                                            span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                            span.videos__data 5 февраля, воскресенье
-
-                                    .streams__item
-                                        .streams__preview
-                                            iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                                        .streams__item-info-wrap
-                                            span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                            span.videos__data 5 февраля, воскресенье
-
-                                    .streams__item
-                                        .streams__preview
-                                            iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                                        .streams__item-info-wrap
-                                            span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                            span.videos__data 5 февраля, воскресенье
         .col-lg-4.col-md-4.hidden-xs
             .videos
                 .videos__wrap
                     h2.block-title Видео
                     .videos__list
-                        .videos__item
-                            .videos__preview
-                                iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                            .videos__item-info-wrap
-                                span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                span.videos__data 5 февраля, воскресенье
-
-                        .videos__item
-                            .videos__preview
-                                iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                            .videos__item-info-wrap
-                                span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                span.videos__data 5 февраля, воскресеньеLEAGUE Major
-                            span.videos__data 5 февраля, воскресенье
-
-                        .videos__item
-                            .videos__preview
-                                iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                            videos__item-info-wrap
-                                span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                span.videos__data 5 февраля, воскресенье
-
-                        .videos__item
-                            .videos__preview
-                                iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                            .videos__item-info-wrap
-                                span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                span.videos__data 5 февраля, воскресенье
-
-
-                        .videos__item
-                            .videos__preview
-                                iframe(src="https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2",frameborder="0", allowfullscreen)
-                            .videos__item-info-wrap
-                                span.videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
-                                span.videos__data 5 февраля, воскресенье
-
+                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
     .row
         .col-lg-8.col-md-8
             .news

@@ -1,30 +1,27 @@
 var resultTempForNewsBlock = `<div class="news__item">
                       <div class="news__img"><img alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg"></div>
                       <div class="news_tag">Новости</div>
-                      <h4 class="news__header">TaZ:»ЯНовая статьятурниров»</h4>
+                      <h4 class="news__header">Riot Games перестала принимать заявки на тестовый сервер</h4>
                       <p class="news__preview-text">
-                        Ldldldldldldl
+                       Компания Riot Games временно закрыла регистрацию на тестовый сервер League of Legends. Согласно анонсу, решение связано с плохой работой сайта PBE (Public Beta Environment). Riot Games возобновит прием заявок после того, как портал приведут в рабочее состояние.
                       </p><span class="news__data">04.02.2017</span>
                     </div>
                     <div class="news__item">
                       <div class="news__img"><img alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg"></div>
                       <div class="news_tag">Новости</div>
-                      <h4 class="news__header">TaZ:»Новая статья»</h4>
+                      <h4 class="news__header">Selfless распустила состав по CS:GO 
+По материалам киберспортивного портала CyberSport.ru</h4>
                       <p class="news__preview-text">
-                        
-                        Katowice 2017. Слот выиграла наша команда EYESPORTS female.
+                        Организация Selfless Gaming распустила состав по Counter-Strike: Global Offensive. Три киберспортсмена продолжат играть вместе. Информация была опубликована на официальном сайте организации.
+По материалам киберспортивного портала CyberSport.ru
                       </p><span class="news__data">04.02.2017</span>
                     </div>
                     <div class="news__item">
                       <div class="news__img"><img alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg"></div>
                       <div class="news_tag">Новости</div>
-                      <h4 class="news__header">Новая статьяу</h4>
-                      <p class="news_   _preview-text">
-                        Винсент «Happy» Шопенгауэр
-                        создает новую команду в рамках
-                        грядущего французского решафла.
-                        Happy строит новую боевую
-                        команду …
+                      <h4 class="news__header">Andi: «Командам из СНГ не хватает дисциплины и коммуникации»</h4>
+                      <p class="news__preview-text">
+                        Новый тренер Natus Vincere G2A Андрей «Andi» Прохоров в интервью GameInside.ua рассказал, как он попал в организацию, какие у него обязанности в коллективе
                       </p><span class="news__data">04.02.2017</span>
                     </div>`;
 
@@ -185,8 +182,6 @@ $(document).ready(function() {
 
 
         });
-
-
 
         return {
             displayMenu: getBanMenu,
