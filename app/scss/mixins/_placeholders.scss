@@ -10,13 +10,14 @@
   border-radius: 5px;
   background: linear-gradient(rgba(12, 12, 12, 0.81), rgba(30, 30, 30, 0.84));
   border: none;
-  border-top: $border-style;
-  color: $heading-color;
+  //border-top: $border-style;
+  //box-shadow: inset 0px -2px 5px -2px #eee;
   color: $text-color-lite;
   cursor: pointer;
-  transition: all .1s;
+  transition: all .2s;
 
   &:hover {
+    //box-shadow: inset 0px -5px 5px -2px rgba(191, 189, 195, 0.5);
     text-decoration: none;
   }
 

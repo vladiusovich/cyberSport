@@ -2,15 +2,30 @@
   .news__item {
     //width: 100% !important;
   }
+
+  .aside-left__logo, .aside-right__logo {
+    width: 80% !important;
+  }
+
+  .match-info__vs {
+    margin-top: 14% !important;
+    font-size: 2rem !important;
+  }
+
 }
 
 @media screen and (max-width: $screen-sm){
   .news__item {
     width: 100% !important;
-  }
+
 }
 
 @media screen and (max-width: $screen-md - 1){
+
+  .aside-left__logo, .aside-right__logo {
+    width: 60% !important;
+  }
+
   .streams__list {
     display: none !important;
   }
@@ -36,8 +51,6 @@
 }
 
 
-@media screen and (min-width: $screen-md){
-
   .flex-center {
     //height: 100vh !important;
   }
@@ -54,6 +67,7 @@
     margin-bottom: 10px !important;
   }
 
+
   .menu-game__link {
     font-size: .7em !important;
   }
@@ -61,6 +75,10 @@
   .account-option, .create-news,.top-nav__global {
     float: none !important;
     text-align: center !important;
+  }
+
+  .footer {
+    visibility: hidden;
   }
 
   .footer .tech-support {
@@ -99,6 +117,64 @@
 }
 
 @media screen and (max-width: $screen-md){
+  .news-page__content {
+    img {
+      width: 60%!important;
+    }
+  }
+  .match-info__container {
+    flex-wrap: wrap !important;
+  }
+
+  .match-info__team-list {
+    display: none !important;
+  }
+
+  .match-info__aside-left,.match-info__aside-right {
+    width: 45% !important;
+    padding: 2em 1em 0 1em !important;
+    order: 1;
+  }
+
+  .match-info__aside-right {
+    order: 3;
+  }
+
+  .match-info__vs {
+    display: block !important;
+    margin-top: 5% !important;
+    order: 2;
+  }
+
+  .match-info__mid {
+    width: 100%!important;
+    order: 4;
+
+    strong {
+      font-size: 10vw !important;
+    }
+  }
+
+  .match-info__team-name {
+    h2 {
+      font-size: 1.5rem !important;
+
+    }
+
+    .news-page__content {
+      img {
+        width: 50%!important;
+      }
+    }
+
+  }
+
+
+
+  .news__more-news.center-block {
+    margin-top: 28px;
+    display: block !important;
+  }
 
   .header {
     .row > [class*="col-"] {
