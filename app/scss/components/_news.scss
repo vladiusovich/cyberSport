@@ -21,6 +21,8 @@
 
   opacity: 1;
   transition: .3s ease;
+
+
 }
 
 .news__arrow-l, .news__arrow-r {
@@ -57,7 +59,12 @@
 .news__item {
   position: relative;
   width: 30%;
+  display: none;
 
+
+  &:nth-child(1),  &:nth-child(2),  &:nth-child(3)  {
+    display: block;
+  }
 }
 
 

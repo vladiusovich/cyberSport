@@ -51,15 +51,16 @@ $(document).ready(function() {
 
             function replaceNewsPosts() {
                 newsContainer.css("opacity", 0);
+                var parseNews = $.parseHTML(resultTempForNewsBlock);
+                newsPosts.remove();
+                newsContainer.append(parseNews);
+                $(".news__header").height(headerHeight);
+                isLoaded = false;
+
                 setTimeout(function () {
-                    var parseNews = $.parseHTML(resultTempForNewsBlock);
-                    newsPosts.remove();
-                    newsContainer.append(parseNews);
-                    $(".news__header").height(headerHeight);
                     newsContainer.css("opacity", 1);
                     isLoaded = true;
                 },300);
-                isLoaded = false;
             }
 
             function sendAjaxNews(methodName, newsDeriction, callback) {
