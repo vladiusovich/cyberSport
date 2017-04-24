@@ -8,7 +8,7 @@
   @extend %backgraund-secondary;
 }
 
-.registration-form {
+#registration-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,41 +16,21 @@
 
   fieldset {
     max-width: 50%;
+    width: 100%;
     margin: 0 auto;
     border: none;
     text-align: left;
-
-    input {
-      width: 100%;
-      margin-bottom: 5px;
-      border-color: transparent transparent $primary-color transparent;
-      background: transparent;
-
-      &:focus {
-        outline: none;
-        border-bottom-color: $primary-color-focus;
-      }
-
-    }
-
-    input[type="checkbox"] {
-      width: 13px;
-    }
-
-     label {
-       font-size: .8rem;
-      //margin-left: .5em;
-    }
-
     legend {
       font-size: $heading-font-size;
       border: none;
       margin-bottom: 0;
     }
+
+    select {
+      width: 100%;
+    }
   }
 }
-
-
 
 
 .game-checker {
@@ -67,7 +47,6 @@
 }
 
 .input-option {
-  width: 150px;
   background: transparent;
   cursor: pointer;
 

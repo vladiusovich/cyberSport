@@ -2,15 +2,20 @@
     h2 Регистрация
     form#registration-form.registration-form
         fieldset
-            //legend Логин
-            input(type="text" size="40", placeholder="Логин")
-            //legend Email
-            input(type="email" size="40", placeholder="Email")
+            .input
+                label Логин
+                input(type="text" size="40", placeholder="Логин")
+            .input
+                label Email
+                input(type="email" size="40", placeholder="Email")
 
         fieldset
-            //legend Пароль
-            input(type="password" size="40", placeholder="Пароль")
-            input(type="password" size="40", placeholder="Повторите пароль")
+            .input
+                label Пароль
+                input(type="password" size="40", placeholder="Пароль")
+            .input
+                label Повторите пароль
+                input(type="password" size="40", placeholder="Повторите пароль")
 
         fieldset
             legend Выбор игры:
@@ -44,6 +49,4 @@
             li.social__item
                 a.link--social.registrGoogle
 
-//
-   Created by Алина on 21.11.2016.
 

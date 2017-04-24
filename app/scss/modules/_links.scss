@@ -3,13 +3,14 @@ a {
   cursor: pointer;
   text-decoration: none;
   &:hover {
+    color: $primary-color;
     text-decoration: none;
   }
   &:focus {
        outline-color: $primary-color;
      }
 
-  transition: .2s ease;
+  transition: .1s ease;
 }
 
 

@@ -1,17 +1,30 @@
 .login-block {
-  width: 50%;
-  margin: 0 auto 2rem;
-  padding: 10px 0 0px;
-  text-align: center;
-  //height: 400px;
-  @extend %backgraund-secondary;
+  @extend .registration-block;
+  //width: 50%;
+  //margin: 0 auto 2rem;
+  //padding: 10px 0 0px;
+  //text-align: center;
+  //color: $primary-color;
+  //
+  ////height: 400px;
+  //@extend %backgraund-secondary;
+  //
+  //form {
+  //  width: 40%;
+  //  margin: 0 auto;
+  //  text-align: left;
+  //  border: 1px solid transparent;
+  //
+  //}
+}
+
+.login-form {
+  @extend #registration-form;
+
 }
 
 .login-input {
   padding-bottom: 0px;
-  width: 40%;
-  margin: 0 auto;
-  text-align: left;
 }
 .login-input p {
   color: $link-color;
@@ -33,6 +46,7 @@
   }
 }
 .login-block button {
-  margin: 60px 0 40px;
-  padding: 10px 20px;
+  display: block;
+  margin: auto;
+  margin-top: 2em;
 }

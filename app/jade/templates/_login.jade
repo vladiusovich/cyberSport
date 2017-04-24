@@ -1,12 +1,13 @@
 .login-block
     h2 Вход
-    form
-        .login-input
-            input(type="text" size="40", placeholder="Логин/E-mail")
-        .login-input
-            input(type="password" size="40", placeholder="Пароль")
+    form.login-form
+        fieldset
+            .input
+                label(for="login") Логин/E-mail
+                input(type="text" id="login", placeholder="Логин/E-mail")
+            .input
+                label(for="password") Код
+                input(type="password",id="password" size="40", placeholder="Пароль")
         button Войти
 
-//
-   Created by Алина on 17.11.2016.
 
