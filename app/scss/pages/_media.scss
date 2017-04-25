@@ -95,7 +95,7 @@
     margin: 0 auto 2rem !important;
   }
 
-  .registration-form fieldset {
+  .registration-form fieldset, .login-form fieldset {
     max-width: 100% !important;
   }
 
@@ -223,16 +223,10 @@
   .personal-data,
   .registration-block,
   .login-block {
-    margin-bottom: 50vh !important;
   }
 
 }
 
-@media screen and (min-width: $screen-md) {
-  .login-block {
-    margin-bottom: 50vh !important;
-  }
-}
 
 @media screen and (max-width: 600px){
   .news__item {

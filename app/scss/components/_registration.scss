@@ -6,6 +6,21 @@
   font: $base-font-family;
   color: $primary-color;
   @extend %backgraund-secondary;
+
+  &.check-password {
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 400px;
+
+
+    span {
+      color: $heading-color;
+    }
+  }
+
+
 }
 
 #registration-form {
@@ -20,8 +35,10 @@
     margin: 0 auto;
     border: none;
     text-align: left;
+
     legend {
-      font-size: $heading-font-size;
+      font-size: 1.2rem;
+      font-weight: bold;
       border: none;
       margin-bottom: 0;
     }
@@ -30,6 +47,11 @@
       width: 100%;
     }
   }
+}
+
+.registration-block__select {
+  width: 50%;
+  margin-top: 2rem;
 }
 
 

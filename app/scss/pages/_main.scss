@@ -14,9 +14,14 @@ body {
 }
 
 .wrapper {
+  position: relative;
   max-width: $screen-extra-lg;
   margin: 0 auto;
-  min-height: 100%;
-  position: relative;
-}
 
+  border: 1px solid transparent;
+  min-height: 100vh;
+
+  & .container-fluid {
+    margin-bottom: 50px;
+  }
+}
