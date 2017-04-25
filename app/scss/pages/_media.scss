@@ -125,27 +125,22 @@
   .match-info__container {
     flex-wrap: wrap !important;
   }
-
   .match-info__team-list {
     display: none !important;
   }
-
   .match-info__aside-left,.match-info__aside-right {
     width: 45% !important;
     padding: 2em 1em 0 1em !important;
     order: 1;
   }
-
   .match-info__aside-right {
     order: 3;
   }
-
   .match-info__vs {
     display: block !important;
     margin-top: 5% !important;
     order: 2;
   }
-
   .match-info__mid {
     width: 100%!important;
     order: 4;
@@ -154,7 +149,6 @@
       font-size: 10vw !important;
     }
   }
-
   .match-info__team-name {
     h2 {
       font-size: 1.5rem !important;
@@ -169,31 +163,24 @@
 
   }
 
-
-
   .news__more-news.center-block {
     margin-top: 28px;
     display: block !important;
   }
-
   .header {
     .row > [class*="col-"] {
       margin-bottom: 0 !important;
     }
   }
-
   .row > [class*="col-"] {
     margin-bottom: 2em !important;
   }
-
   .row {
     margin-bottom: 0 !important;
   }
-
   .news__container {
     width: 100% !important;
     margin: 0 !important;
-
   }
   .news__item {
     width: 100% !important;
@@ -203,20 +190,49 @@
     }
 
   }
-
   .news__preview-text {
     max-height: 70px !important;
   }
-
-
   .news__arrow-l, .news__arrow-r {
     display: none !important;
   }
-
   .registration-block, .login-block {
     width: 90% !important;
     margin: 0 auto 2rem !important;
   }
+
+  .commands {
+    flex-direction: column!important;
+  }
+
+  .commands__team, .commands__search {
+    display: block!important;
+    width: 100%!important;
+  }
+
+  .team__list {
+    height: 200px!important;
+  }
+
+
+
+  .input-wrap {
+    width: 104%!important;
+  }
+
+  .search__list {
+    height: 300px!important;
+    text-align: left!important;
+  }
+  .search__item {
+    width: 100%!important;
+    float: none!important;
+
+    a {
+      width: 10% !important;
+    }
+  }
+
 }
 
 @media screen and (min-width: 1300px ){

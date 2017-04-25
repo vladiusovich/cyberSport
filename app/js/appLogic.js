@@ -407,7 +407,7 @@ $(document).ready(function() {
                     var li = $('<li></li>').attr('class', 'search__item');
                     var a = $('<a></a>');
                     var img = $('<img>').attr('src', '../img/user-img.jpg');
-                    var span = $('<span>' + i + '</span>').attr('class', 'name');
+                    var span = $('<span>' +'NickName' + i + '</span>').attr('class', 'name');
                     a.append(img);
                     li.append(a);
                     li.append(span);
