@@ -25,7 +25,7 @@ var resultTempForNewsBlock = `<div class="news__item">
                       </p><span class="news__data">04.02.2017</span>
                     </div>`;
 
-
+//use strict
 
 $(document).ready(function() {
     //Обновление новосте при нажатии на стрелки
@@ -375,5 +375,48 @@ $(document).ready(function() {
         videoViewerIrame.replaceWith(iframe);
     });
 }());
+
+//Поиск игроков .В личном кабинете
+(function () {
+    var searchButton = $("#search_button");
+    var searchInput = $("#search_input");
+
+    searchInput.keypress(function (e) {
+        console.log(this.value);
+    })
+
+    searchButton.on('click', function (e) {
+        var requestGemer = searchInput[0].value;
+        var gamerListWrapper =  $("#mCSB_2");
+        var gamerList;
+
+        $.ajax({
+            type: "POST",
+            url: "SomeServlet/getSearchListOfGamers",
+            contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+            data: {requestGemer: requestGemer},
+            dataType: "json",
+            success: function (result) {
+                console.log('Yiiii');
+            },
+            error: function (result) {
+                gamerList = $('#mCSB_2_container');
+                gamerList.empty();
+
+                for (var i = 0; i < 20; i++) {
+                    var li = $('<li></li>').attr('class', 'search__item');
+                    var a = $('<a></a>');
+                    var img = $('<img>').attr('src', '../img/user-img.jpg');
+                    var span = $('<span>' + i + '</span>').attr('class', 'name');
+                    a.append(img);
+                    li.append(a);
+                    li.append(span);
+                    gamerList.append(li[0]);
+                }
+                gamerListWrapper.append(gamerList);
+            }
+        });
+    })
+})();
 
 

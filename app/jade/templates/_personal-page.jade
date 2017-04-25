@@ -87,8 +87,8 @@ mixin search__item()
         .commands__search
             .search-wrap
                 .input-wrap
-                    input(type="search", placeholder="Поиск")
-                    button().search_button
+                    input(type="search", placeholder="Поиск")#search_input
+                    button()#search_button.search_button
             button(onclick="$('#commandsModal').modal('toggle');").close X
 
             ul.search__list
