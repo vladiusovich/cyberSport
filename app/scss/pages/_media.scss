@@ -105,6 +105,14 @@
 }
 
 @media screen and (min-width: $screen-md){
+  .registration-block, .login-block {
+    margin: 0 auto 10rem !important;
+  }
+}
+
+
+
+@media screen and (min-width: $screen-md){
 
   .row {
     margin-bottom: 30px !important;
@@ -201,7 +209,7 @@
   }
   .registration-block, .login-block {
     width: 90% !important;
-    margin: 0 auto 2rem !important;
+    margin: 0 auto 10rem !important;
   }
 
   .commands {

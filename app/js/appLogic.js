@@ -186,6 +186,7 @@ $(document).ready(function() {
 
         });
 
+
         function getNewPosts(methodName, newsParams, callback) {
             $.ajax({
                 type: "POST",
@@ -204,7 +205,6 @@ $(document).ready(function() {
                 }
             });
         }
-
         function getIdOfPage(pageType) {
             console.log(pageType);
             switch (pageType) {
@@ -215,7 +215,6 @@ $(document).ready(function() {
                 default:  return 5;
             }
         }
-
         function getPageNumber(arrowClassName, newsPageDirectly) {
             if (arrowClassName == "news__arrow-l") {
                 if (newsPageDirectly == 1) return newsPageDirectly;
@@ -464,7 +463,7 @@ $(document).ready(function() {
 
 
 
-    $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar();
+    $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar({alwaysShowScrollbar: 1});
 
 // Удалить рекламу на веременном сервере
     /*
