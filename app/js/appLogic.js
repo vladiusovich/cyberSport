@@ -25,64 +25,169 @@ var resultTempForNewsBlock = `<div class="news__item">
                       </p><span class="news__data">04.02.2017</span>
                     </div>`;
 
+
+
+var jsonTest = {
+    "NewsViewModelList": [
+        {
+            "NewsId": 29,
+            "Author": "admin",
+            "Title": "Новость от admin про CSGo",
+            "Content": "Эту новость про CSGo написал admin",
+            "PublishDate": "/Date(1486253417577)/",
+            "PathToImage": "/Content/Images/News/_default1.jpg"
+        },
+        {
+            "NewsId": 25,
+            "Author": "admin",
+            "Title": "Новость от admin про CSGo",
+            "Content": "Эту новость про CSGo написал admin",
+            "PublishDate": "/Date(1485853417577)/",
+            "PathToImage": "/Content/Images/News/_default1.jpg"
+        },
+        {
+            "NewsId": 21,
+            "Author": "admin",
+            "Title": "Новость от admin про CSGo",
+            "Content": "Эту новость про CSGo написал admin",
+            "PublishDate": "/Date(1485453417577)/",
+            "PathToImage": "/Content/Images/News/_default1.jpg"
+        },
+        {
+            "NewsId": 17,
+            "Author": "admin",
+            "Title": "Новость от admin про CSGo",
+            "Content": "Эту новость про CSGo написал admin",
+            "PublishDate": "/Date(1485053417577)/",
+            "PathToImage": "/Content/Images/News/_default1.jpg"
+        },
+        {
+            "NewsId": 13,
+            "Author": "admin",
+            "Title": "Новость от admin про CSGo",
+            "Content": "Эту новость про CSGo написал admin",
+            "PublishDate": "/Date(1484653417577)/",
+            "PathToImage": "/Content/Images/News/_default1.jpg"
+        }
+    ],
+
+    "PageInfo": {
+        "PageNumber": 1,
+        "PageSize": 5,
+        "TotalItems": 8,
+        "TotalPages": 2
+    }
+}
+
 //use strict
 
 $(document).ready(function() {
     //Обновление новосте при нажатии на стрелки
     (function () {
-        var newsDeriction = 'next';
-        var isLoaded = true;
+        var pageTitle = {
+            cs: "CS GO",
+            paragon: "Paragon",
+            dota: "Dota 2",
+            wot: "World of tanks",
+        }
+        var newsDeriction = 1,
+             isLoaded = true;
+
         // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
         $(".news").on("click", function (e) {
             if (!isLoaded) return;
-            var headerHeight = $(".news__header").css("height");
-            var newsContainer = $(".news__container");
-            var newsPosts = $(".news__container").children();
-            var arrowDeriction = e.target.parentNode;
-            var arrowClassName = arrowDeriction.className;
 
+            var directlyPageTitle = $('head > title').html(),
+                headerHeight = $(".news__header").css("height"),
+                newsContainer = $(".news__container"),
+                newsPosts = $(".news__container").children(),
+                arrowDeriction = e.target.parentNode,
+                arrowClassName = arrowDeriction.className;
+
+            var pageTitleId = getIdOfPage(directlyPageTitle);
+            // console.log(pageTitleId);
             if (arrowClassName == "news__arrow-l") {
-                newsDeriction = 'priv';
-                sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
+                newsDeriction = 1;
             } else if (arrowClassName == "news__arrow-r") {
-                newsDeriction = 'next';
-                sendAjaxNews("SomeServlet/_SomeMethod", newsDeriction, replaceNewsPosts);
+                newsDeriction = 2;
             } else return;
 
-            function replaceNewsPosts() {
-                newsContainer.css("opacity", 0);
-                var parseNews = $.parseHTML(resultTempForNewsBlock);
-                newsPosts.remove();
-                newsContainer.append(parseNews);
-                $(".news__header").height(headerHeight);
-                isLoaded = false;
-
-                setTimeout(function () {
-                    newsContainer.css("opacity", 1);
-                    isLoaded = true;
-                },300);
+            var sendNewsParams = {
+                theme: pageTitleId,
+                page: newsDeriction,
+                newsPerPage: 3
             }
 
-            function sendAjaxNews(methodName, newsDeriction, callback) {
+            var ppp = getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+
+            //Все функции
+            function getNewPosts(methodName, newsParams, callback) {
                 $.ajax({
                     type: "POST",
                     url: methodName, // Вызываемый метод на сервере
-                    // url: "SomeServlet/_SomeMethod", // Вызываемый метод на сервере
                     contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
-                    data: {newsDeriction: newsDeriction},
+                    data: newsParams,
                     dataType: "json",
                     success: function (result) {
                         console.log(newsDeriction);
-                        //  returning something
+                        //  return something
                         console.log('result... ' + result);
 
                     },
                     error: function (result) {
+                        // return result;
                         callback();
                     }
                 });
             }
+            function replaceNewsPosts() {
+                newsContainer.css("opacity", 0);
+                isLoaded = false;
 
+                setTimeout(function () {
+                    // var parseNews = jQuery.parseJSON(jsonTest);
+                    // var parseNews;
+                    var newsArray = jsonTest.NewsViewModelList;
+                    newsArray.map(function (obj, index) {
+                        if (index > 2) return;
+
+                        newsItem = $(
+                            '<div class="news__item">' +
+                            '<div class="news__img">' +
+                            '<img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg >' +
+                            '</div>' +
+                            '<div class="news_tag">Новости</div>' +
+                            '<h4 class="news__header">' +
+                            obj.Title +
+                            '</h4>' +
+                            '<p class="news__preview-text">' +
+                            obj.Content +
+                            ' </p>' +
+                            '<span class="news__data">' +
+                            obj.PublishDate +
+                            '</span>' +
+                            '</div>'
+                        );
+                        newsContainer.append(newsItem);
+                    });
+
+                    newsPosts.remove();
+                    $(".news__header").height(headerHeight);
+                    newsContainer.css("opacity", 1);
+
+                    isLoaded = true;
+                },300);
+            }
+
+            function getIdOfPage(pageType) {
+                switch (pageType) {
+                    case pageTitle.cs: return 1;
+                    case pageTitle.paragon: return 2;
+                    case pageTitle.dota: return 3;
+                    case pageTitle.wot: return 4;
+                    default:  return 5;
+                }
+            }
         });
 
     })();
@@ -283,7 +388,8 @@ $(document).ready(function() {
 
 //Добавление сообщения в чат. Добавление обработчиков на кнопки бана
     var appendMessage = function appendMessage(dataMessage) {
-        // var messege = $('<li class="chat__messenge"><a class="chat_ban-actions"><i aria-hidden="true" class="fa fa-ban"></i></a><div class="chat__user">' +
+        // var messege = $('<li class="chat__messenge"><a class="chat_ban-actions">' +
+        //     '<i aria-hidden="true" class="fa fa-ban"></i></a><div class="chat__user">' +
         // '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
         // '<em class="chat__user-name">' + name +'</em>' +
         // '<em class="chat__time">' + time + '</em></div>' +
