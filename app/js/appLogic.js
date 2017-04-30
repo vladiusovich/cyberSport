@@ -1,32 +1,3 @@
-var resultTempForNewsBlock = `<div class="news__item">
-                      <div class="news__img"><img alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg"></div>
-                      <div class="news_tag">Новости</div>
-                      <h4 class="news__header">Riot Games перестала принимать заявки на тестовый сервер</h4>
-                      <p class="news__preview-text">
-                       Компания Riot Games временно закрыла регистрацию на тестовый сервер League of Legends. Согласно анонсу, решение связано с плохой работой сайта PBE (Public Beta Environment). Riot Games возобновит прием заявок после того, как портал приведут в рабочее состояние.
-                      </p><span class="news__data">04.02.2017</span>
-                    </div>
-                    <div class="news__item">
-                      <div class="news__img"><img alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg"></div>
-                      <div class="news_tag">Новости</div>
-                      <h4 class="news__header">Selfless распустила состав по CS:GO 
-По материалам киберспортивного портала CyberSport.ru</h4>
-                      <p class="news__preview-text">
-                        Организация Selfless Gaming распустила состав по Counter-Strike: Global Offensive. Три киберспортсмена продолжат играть вместе. Информация была опубликована на официальном сайте организации.
-По материалам киберспортивного портала CyberSport.ru
-                      </p><span class="news__data">04.02.2017</span>
-                    </div>
-                    <div class="news__item">
-                      <div class="news__img"><img alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg"></div>
-                      <div class="news_tag">Новости</div>
-                      <h4 class="news__header">Andi: «Командам из СНГ не хватает дисциплины и коммуникации»</h4>
-                      <p class="news__preview-text">
-                        Новый тренер Natus Vincere G2A Андрей «Andi» Прохоров в интервью GameInside.ua рассказал, как он попал в организацию, какие у него обязанности в коллективе
-                      </p><span class="news__data">04.02.2017</span>
-                    </div>`;
-
-
-
 var jsonTest = {
     "NewsViewModelList": [
         {
@@ -90,56 +61,36 @@ $(document).ready(function() {
             dota: "Dota 2",
             wot: "World of tanks",
         }
-        var newsDeriction = 1,
+        var directlyPageTitle = $('head > title').html();
+        var newsPageDirectly = 1,
              isLoaded = true;
 
         // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
         $(".news").on("click", function (e) {
             if (!isLoaded) return;
 
-            var directlyPageTitle = $('head > title').html(),
-                headerHeight = $(".news__header").css("height"),
+                var headerHeight = $(".news__header").css("height"),
                 newsContainer = $(".news__container"),
                 newsPosts = $(".news__container").children(),
                 arrowDeriction = e.target.parentNode,
                 arrowClassName = arrowDeriction.className;
 
             var pageTitleId = getIdOfPage(directlyPageTitle);
-            // console.log(pageTitleId);
-            if (arrowClassName == "news__arrow-l") {
-                newsDeriction = 1;
-            } else if (arrowClassName == "news__arrow-r") {
-                newsDeriction = 2;
-            } else return;
 
+            newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
+
+
+
+            console.log("Page namber: ",newsPageDirectly);
             var sendNewsParams = {
                 theme: pageTitleId,
-                page: newsDeriction,
+                page: newsPageDirectly,
                 newsPerPage: 3
             }
 
             var ppp = getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
 
             //Все функции
-            function getNewPosts(methodName, newsParams, callback) {
-                $.ajax({
-                    type: "POST",
-                    url: methodName, // Вызываемый метод на сервере
-                    contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
-                    data: newsParams,
-                    dataType: "json",
-                    success: function (result) {
-                        console.log(newsDeriction);
-                        //  return something
-                        console.log('result... ' + result);
-
-                    },
-                    error: function (result) {
-                        // return result;
-                        callback();
-                    }
-                });
-            }
             function replaceNewsPosts() {
                 newsContainer.css("opacity", 0);
                 isLoaded = false;
@@ -179,17 +130,100 @@ $(document).ready(function() {
                 },300);
             }
 
-            function getIdOfPage(pageType) {
-                switch (pageType) {
-                    case pageTitle.cs: return 1;
-                    case pageTitle.paragon: return 2;
-                    case pageTitle.dota: return 3;
-                    case pageTitle.wot: return 4;
-                    default:  return 5;
-                }
-            }
+
         });
 
+
+        //Получить предыдущие посты для мобилки
+        $(".news__more-news button").on('click', function (e) {
+            var pageTitleId = getIdOfPage(directlyPageTitle);
+            newsPageDirectly += 1;
+            var sendNewsParams = {
+                theme: pageTitleId,
+                page: newsPageDirectly,
+                newsPerPage: 3
+            }
+
+            console.log("Page #: ",newsPageDirectly);
+
+            var headerHeight = $(".news__header").css("height"),
+                newsContainer = $(".news__container"),
+                newsPosts = $(".news__container").children(),
+                arrowDeriction = e.target.parentNode,
+                arrowClassName = arrowDeriction.className;
+
+            getNewPosts("/News/GetPagedNewsMobil", sendNewsParams, replaceNewsPostsMobile)
+
+            function replaceNewsPostsMobile() {
+                    var newsArray = jsonTest.NewsViewModelList;
+                    newsArray.map(function (obj, index) {
+                        if (index > 2) return;
+
+                        newsItem = $(
+                            '<div class="news__item">' +
+                            '<div class="news__img">' +
+                            '<img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg >' +
+                            '</div>' +
+                            '<div class="news_tag">Новости</div>' +
+                            '<h4 class="news__header">' +
+                            obj.Title +
+                            '</h4>' +
+                            '<p class="news__preview-text">' +
+                            obj.Content +
+                            ' </p>' +
+                            '<span class="news__data">' +
+                            obj.PublishDate +
+                            '</span>' +
+                            '</div>'
+                        );
+                        newsContainer.append(newsItem);
+                    });
+
+                    // newsPosts.remove();
+                    $(".news__header").height(headerHeight);
+            }
+
+
+        });
+
+        function getNewPosts(methodName, newsParams, callback) {
+            $.ajax({
+                type: "POST",
+                url: methodName, // Вызываемый метод на сервере
+                contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+                data: newsParams,
+                dataType: "json",
+                success: function (result) {
+                    //  return something
+                    console.log('result... ' + result);
+
+                },
+                error: function (result) {
+                    // return result;
+                    callback();
+                }
+            });
+        }
+
+        function getIdOfPage(pageType) {
+            console.log(pageType);
+            switch (pageType) {
+                case pageTitle.cs: return 1;
+                case pageTitle.paragon: return 2;
+                case pageTitle.dota: return 3;
+                case pageTitle.wot: return 4;
+                default:  return 5;
+            }
+        }
+
+        function getPageNumber(arrowClassName, newsPageDirectly) {
+            if (arrowClassName == "news__arrow-l") {
+                if (newsPageDirectly == 1) return newsPageDirectly;
+                return newsPageDirectly -= 1;
+            } else if (arrowClassName == "news__arrow-r") {
+                return newsPageDirectly += 1;
+            } else return newsPageDirectly;
+        }
     })();
 
     //Кнопка бана

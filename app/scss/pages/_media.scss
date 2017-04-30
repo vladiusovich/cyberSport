@@ -184,10 +184,13 @@
   }
   .news__item {
     width: 100% !important;
+    display: block !important;
+
     &:not(:last-child) {
       margin-bottom: 1em !important;
       border-bottom: $border-style-opocity-low;
     }
+
 
   }
   .news__preview-text {
