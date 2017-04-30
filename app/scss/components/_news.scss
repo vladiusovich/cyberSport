@@ -98,7 +98,10 @@ p.news__preview-text {
   overflow: hidden;
   margin-bottom: 2rem;
   line-height: 25px;
-  text-overflow: ellipsis;
+  //text-overflow: ellipsis;
+
+
+
 
 
   &:before {
@@ -120,13 +123,10 @@ p.news__preview-text {
     float: right;
     position: relative;
     top: -25px;
-    left: 100%;
     width: 3em;
     margin-left: -3em;
     padding-right: 5px;
     text-align: right;
-    background-size: 100% 100%;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), white 50%, white);
   }
 }
 

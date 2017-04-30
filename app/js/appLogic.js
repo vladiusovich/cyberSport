@@ -88,7 +88,10 @@ $(document).ready(function() {
                 newsPerPage: 3
             }
 
-            var ppp = getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+            if (arrowDeriction.className == 'news__arrow-l' || arrowDeriction.className == 'news__arrow-r') {
+                var ppp = getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+            }
+
 
             //Все функции
             function replaceNewsPosts() {
