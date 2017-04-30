@@ -55,7 +55,7 @@ var jsonTest = {
 $(document).ready(function() {
     //Обновление новосте при нажатии на стрелки
     (function () {
-        var pageTitle = {
+        const pageTitle = {
             cs: "CS GO",
             paragon: "Paragon",
             dota: "Dota 2",
@@ -76,10 +76,7 @@ $(document).ready(function() {
                 arrowClassName = arrowDeriction.className;
 
             var pageTitleId = getIdOfPage(directlyPageTitle);
-
             newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
-
-
 
             console.log("Page namber: ",newsPageDirectly);
             var sendNewsParams = {
@@ -88,7 +85,7 @@ $(document).ready(function() {
                 newsPerPage: 3
             }
 
-            if (arrowDeriction.className == 'news__arrow-l' || arrowDeriction.className == 'news__arrow-r') {
+            if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
                 var ppp = getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
             }
 
@@ -108,7 +105,7 @@ $(document).ready(function() {
                         newsItem = $(
                             '<div class="news__item">' +
                             '<div class="news__img">' +
-                            '<img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg >' +
+                            '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
                             '</div>' +
                             '<div class="news_tag">Новости</div>' +
                             '<h4 class="news__header">' +
@@ -165,7 +162,7 @@ $(document).ready(function() {
                         newsItem = $(
                             '<div class="news__item">' +
                             '<div class="news__img">' +
-                            '<img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg >' +
+                            '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
                             '</div>' +
                             '<div class="news_tag">Новости</div>' +
                             '<h4 class="news__header">' +
