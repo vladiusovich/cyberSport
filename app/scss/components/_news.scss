@@ -6,12 +6,14 @@
 
 .news__wrap {
   position: relative;
+  height: 100%;
   padding: 0 1em;
 }
 
 
 .news__container {
   width: 90%;
+  height: 92%;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
@@ -59,6 +61,7 @@
 .news__item {
   position: relative;
   width: 30%;
+  height: 100%;
   display: none;
 
 
@@ -96,7 +99,7 @@ p.news__preview-text {
   color: $text-color;
   max-height: 105px;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
   line-height: 25px;
   //text-overflow: ellipsis;
 
@@ -131,10 +134,10 @@ p.news__preview-text {
 }
 
 .news__data {
-  position: relative;
+  position: absolute;
   display: block;
   font-size: 1.2rem;
-  bottom: 0;
+  bottom: 10px;
   vertical-align: middle;
   margin-left: 1em;
   
