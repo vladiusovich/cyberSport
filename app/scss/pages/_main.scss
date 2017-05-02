@@ -17,8 +17,8 @@ body {
   position: relative;
   max-width: $screen-extra-lg;
   margin: 0 auto;
-
-  border: 1px solid transparent;
+  overflow: hidden;
+  //border: 1px solid transparent;
   min-height: 100vh;
 
   & .container-fluid {

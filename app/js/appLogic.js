@@ -52,179 +52,10 @@ var jsonTest = {
 
 //use strict
 
+
+
+
 $(document).ready(function() {
-    //Обновление новосте при нажатии на стрелки
-    (function () {
-        const pageTitle = {
-            cs: "CS GO",
-            paragon: "Paragon",
-            dota: "Dota 2",
-            wot: "World of tanks",
-        }
-        var directlyPageTitle = $('head > title').html();
-        var newsPageDirectly = 1,
-             isLoaded = true;
-
-        // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
-        $(".news").on("click", function (e) {
-            if (!isLoaded) return;
-
-                var headerHeight = $(".news__header").css("height"),
-                newsContainer = $(".news__container"),
-                newsPosts = $(".news__container").children(),
-                arrowDeriction = e.target.parentNode,
-                arrowClassName = arrowDeriction.className;
-
-            var pageTitleId = getIdOfPage(directlyPageTitle);
-            newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
-
-            console.log("Page namber: ",newsPageDirectly);
-            var sendNewsParams = {
-                theme: pageTitleId,
-                page: newsPageDirectly,
-                newsPerPage: 3
-            }
-
-            if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
-                var ppp = getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
-            }
-
-
-            //Все функции
-            function replaceNewsPosts() {
-                newsContainer.css("opacity", 0);
-                isLoaded = false;
-
-                setTimeout(function () {
-                    // var parseNews = jQuery.parseJSON(jsonTest);
-                    // var parseNews;
-                    var newsArray = jsonTest.NewsViewModelList;
-                    newsArray.map(function (obj, index) {
-                        if (index > 2) return;
-
-                        newsItem = $(
-                            '<div class="news__item">' +
-                            '<div class="news__img">' +
-                            '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
-                            '</div>' +
-                            '<div class="news_tag">Новости</div>' +
-                            '<h4 class="news__header">' +
-                            obj.Title +
-                            '</h4>' +
-                            '<p class="news__preview-text">' +
-                            obj.Content +
-                            ' </p>' +
-                            '<span class="news__data">' +
-                            obj.PublishDate +
-                            '</span>' +
-                            '</div>'
-                        );
-                        newsContainer.append(newsItem);
-                    });
-
-                    newsPosts.remove();
-                    $(".news__header").height(headerHeight);
-                    newsContainer.css("opacity", 1);
-
-                    isLoaded = true;
-                },300);
-            }
-
-
-        });
-
-
-        //Получить предыдущие посты для мобилки
-        $(".news__more-news button").on('click', function (e) {
-            var pageTitleId = getIdOfPage(directlyPageTitle);
-            newsPageDirectly += 1;
-            var sendNewsParams = {
-                theme: pageTitleId,
-                page: newsPageDirectly,
-                newsPerPage: 3
-            }
-
-            console.log("Page #: ",newsPageDirectly);
-
-            var headerHeight = $(".news__header").css("height"),
-                newsContainer = $(".news__container"),
-                newsPosts = $(".news__container").children(),
-                arrowDeriction = e.target.parentNode,
-                arrowClassName = arrowDeriction.className;
-
-            getNewPosts("/News/GetPagedNewsMobil", sendNewsParams, replaceNewsPostsMobile)
-
-            function replaceNewsPostsMobile() {
-                    var newsArray = jsonTest.NewsViewModelList;
-                    newsArray.map(function (obj, index) {
-                        if (index > 2) return;
-
-                        newsItem = $(
-                            '<div class="news__item">' +
-                            '<div class="news__img">' +
-                            '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
-                            '</div>' +
-                            '<div class="news_tag">Новости</div>' +
-                            '<h4 class="news__header">' +
-                            obj.Title +
-                            '</h4>' +
-                            '<p class="news__preview-text">' +
-                            obj.Content +
-                            ' </p>' +
-                            '<span class="news__data">' +
-                            obj.PublishDate +
-                            '</span>' +
-                            '</div>'
-                        );
-                        newsContainer.append(newsItem);
-                    });
-
-                    // newsPosts.remove();
-                    $(".news__header").height(headerHeight);
-            }
-
-
-        });
-
-
-        function getNewPosts(methodName, newsParams, callback) {
-            $.ajax({
-                type: "POST",
-                url: methodName, // Вызываемый метод на сервере
-                contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
-                data: newsParams,
-                dataType: "json",
-                success: function (result) {
-                    //  return something
-                    console.log('result... ' + result);
-
-
-                },
-                error: function (result) {
-                    // return result;
-                    callback();
-                }
-            });
-        }
-        function getIdOfPage(pageType) {
-            console.log(pageType);
-            switch (pageType) {
-                case pageTitle.cs: return 1;
-                case pageTitle.paragon: return 2;
-                case pageTitle.dota: return 3;
-                case pageTitle.wot: return 4;
-                default:  return 5;
-            }
-        }
-        function getPageNumber(arrowClassName, newsPageDirectly) {
-            if (arrowClassName == "news__arrow-l") {
-                if (newsPageDirectly == 1) return newsPageDirectly;
-                return newsPageDirectly -= 1;
-            } else if (arrowClassName == "news__arrow-r") {
-                return newsPageDirectly += 1;
-            } else return newsPageDirectly;
-        }
-    })();
 
     //Кнопка бана
     var BanAction = (function () {
@@ -476,6 +307,178 @@ $(document).ready(function() {
      */
 });
 
+
+//Обновление новосте при нажатии на стрелки. Доделать
+var t = function () {
+    const pageTitle = {
+        cs: "CS GO",
+        paragon: "Paragon",
+        dota: "Dota 2",
+        wot: "World of tanks",
+    }
+    var directlyPageTitle = $('head > title').html();
+    var newsPageDirectly = 1,
+        isLoaded = true;
+
+    // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
+    $(".news").on("click", function (e) {
+        if (!isLoaded) return;
+
+        var headerHeight = $(".news__header").css("height"),
+            newsContainer = $(".news__container"),
+            newsPosts = $(".news__container").children(),
+            arrowDeriction = e.target.parentNode,
+            arrowClassName = arrowDeriction.className;
+
+        var pageTitleId = getIdOfPage(directlyPageTitle);
+        newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
+
+        console.log("Page namber: ",newsPageDirectly);
+        var sendNewsParams = {
+            theme: 2,
+            page: newsPageDirectly,
+            newsPerPage: 3
+        }
+        console.log('send:  ', sendNewsParams);
+        if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
+            getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+        }
+
+
+        //Все функции
+        function replaceNewsPosts() {
+            newsContainer.css("opacity", 0);
+            isLoaded = false;
+
+            setTimeout(function () {
+                // var parseNews = jQuery.parseJSON(jsonTest);
+                // var parseNews;
+                var newsArray = jsonTest.NewsViewModelList;
+                newsArray.map(function (obj, index) {
+                    if (index > 2) return;
+
+                    newsItem = $(
+                        '<div class="news__item">' +
+                        '<div class="news__img">' +
+                        '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
+                        '</div>' +
+                        '<div class="news_tag">Новости</div>' +
+                        '<h4 class="news__header">' +
+                        obj.Title +
+                        '</h4>' +
+                        '<p class="news__preview-text">' +
+                        obj.Content +
+                        ' </p>' +
+                        '<span class="news__data">' +
+                        obj.PublishDate +
+                        '</span>' +
+                        '</div>'
+                    );
+                    newsContainer.append(newsItem);
+                });
+
+                newsPosts.remove();
+                $(".news__header").height(headerHeight);
+                newsContainer.css("opacity", 1);
+
+                isLoaded = true;
+            },300);
+        }
+
+
+    });
+
+
+    //Получить предыдущие посты для мобилки
+    $(".news__more-news button").on('click', function (e) {
+        var pageTitleId = getIdOfPage(directlyPageTitle);
+        newsPageDirectly += 1;
+        var sendNewsParams = {
+            theme: pageTitleId,
+            page: newsPageDirectly,
+            newsPerPage: 3
+        }
+
+        console.log("Page #: ",newsPageDirectly);
+
+        var headerHeight = $(".news__header").css("height"),
+            newsContainer = $(".news__container"),
+            newsPosts = $(".news__container").children(),
+            arrowDeriction = e.target.parentNode,
+            arrowClassName = arrowDeriction.className;
+
+        getNewPosts("/News/GetPagedNewsMobil", sendNewsParams, replaceNewsPostsMobile)
+
+        function replaceNewsPostsMobile() {
+            var newsArray = jsonTest.NewsViewModelList;
+            newsArray.map(function (obj, index) {
+                if (index > 2) return;
+
+                newsItem = $(
+                    '<div class="news__item">' +
+                    '<div class="news__img">' +
+                    '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
+                    '</div>' +
+                    '<div class="news_tag">Новости</div>' +
+                    '<h4 class="news__header">' +
+                    obj.Title +
+                    '</h4>' +
+                    '<p class="news__preview-text">' +
+                    obj.Content +
+                    ' </p>' +
+                    '<span class="news__data">' +
+                    obj.PublishDate +
+                    '</span>' +
+                    '</div>'
+                );
+                newsContainer.append(newsItem);
+            });
+
+            // newsPosts.remove();
+            $(".news__header").height(headerHeight);
+        }
+
+
+    });
+
+
+    function getNewPosts(methodName, newsParams, callback) {
+        $.ajax({
+            type: "GET",
+            url: methodName, // Вызываемый метод на сервере
+            contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+            data: newsParams,
+            dataType: "json",
+            success: function (result) {
+                //  return something
+                console.log('result ', result);
+                callback();
+            },
+            error: function (result) {
+                // return result;
+                console.log('result fail ', result);
+            }
+        });
+    }
+    function getIdOfPage(pageType) {
+        console.log(pageType);
+        switch (pageType) {
+            case pageTitle.cs: return 1;
+            case pageTitle.paragon: return 2;
+            case pageTitle.dota: return 3;
+            case pageTitle.wot: return 4;
+            default:  return 5;
+        }
+    }
+    function getPageNumber(arrowClassName, newsPageDirectly) {
+        if (arrowClassName == "news__arrow-l") {
+            if (newsPageDirectly == 1) return newsPageDirectly;
+            return newsPageDirectly -= 1;
+        } else if (arrowClassName == "news__arrow-r") {
+            return newsPageDirectly += 1;
+        } else return newsPageDirectly;
+    }
+};
 
 // Чат ттугл
 (function () {
