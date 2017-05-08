@@ -1,56 +1,56 @@
-var jsonTest = {
-    "NewsViewModelList": [
-        {
-            "NewsId": 29,
-            "Author": "admin",
-            "Title": "Новость от admin про CSGo",
-            "Content": "Эту новость про CSGo написал admin",
-            "PublishDate": "/Date(1486253417577)/",
-            "PathToImage": "/Content/Images/News/_default1.jpg"
-        },
-        {
-            "NewsId": 25,
-            "Author": "admin",
-            "Title": "Новость от admin про CSGo",
-            "Content": "Эту новость про CSGo написал admin",
-            "PublishDate": "/Date(1485853417577)/",
-            "PathToImage": "/Content/Images/News/_default1.jpg"
-        },
-        {
-            "NewsId": 21,
-            "Author": "admin",
-            "Title": "Новость от admin про CSGo",
-            "Content": "Эту новость про CSGo написал admin",
-            "PublishDate": "/Date(1485453417577)/",
-            "PathToImage": "/Content/Images/News/_default1.jpg"
-        },
-        {
-            "NewsId": 17,
-            "Author": "admin",
-            "Title": "Новость от admin про CSGo",
-            "Content": "Эту новость про CSGo написал admin",
-            "PublishDate": "/Date(1485053417577)/",
-            "PathToImage": "/Content/Images/News/_default1.jpg"
-        },
-        {
-            "NewsId": 13,
-            "Author": "admin",
-            "Title": "Новость от admin про CSGo",
-            "Content": "Эту новость про CSGo написал admin",
-            "PublishDate": "/Date(1484653417577)/",
-            "PathToImage": "/Content/Images/News/_default1.jpg"
-        }
-    ],
+// var jsonTest = {
+//     "NewsViewModelList": [
+//         {
+//             "NewsId": 29,
+//             "Author": "admin",
+//             "Title": "Новость от admin про CSGo",
+//             "Content": "Эту новость про CSGo написал admin",
+//             "PublishDate": "/Date(1486253417577)/",
+//             "PathToImage": "/Content/Images/News/_default1.jpg"
+//         },
+//         {
+//             "NewsId": 25,
+//             "Author": "admin",
+//             "Title": "Новость от admin про CSGo",
+//             "Content": "Эту новость про CSGo написал admin",
+//             "PublishDate": "/Date(1485853417577)/",
+//             "PathToImage": "/Content/Images/News/_default1.jpg"
+//         },
+//         {
+//             "NewsId": 21,
+//             "Author": "admin",
+//             "Title": "Новость от admin про CSGo",
+//             "Content": "Эту новость про CSGo написал admin",
+//             "PublishDate": "/Date(1485453417577)/",
+//             "PathToImage": "/Content/Images/News/_default1.jpg"
+//         },
+//         {
+//             "NewsId": 17,
+//             "Author": "admin",
+//             "Title": "Новость от admin про CSGo",
+//             "Content": "Эту новость про CSGo написал admin",
+//             "PublishDate": "/Date(1485053417577)/",
+//             "PathToImage": "/Content/Images/News/_default1.jpg"
+//         },
+//         {
+//             "NewsId": 13,
+//             "Author": "admin",
+//             "Title": "Новость от admin про CSGo",
+//             "Content": "Эту новость про CSGo написал admin",
+//             "PublishDate": "/Date(1484653417577)/",
+//             "PathToImage": "/Content/Images/News/_default1.jpg"
+//         }
+//     ],
+//
+//     "PageInfo": {
+//         "PageNumber": 1,
+//         "PageSize": 5,
+//         "TotalItems": 8,
+//         "TotalPages": 2
+//     }
+// }
 
-    "PageInfo": {
-        "PageNumber": 1,
-        "PageSize": 5,
-        "TotalItems": 8,
-        "TotalPages": 2
-    }
-}
-
-//use strict
+// use strict;
 
 
 
@@ -248,17 +248,8 @@ $(document).ready(function() {
             });
         });
     })();
-
-
-
 //Добавление сообщения в чат. Добавление обработчиков на кнопки бана
     var appendMessage = function appendMessage(dataMessage) {
-        // var messege = $('<li class="chat__messenge"><a class="chat_ban-actions">' +
-        //     '<i aria-hidden="true" class="fa fa-ban"></i></a><div class="chat__user">' +
-        // '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
-        // '<em class="chat__user-name">' + name +'</em>' +
-        // '<em class="chat__time">' + time + '</em></div>' +
-        // '<p class="chat__messenge-content">' + text + ' [' + room + '/' + counterIds + ']' + '</p></li>');
 
         var messege = $('<li class="chat__messenge"><a class="chat_ban-actions"></a><div class="chat__user">' +
             '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
@@ -272,8 +263,6 @@ $(document).ready(function() {
         chatSendDataButton.off("click", BanAction.sendData).on("click", BanAction.sendData);
 
         $("#team-chat").append(messege);
-        // $(chatWindow).append(messege);
-
     }
 
     // Автоматическая выравнивание блоков
@@ -308,8 +297,9 @@ $(document).ready(function() {
 });
 
 
+
 //Обновление новосте при нажатии на стрелки. Доделать
-var t = function () {
+(function () {
     const pageTitle = {
         cs: "CS GO",
         paragon: "Paragon",
@@ -318,6 +308,7 @@ var t = function () {
     }
     var directlyPageTitle = $('head > title').html();
     var newsPageDirectly = 1,
+        latestArrow,
         isLoaded = true;
 
     // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
@@ -327,40 +318,45 @@ var t = function () {
         var headerHeight = $(".news__header").css("height"),
             newsContainer = $(".news__container"),
             newsPosts = $(".news__container").children(),
+            pageInfo,
+            sendNewsParams,
             arrowDeriction = e.target.parentNode,
             arrowClassName = arrowDeriction.className;
 
         var pageTitleId = getIdOfPage(directlyPageTitle);
         newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
 
-        console.log("Page namber: ",newsPageDirectly);
-        var sendNewsParams = {
+
+        sendNewsParams = {
             theme: 2,
             page: newsPageDirectly,
             newsPerPage: 3
         }
-        console.log('send:  ', sendNewsParams);
+        // console.log('send:  ', sendNewsParams);
         if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
             getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
         }
 
-
         //Все функции
-        function replaceNewsPosts() {
+        function replaceNewsPosts(result) {
             newsContainer.css("opacity", 0);
             isLoaded = false;
+            pageInfo = result.PageInfo;
+
+            disaibleNewsArrow(arrowDeriction, pageInfo);
+
 
             setTimeout(function () {
                 // var parseNews = jQuery.parseJSON(jsonTest);
                 // var parseNews;
-                var newsArray = jsonTest.NewsViewModelList;
+                var newsArray = result.NewsViewModelList;
                 newsArray.map(function (obj, index) {
                     if (index > 2) return;
 
                     newsItem = $(
                         '<div class="news__item">' +
                         '<div class="news__img">' +
-                        '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
+                        '<a href="#"><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
                         '</div>' +
                         '<div class="news_tag">Новости</div>' +
                         '<h4 class="news__header">' +
@@ -388,7 +384,6 @@ var t = function () {
 
     });
 
-
     //Получить предыдущие посты для мобилки
     $(".news__more-news button").on('click', function (e) {
         var pageTitleId = getIdOfPage(directlyPageTitle);
@@ -399,7 +394,7 @@ var t = function () {
             newsPerPage: 3
         }
 
-        console.log("Page #: ",newsPageDirectly);
+        // console.log("Page #: ",newsPageDirectly);
 
         var headerHeight = $(".news__header").css("height"),
             newsContainer = $(".news__container"),
@@ -410,14 +405,13 @@ var t = function () {
         getNewPosts("/News/GetPagedNewsMobil", sendNewsParams, replaceNewsPostsMobile)
 
         function replaceNewsPostsMobile() {
-            var newsArray = jsonTest.NewsViewModelList;
+            var newsArray = result.NewsViewModelList;
             newsArray.map(function (obj, index) {
                 if (index > 2) return;
-
                 newsItem = $(
                     '<div class="news__item">' +
                     '<div class="news__img">' +
-                    '<a href=""><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
+                    '<a href="#"><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
                     '</div>' +
                     '<div class="news_tag">Новости</div>' +
                     '<h4 class="news__header">' +
@@ -437,10 +431,18 @@ var t = function () {
             // newsPosts.remove();
             $(".news__header").height(headerHeight);
         }
-
-
     });
 
+    function disaibleNewsArrow(arrow, pageInfo) {
+      if (pageInfo.PageNumber == pageInfo.TotalPages) {
+        $(arrow).css({ visibility: 'hidden'});
+      } else if (pageInfo.PageNumber == 1) {
+          $(arrow).css({ visibility: 'hidden'});
+      } else {
+        $(latestArrow).css({ visibility: 'visible'});
+      }
+      latestArrow = arrow;
+    }
 
     function getNewPosts(methodName, newsParams, callback) {
         $.ajax({
@@ -452,7 +454,7 @@ var t = function () {
             success: function (result) {
                 //  return something
                 console.log('result ', result);
-                callback();
+                callback(result);
             },
             error: function (result) {
                 // return result;
@@ -460,6 +462,7 @@ var t = function () {
             }
         });
     }
+
     function getIdOfPage(pageType) {
         console.log(pageType);
         switch (pageType) {
@@ -470,6 +473,7 @@ var t = function () {
             default:  return 5;
         }
     }
+
     function getPageNumber(arrowClassName, newsPageDirectly) {
         if (arrowClassName == "news__arrow-l") {
             if (newsPageDirectly == 1) return newsPageDirectly;
@@ -478,7 +482,11 @@ var t = function () {
             return newsPageDirectly += 1;
         } else return newsPageDirectly;
     }
-};
+})();
+
+
+
+
 
 // Чат ттугл
 (function () {
@@ -561,5 +569,3 @@ var t = function () {
         });
     })
 })();
-
-

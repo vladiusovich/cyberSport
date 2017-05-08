@@ -64,7 +64,6 @@
   height: 100%;
   display: none;
 
-
   &:nth-child(1),  &:nth-child(2),  &:nth-child(3)  {
     display: block;
   }
@@ -72,9 +71,17 @@
 
 
 .news__img {
+
   img {
     width: 100%;
     height: auto;
+  }
+
+  a {
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
 }
@@ -140,7 +147,7 @@ p.news__preview-text {
   bottom: 10px;
   vertical-align: middle;
   margin-left: 1em;
-  
+
   &::before {
     content: "";
     position: absolute;
