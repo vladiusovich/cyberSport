@@ -73,7 +73,11 @@
     font-size: 2rem;
   }
 
-  input[type='checkbox'] {
+  input[type='checkbox'], input[type='radio'] {
+    position: relative;
+    width: auto;
+    display: inline-block;
+    top: 4px;
     margin: 0 1em;
   }
 }
@@ -169,6 +173,9 @@ input[type="search"] {
 
 .commands__actions {
   display: inline-block;
+  // margin-left: 2em;
+  padding-left: 1em;
+  border-left: 1px solid $border-color-button;
   visibility: hidden;
 }
 

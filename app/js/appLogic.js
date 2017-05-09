@@ -495,12 +495,31 @@ $(document).ready(function() {
 //Управление командой. Командир
 (function() {
   var isDeleteState = false,
-      isChangeState = false,
+      wasClickOn,
       containerList,
       containerListLatest,
-      button = $('.commands__change-commander'),
-      removedGamers = [];
+      buttonDeleteGamers = $('.commands__delete-gamer'),
+      buttonChangeCommandor = $('.commands__change-commander'),
+      idGamersToServer = [];
   var commandsAction = $('.commands__actions');
+
+  $('.commands__change-commander').on('click', function() {
+    if(isDeleteState) return;
+
+    var checkItem = $('<input type="radio" name="changeCommandor"/>'),
+        commandsControl = $('.commands__control')
+        arrayItems = $('#mCSB_1_container').children(),
+    containerList = $('#mCSB_1_container');
+    containerListLatest = containerList.clone()
+    commandsAction.css({visibility: "visible"});
+
+    wasClickOn = 'change-commander';
+    disableButtons(buttonDeleteGamers);
+
+    containerList.children().prepend(checkItem);
+    isDeleteState = true;
+  });
+
 
   $('.commands__delete-gamer').on('click', function(e) {
     if(isDeleteState) return;
@@ -512,14 +531,18 @@ $(document).ready(function() {
     containerListLatest = containerList.clone()
     commandsAction.css({visibility: "visible"});
 
-    disableButtons(button);
+    wasClickOn = 'delete-gamer';
+
+    disableButtons(buttonChangeCommandor);
 
     containerList.children().prepend(checkItem);
     isDeleteState = true;
   });
 
   $('.commands__cancel').on('click', function (e) {
-    enableButtons(button);
+    enableButtons(buttonChangeCommandor);
+    enableButtons(buttonDeleteGamers);
+
     containerList.replaceWith(containerListLatest);
     commandsAction.css({visibility: "hidden"});
     isDeleteState = false;
@@ -527,19 +550,26 @@ $(document).ready(function() {
 
   $('.commands__ok').on('click', function (e) {
     var items = containerList.children();
-
     for(var o of items) {
       var $o = $(o);
       if($o.children().prop("checked")) {
-        removedGamers.push($o.attr('data-id'));
+        idGamersToServer.push($o.attr('data-id'));
       }
     }
-    // console.log(removedGamers);
 
-    sendRemovedGamers('/deleteFromTeam', removedGamers);
-    removedGamers = [];
+    if(idGamersToServer.length === 0) return;
 
-    enableButtons(button);
+    console.log('idGamersToServer ', idGamersToServer);
+    switch (wasClickOn) {
+      case 'delete-gamer': sendGamersId('/deleteFromTeam', idGamersToServer);break;
+      case 'change-commander': sendGamersId('/changeCommanderForTeam', idGamersToServer);break;
+    }
+
+    idGamersToServer = [];
+
+    enableButtons(buttonChangeCommandor);
+    enableButtons(buttonDeleteGamers);
+
     containerList.replaceWith(containerListLatest);
     commandsAction.css({visibility: "hidden"});
     isDeleteState = false;
@@ -549,8 +579,9 @@ $(document).ready(function() {
     var id = $(this).parent().attr('data-id');
     sendInvite('/inviteToTeam', id, $(this));
   });
+
 //тупо копипастил. Недльзя так
-  function sendRemovedGamers(methodName, data) {
+  function sendGamersId(methodName, data) {
       $.ajax({
           type: "GET",
           url: methodName,
@@ -587,7 +618,6 @@ $(document).ready(function() {
   }
 
   function enableButtons(button) {
-    console.log(button);
     button.removeAttr("style");
     button.removeAttr("disabled");
   }
