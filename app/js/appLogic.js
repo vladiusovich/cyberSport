@@ -498,34 +498,32 @@ $(document).ready(function() {
       isChangeState = false,
       containerList,
       containerListLatest,
+      button = $('.commands__change-commander'),
       removedGamers = [];
   var commandsAction = $('.commands__actions');
-  console.log(commandsAction );
 
   $('.commands__delete-gamer').on('click', function(e) {
     if(isDeleteState) return;
 
     var checkItem = $('<input type="checkbox"/>'),
         commandsControl = $('.commands__control')
-        arrayItems = $('#mCSB_1_container').children();
-
+        arrayItems = $('#mCSB_1_container').children(),
     containerList = $('#mCSB_1_container');
     containerListLatest = containerList.clone()
     commandsAction.css({visibility: "visible"});
-    disableButtons();
+
+    disableButtons(button);
 
     containerList.children().prepend(checkItem);
     isDeleteState = true;
   });
 
   $('.commands__cancel').on('click', function (e) {
-    enableButtons();
+    enableButtons(button);
     containerList.replaceWith(containerListLatest);
     commandsAction.css({visibility: "hidden"});
     isDeleteState = false;
   });
-
-
 
   $('.commands__ok').on('click', function (e) {
     var items = containerList.children();
@@ -538,24 +536,29 @@ $(document).ready(function() {
     }
     // console.log(removedGamers);
 
-    sendRemovedGamers('/someMethode', removedGamers);
+    sendRemovedGamers('/deleteFromTeam', removedGamers);
     removedGamers = [];
 
-    enableButtons();
+    enableButtons(button);
     containerList.replaceWith(containerListLatest);
     commandsAction.css({visibility: "hidden"});
     isDeleteState = false;
-  })
+  });
 
-
-  function sendRemovedGamers(methodName, removedGamers) {
+  $('.search__invite').on('click', function (e) {
+    var id = $(this).parent().attr('data-id');
+    sendInvite('/inviteToTeam', id, $(this));
+  });
+//тупо копипастил. Недльзя так
+  function sendRemovedGamers(methodName, data) {
       $.ajax({
           type: "GET",
           url: methodName,
           contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
-          data: removedGamers,
+          data: data,
           dataType: "json",
           success: function (result) {
+            //Прислать новый список игроков в команде и заменить им старый
               console.log('result ', result);
           },
           error: function (result) {
@@ -563,15 +566,33 @@ $(document).ready(function() {
           }
       });
   }
+//тупо копипастил. Недльзя так
+  function sendInvite(methodName, data, button) {
+      $.ajax({
+          type: "GET",
+          url: methodName,
+          contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+          data: data,
+          dataType: "json",
+          success: function (result) {
+            //Если выслали, то заменить эту кнопку на кнопку "Приглашение отправлено"
+              console.log('result ', result);
+          },
+          error: function (result) {
+            button.text('Отправлено');
+            disableButtons(button);
+            console.log('result fail ', this);
+          }
+      });
+  }
 
-  function enableButtons() {
-    var button = $('.commands__change-commander');
+  function enableButtons(button) {
+    console.log(button);
     button.removeAttr("style");
     button.removeAttr("disabled");
   }
 
-  function disableButtons() {
-    var button = $('.commands__change-commander');
+  function disableButtons(button) {
     button.css({color: "gray"});
     button.attr("disabled", "true");
   }
