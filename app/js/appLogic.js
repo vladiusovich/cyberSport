@@ -317,7 +317,7 @@ $(document).ready(function() {
 
         var headerHeight = $(".news__header").css("height"),
             newsContainer = $(".news__container"),
-            newsPosts = $(".news__container").children(),
+            newsPosts = newsContainer.children(),
             pageInfo,
             sendNewsParams,
             arrowDeriction = e.target.parentNode,
@@ -326,51 +326,28 @@ $(document).ready(function() {
         var pageTitleId = getIdOfPage(directlyPageTitle);
         newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
 
-
         sendNewsParams = {
             theme: 2,
             page: newsPageDirectly,
             newsPerPage: 3
         }
-        // console.log('send:  ', sendNewsParams);
+
         if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
             getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
         }
 
-        //Все функции
+        //Замена новыми постами
         function replaceNewsPosts(result) {
             newsContainer.css("opacity", 0);
             isLoaded = false;
             pageInfo = result.PageInfo;
-
             disaibleNewsArrow(arrowDeriction, pageInfo);
 
-
             setTimeout(function () {
-                // var parseNews = jQuery.parseJSON(jsonTest);
-                // var parseNews;
                 var newsArray = result.NewsViewModelList;
                 newsArray.map(function (obj, index) {
                     if (index > 2) return;
-
-                    newsItem = $(
-                        '<div class="news__item">' +
-                        '<div class="news__img">' +
-                        '<a href="#"><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
-                        '</div>' +
-                        '<div class="news_tag">Новости</div>' +
-                        '<h4 class="news__header">' +
-                        obj.Title +
-                        '</h4>' +
-                        '<p class="news__preview-text">' +
-                        obj.Content +
-                        ' </p>' +
-                        '<span class="news__data">' +
-                        obj.PublishDate +
-                        '</span>' +
-                        '</div>'
-                    );
-                    newsContainer.append(newsItem);
+                    newsContainer.append(fillBlank(obj));
                 });
 
                 newsPosts.remove();
@@ -380,25 +357,22 @@ $(document).ready(function() {
                 isLoaded = true;
             },300);
         }
-
-
     });
 
-    //Получить предыдущие посты для мобилки
+    //Получить предыдущие посты для моб. устройств
     $(".news__more-news button").on('click', function (e) {
         var pageTitleId = getIdOfPage(directlyPageTitle);
         newsPageDirectly += 1;
+
         var sendNewsParams = {
             theme: pageTitleId,
             page: newsPageDirectly,
             newsPerPage: 3
         }
 
-        // console.log("Page #: ",newsPageDirectly);
-
         var headerHeight = $(".news__header").css("height"),
             newsContainer = $(".news__container"),
-            newsPosts = $(".news__container").children(),
+            newsPosts = newsContainer.children(),
             arrowDeriction = e.target.parentNode,
             arrowClassName = arrowDeriction.className;
 
@@ -408,63 +382,54 @@ $(document).ready(function() {
             var newsArray = result.NewsViewModelList;
             newsArray.map(function (obj, index) {
                 if (index > 2) return;
-                newsItem = $(
-                    '<div class="news__item">' +
-                    '<div class="news__img">' +
-                    '<a href="#"><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
-                    '</div>' +
-                    '<div class="news_tag">Новости</div>' +
-                    '<h4 class="news__header">' +
-                    obj.Title +
-                    '</h4>' +
-                    '<p class="news__preview-text">' +
-                    obj.Content +
-                    ' </p>' +
-                    '<span class="news__data">' +
-                    obj.PublishDate +
-                    '</span>' +
-                    '</div>'
-                );
-                newsContainer.append(newsItem);
+                newsContainer.append(fillBlank(obj));
             });
 
-            // newsPosts.remove();
             $(".news__header").height(headerHeight);
         }
     });
 
-    function disaibleNewsArrow(arrow, pageInfo) {
-      if (pageInfo.PageNumber == pageInfo.TotalPages) {
-        $(arrow).css({ visibility: 'hidden'});
-      } else if (pageInfo.PageNumber == 1) {
-          $(arrow).css({ visibility: 'hidden'});
-      } else {
-        $(latestArrow).css({ visibility: 'visible'});
-      }
-      latestArrow = arrow;
+//Функции
+
+    function fillBlank(obj) {
+      newsItem = $(
+          '<div class="news__item">' +
+          '<div class="news__img">' +
+          '<a href="#"><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
+          '</div>' +
+          '<div class="news_tag">Новости</div>' +
+          '<h4 class="news__header">' +
+          obj.Title +
+          '</h4>' +
+          '<p class="news__preview-text">' +
+          obj.Content +
+          ' </p>' +
+          '<span class="news__data">' +
+          obj.PublishDate +
+          '</span>' +
+          '</div>'
+      );
+      return newsItem;
     }
 
     function getNewPosts(methodName, newsParams, callback) {
         $.ajax({
             type: "GET",
-            url: methodName, // Вызываемый метод на сервере
+            url: methodName,
             contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
             data: newsParams,
             dataType: "json",
             success: function (result) {
-                //  return something
                 console.log('result ', result);
                 callback(result);
             },
             error: function (result) {
-                // return result;
                 console.log('result fail ', result);
             }
         });
     }
 
     function getIdOfPage(pageType) {
-        console.log(pageType);
         switch (pageType) {
             case pageTitle.cs: return 1;
             case pageTitle.paragon: return 2;
@@ -482,6 +447,18 @@ $(document).ready(function() {
             return newsPageDirectly += 1;
         } else return newsPageDirectly;
     }
+
+    function disaibleNewsArrow(arrow, pageInfo) {
+      if (pageInfo.PageNumber == pageInfo.TotalPages) {
+        $(arrow).css({ visibility: 'hidden'});
+      } else if (pageInfo.PageNumber == 1) {
+          $(arrow).css({ visibility: 'hidden'});
+      } else {
+        $(latestArrow).css({ visibility: 'visible'});
+      }
+      latestArrow = arrow;
+    }
+
 })();
 
 
