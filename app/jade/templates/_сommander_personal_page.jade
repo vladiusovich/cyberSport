@@ -51,8 +51,8 @@
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
                 button.personal-data__button.personal-data__button--stretch(onclick="") Уведомления
 
-mixin team__item()
-    li.team__item
+mixin team__item(id)
+    li(data-id=id).team__item
             a(href="")
                 img(src="../img/user-img.jpg")
             a(href="#").name Puuuu
@@ -70,25 +70,23 @@ mixin search__item()
         .commands__team
             span Члены команды
             ul.team__list
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
+                +team__item(1)
+                +team__item(3)
+                +team__item(4)
+                +team__item(5)
+                +team__item(6)
+                +team__item(7)
+                +team__item(8)
+                +team__item(9)
+                +team__item(0)
+                +team__item(64)
             .commands__control
+              .commands__function
                   button().commands__change-commander Отдать полномочия
                   button().commands__delete-gamer Убрать из команды
+              .commands__actions
+                  button.commands__cancel Отмена
+                  button.commands__ok Ок
         .commands__search
             .search-wrap
                 .input-wrap

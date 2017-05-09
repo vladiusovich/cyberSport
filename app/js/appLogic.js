@@ -2,6 +2,174 @@
 
 $(document).ready(function() {
 
+
+  //Обновление новосте при нажатии на стрелки. Доделать
+  (function () {
+      const pageTitle = {
+          cs: "CS GO",
+          paragon: "Paragon",
+          dota: "Dota 2",
+          wot: "World of tanks",
+      }
+      var directlyPageTitle = $('head > title').html(),
+          newsPageDirectly = 1,
+          latestArrow,
+          isLoaded = true;
+
+      // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
+      $(".news").on("click", function (e) {
+          if (!isLoaded) return;
+
+          var headerHeight = $(".news__header").css("height"),
+              newsContainer = $(".news__container"),
+              newsPosts = newsContainer.children(),
+              pageInfo,
+              sendNewsParams,
+              arrowDeriction = e.target.parentNode,
+              arrowClassName = arrowDeriction.className;
+
+          var pageTitleId = getIdOfPage(directlyPageTitle);
+          newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
+
+          sendNewsParams = {
+              theme: 2,
+              page: newsPageDirectly,
+              newsPerPage: 3
+          }
+
+          if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
+              getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+          }
+
+          //Замена новыми постами
+          function replaceNewsPosts(result) {
+              newsContainer.css("opacity", 0);
+              isLoaded = false;
+              pageInfo = result.PageInfo;
+              disaibleNewsArrow(arrowDeriction, pageInfo);
+
+              setTimeout(function () {
+                  var newsArray = result.NewsViewModelList;
+                  newsArray.map(function (obj, index) {
+                      if (index > 2) return;
+                      newsContainer.append(fillBlank(obj));
+                  });
+
+                  newsPosts.remove();
+                  $(".news__header").height(headerHeight);
+                  newsContainer.css("opacity", 1);
+
+                  isLoaded = true;
+              },300);
+          }
+      });
+
+      //Получить предыдущие посты для моб. устройств
+      $(".news__more-news button").on('click', function (e) {
+          var pageTitleId = getIdOfPage(directlyPageTitle);
+          newsPageDirectly += 1;
+
+          var sendNewsParams = {
+              theme: pageTitleId,
+              page: newsPageDirectly,
+              newsPerPage: 3
+          }
+
+          var headerHeight = $(".news__header").css("height"),
+              newsContainer = $(".news__container"),
+              newsPosts = newsContainer.children(),
+              arrowDeriction = e.target.parentNode,
+              arrowClassName = arrowDeriction.className;
+
+          getNewPosts("/News/GetPagedNewsMobil", sendNewsParams, replaceNewsPostsMobile)
+
+          function replaceNewsPostsMobile() {
+              var newsArray = result.NewsViewModelList;
+              newsArray.map(function (obj, index) {
+                  if (index > 2) return;
+                  newsContainer.append(fillBlank(obj));
+              });
+
+              $(".news__header").height(headerHeight);
+          }
+      });
+
+  //Функции
+
+      function fillBlank(obj) {
+        newsItem = $(
+            '<div class="news__item">' +
+            '<div class="news__img">' +
+            '<a href="#"><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
+            '</div>' +
+            '<div class="news_tag">Новости</div>' +
+            '<h4 class="news__header">' +
+            obj.Title +
+            '</h4>' +
+            '<p class="news__preview-text">' +
+            obj.Content +
+            ' </p>' +
+            '<span class="news__data">' +
+            obj.PublishDate +
+            '</span>' +
+            '</div>'
+        );
+        return newsItem;
+      }
+
+      function getNewPosts(methodName, newsParams, callback) {
+          $.ajax({
+              type: "GET",
+              url: methodName,
+              contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+              data: newsParams,
+              dataType: "json",
+              success: function (result) {
+                  console.log('result ', result);
+                  callback(result);
+              },
+              error: function (result) {
+                  console.log('result fail ', result);
+              }
+          });
+      }
+
+      function getIdOfPage(pageType) {
+          switch (pageType) {
+              case pageTitle.cs: return 1;
+              case pageTitle.paragon: return 2;
+              case pageTitle.dota: return 3;
+              case pageTitle.wot: return 4;
+              default:  return 5;
+          }
+      }
+
+      function getPageNumber(arrowClassName, newsPageDirectly) {
+          if (arrowClassName == "news__arrow-l") {
+              if (newsPageDirectly == 1) return newsPageDirectly;
+              return newsPageDirectly -= 1;
+          } else if (arrowClassName == "news__arrow-r") {
+              return newsPageDirectly += 1;
+          } else return newsPageDirectly;
+      }
+
+      function disaibleNewsArrow(arrow, pageInfo) {
+        if (pageInfo.PageNumber == pageInfo.TotalPages) {
+          $(arrow).css({ visibility: 'hidden'});
+        } else if (pageInfo.PageNumber == 1) {
+            $(arrow).css({ visibility: 'hidden'});
+        } else {
+          $(latestArrow).css({ visibility: 'visible'});
+        }
+        latestArrow = arrow;
+      }
+
+  })();
+
+
+
+
+
     //Кнопка бана
     var BanAction = (function () {
         var userName;
@@ -193,6 +361,7 @@ $(document).ready(function() {
             });
         });
     })();
+
 //Добавление сообщения в чат. Добавление обработчиков на кнопки бана
     var appendMessage = function appendMessage(dataMessage) {
 
@@ -227,8 +396,6 @@ $(document).ready(function() {
         });
     });
 
-
-
     $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar({alwaysShowScrollbar: 1});
 
 // Удалить рекламу на веременном сервере
@@ -240,175 +407,6 @@ $(document).ready(function() {
      $('body > div[style~="opacity:"]').remove();
      */
 });
-
-
-
-//Обновление новосте при нажатии на стрелки. Доделать
-(function () {
-    const pageTitle = {
-        cs: "CS GO",
-        paragon: "Paragon",
-        dota: "Dota 2",
-        wot: "World of tanks",
-    }
-    var directlyPageTitle = $('head > title').html(),
-        newsPageDirectly = 1,
-        latestArrow,
-        isLoaded = true;
-
-    // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
-    $(".news").on("click", function (e) {
-        if (!isLoaded) return;
-
-        var headerHeight = $(".news__header").css("height"),
-            newsContainer = $(".news__container"),
-            newsPosts = newsContainer.children(),
-            pageInfo,
-            sendNewsParams,
-            arrowDeriction = e.target.parentNode,
-            arrowClassName = arrowDeriction.className;
-
-        var pageTitleId = getIdOfPage(directlyPageTitle);
-        newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
-
-        sendNewsParams = {
-            theme: 2,
-            page: newsPageDirectly,
-            newsPerPage: 3
-        }
-
-        if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
-            getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
-        }
-
-        //Замена новыми постами
-        function replaceNewsPosts(result) {
-            newsContainer.css("opacity", 0);
-            isLoaded = false;
-            pageInfo = result.PageInfo;
-            disaibleNewsArrow(arrowDeriction, pageInfo);
-
-            setTimeout(function () {
-                var newsArray = result.NewsViewModelList;
-                newsArray.map(function (obj, index) {
-                    if (index > 2) return;
-                    newsContainer.append(fillBlank(obj));
-                });
-
-                newsPosts.remove();
-                $(".news__header").height(headerHeight);
-                newsContainer.css("opacity", 1);
-
-                isLoaded = true;
-            },300);
-        }
-    });
-
-    //Получить предыдущие посты для моб. устройств
-    $(".news__more-news button").on('click', function (e) {
-        var pageTitleId = getIdOfPage(directlyPageTitle);
-        newsPageDirectly += 1;
-
-        var sendNewsParams = {
-            theme: pageTitleId,
-            page: newsPageDirectly,
-            newsPerPage: 3
-        }
-
-        var headerHeight = $(".news__header").css("height"),
-            newsContainer = $(".news__container"),
-            newsPosts = newsContainer.children(),
-            arrowDeriction = e.target.parentNode,
-            arrowClassName = arrowDeriction.className;
-
-        getNewPosts("/News/GetPagedNewsMobil", sendNewsParams, replaceNewsPostsMobile)
-
-        function replaceNewsPostsMobile() {
-            var newsArray = result.NewsViewModelList;
-            newsArray.map(function (obj, index) {
-                if (index > 2) return;
-                newsContainer.append(fillBlank(obj));
-            });
-
-            $(".news__header").height(headerHeight);
-        }
-    });
-
-//Функции
-
-    function fillBlank(obj) {
-      newsItem = $(
-          '<div class="news__item">' +
-          '<div class="news__img">' +
-          '<a href="#"><img src=http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg ></a>' +
-          '</div>' +
-          '<div class="news_tag">Новости</div>' +
-          '<h4 class="news__header">' +
-          obj.Title +
-          '</h4>' +
-          '<p class="news__preview-text">' +
-          obj.Content +
-          ' </p>' +
-          '<span class="news__data">' +
-          obj.PublishDate +
-          '</span>' +
-          '</div>'
-      );
-      return newsItem;
-    }
-
-    function getNewPosts(methodName, newsParams, callback) {
-        $.ajax({
-            type: "GET",
-            url: methodName,
-            contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
-            data: newsParams,
-            dataType: "json",
-            success: function (result) {
-                console.log('result ', result);
-                callback(result);
-            },
-            error: function (result) {
-                console.log('result fail ', result);
-            }
-        });
-    }
-
-    function getIdOfPage(pageType) {
-        switch (pageType) {
-            case pageTitle.cs: return 1;
-            case pageTitle.paragon: return 2;
-            case pageTitle.dota: return 3;
-            case pageTitle.wot: return 4;
-            default:  return 5;
-        }
-    }
-
-    function getPageNumber(arrowClassName, newsPageDirectly) {
-        if (arrowClassName == "news__arrow-l") {
-            if (newsPageDirectly == 1) return newsPageDirectly;
-            return newsPageDirectly -= 1;
-        } else if (arrowClassName == "news__arrow-r") {
-            return newsPageDirectly += 1;
-        } else return newsPageDirectly;
-    }
-
-    function disaibleNewsArrow(arrow, pageInfo) {
-      if (pageInfo.PageNumber == pageInfo.TotalPages) {
-        $(arrow).css({ visibility: 'hidden'});
-      } else if (pageInfo.PageNumber == 1) {
-          $(arrow).css({ visibility: 'hidden'});
-      } else {
-        $(latestArrow).css({ visibility: 'visible'});
-      }
-      latestArrow = arrow;
-    }
-
-})();
-
-
-
-
 
 // Чат ттугл
 (function () {
@@ -490,4 +488,92 @@ $(document).ready(function() {
             }
         });
     })
+})();
+
+
+
+//Управление командой. Командир
+(function() {
+  var isDeleteState = false,
+      isChangeState = false,
+      containerList,
+      containerListLatest,
+      removedGamers = [];
+  var commandsAction = $('.commands__actions');
+  console.log(commandsAction );
+
+  $('.commands__delete-gamer').on('click', function(e) {
+    if(isDeleteState) return;
+
+    var checkItem = $('<input type="checkbox"/>'),
+        commandsControl = $('.commands__control')
+        arrayItems = $('#mCSB_1_container').children();
+
+    containerList = $('#mCSB_1_container');
+    containerListLatest = containerList.clone()
+    commandsAction.css({visibility: "visible"});
+    disableButtons();
+
+    containerList.children().prepend(checkItem);
+    isDeleteState = true;
+  });
+
+  $('.commands__cancel').on('click', function (e) {
+    enableButtons();
+    containerList.replaceWith(containerListLatest);
+    commandsAction.css({visibility: "hidden"});
+    isDeleteState = false;
+  });
+
+
+
+  $('.commands__ok').on('click', function (e) {
+    var items = containerList.children();
+
+    for(var o of items) {
+      var $o = $(o);
+      if($o.children().prop("checked")) {
+        removedGamers.push($o.attr('data-id'));
+      }
+    }
+    // console.log(removedGamers);
+
+    sendRemovedGamers('/someMethode', removedGamers);
+    removedGamers = [];
+
+    enableButtons();
+    containerList.replaceWith(containerListLatest);
+    commandsAction.css({visibility: "hidden"});
+    isDeleteState = false;
+  })
+
+
+  function sendRemovedGamers(methodName, removedGamers) {
+      $.ajax({
+          type: "GET",
+          url: methodName,
+          contentType: "'application/x-www-form-urlencoded; charset=UTF-8",
+          data: removedGamers,
+          dataType: "json",
+          success: function (result) {
+              console.log('result ', result);
+          },
+          error: function (result) {
+              console.log('result fail ', result);
+          }
+      });
+  }
+
+  function enableButtons() {
+    var button = $('.commands__change-commander');
+    button.removeAttr("style");
+    button.removeAttr("disabled");
+  }
+
+  function disableButtons() {
+    var button = $('.commands__change-commander');
+    button.css({color: "gray"});
+    button.attr("disabled", "true");
+  }
+
 })();

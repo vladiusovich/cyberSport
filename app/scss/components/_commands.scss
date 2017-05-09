@@ -54,7 +54,7 @@
   margin-bottom: .5em;
 
   &:hover {
-    background: $backgrond-color-secondary;
+    background: $backgrond-color-hover;
     cursor: pointer;
   }
 
@@ -71,6 +71,10 @@
 
   span {
     font-size: 2rem;
+  }
+
+  input[type='checkbox'] {
+    margin: 0 1em;
   }
 }
 
@@ -117,7 +121,7 @@ input[type="search"] {
   margin-bottom: .5em;
 
   &:hover {
-    background: $backgrond-color-secondary;
+    background: $backgrond-color-hover;
     cursor: pointer;
   }
 
@@ -143,7 +147,7 @@ input[type="search"] {
 }
 
 .commands__control {
-  & > button {
+  & button {
     display: inline-block;
     padding: 0;
     margin-right: 1em;
@@ -157,6 +161,15 @@ input[type="search"] {
     }
 
   }
+}
+
+.commands__function {
+  display: inline-block;
+}
+
+.commands__actions {
+  display: inline-block;
+  visibility: hidden;
 }
 
 .search__invite {
