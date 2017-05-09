@@ -1,59 +1,4 @@
-// var jsonTest = {
-//     "NewsViewModelList": [
-//         {
-//             "NewsId": 29,
-//             "Author": "admin",
-//             "Title": "Новость от admin про CSGo",
-//             "Content": "Эту новость про CSGo написал admin",
-//             "PublishDate": "/Date(1486253417577)/",
-//             "PathToImage": "/Content/Images/News/_default1.jpg"
-//         },
-//         {
-//             "NewsId": 25,
-//             "Author": "admin",
-//             "Title": "Новость от admin про CSGo",
-//             "Content": "Эту новость про CSGo написал admin",
-//             "PublishDate": "/Date(1485853417577)/",
-//             "PathToImage": "/Content/Images/News/_default1.jpg"
-//         },
-//         {
-//             "NewsId": 21,
-//             "Author": "admin",
-//             "Title": "Новость от admin про CSGo",
-//             "Content": "Эту новость про CSGo написал admin",
-//             "PublishDate": "/Date(1485453417577)/",
-//             "PathToImage": "/Content/Images/News/_default1.jpg"
-//         },
-//         {
-//             "NewsId": 17,
-//             "Author": "admin",
-//             "Title": "Новость от admin про CSGo",
-//             "Content": "Эту новость про CSGo написал admin",
-//             "PublishDate": "/Date(1485053417577)/",
-//             "PathToImage": "/Content/Images/News/_default1.jpg"
-//         },
-//         {
-//             "NewsId": 13,
-//             "Author": "admin",
-//             "Title": "Новость от admin про CSGo",
-//             "Content": "Эту новость про CSGo написал admin",
-//             "PublishDate": "/Date(1484653417577)/",
-//             "PathToImage": "/Content/Images/News/_default1.jpg"
-//         }
-//     ],
-//
-//     "PageInfo": {
-//         "PageNumber": 1,
-//         "PageSize": 5,
-//         "TotalItems": 8,
-//         "TotalPages": 2
-//     }
-// }
-
 // use strict;
-
-
-
 
 $(document).ready(function() {
 
@@ -306,8 +251,8 @@ $(document).ready(function() {
         dota: "Dota 2",
         wot: "World of tanks",
     }
-    var directlyPageTitle = $('head > title').html();
-    var newsPageDirectly = 1,
+    var directlyPageTitle = $('head > title').html(),
+        newsPageDirectly = 1,
         latestArrow,
         isLoaded = true;
 

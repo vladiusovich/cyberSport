@@ -1,0 +1,121 @@
+
+.container-fluid
+    .personal-data
+        .row
+            .col-lg-3.col-md-3
+                .personal-page__user-img
+                    img(src="../img/user-img.jpg")
+                .personal-data__button.personal-data__button--service
+                     a(href="") Загрузить фотографию
+                .personal-data__button.personal-data__button--service
+                    a(href="") Редактировать профиль
+
+            .col-lg-5.col-md-5
+                .user_data
+                    .user_data__login-l
+                        span.user_data__login Megaman
+                    table.user_data__common
+                        tr
+                            td ФИО
+                            td.user_data__fio Абрамчик Марья Пушкевич
+                        tr
+                            td Страна
+                            td.user_data__country Беларусь
+                        tr
+                            td Дата рождения
+                            td.user_data__born 27.2.1993
+                        tr
+                            td E-mail
+                            td.user_data__email team-dota@gail.com
+                        tr
+                            td О себе
+                            td.user_data__about.
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sagittis eros vel erat efficitur, id convallis ante efficitur. Praesent finibus, lectus ac pretium volutpat, tellus mauris congue orci, eu tristique lacus odio ac mauris.
+
+
+
+            .col-lg-4.col-md-4
+                .games-selected
+                    .games-selected__item--hover-cs
+                        img(src="../img/cs-go_item.jpg" alt="")
+                    .games-selected__item--hover-wot
+                        img(src="../img/wot_item.jpg" alt="wot")
+                    .games-selected__item.games-selected__item--hover-paragon
+                        img(src="../img/paragon_item.jpg" alt="paragon")
+                        .games-selected__wrap
+                    .games-selected__item.games-selected__item--hover-dota
+                        img(src="../img/dota_item.jpg" alt="dota")
+        .row
+            .col-lg-6.col-md-6.col-xs-12.col-sm-12
+                button().personal-data__button.personal-data__button--stretch(onclick="$('#commandsModal').modal('toggle');") Команды
+            .col-lg-6.col-md-6.col-xs-12.col-sm-12
+                button.personal-data__button.personal-data__button--stretch(onclick="") Уведомления
+
+mixin team__item()
+    li.team__item
+            a(href="")
+                img(src="../img/user-img.jpg")
+            a(href="#").name Puuuu
+
+mixin search__item()
+    li.search__item
+        a(href="#")
+            img(src="../img/user-img.jpg")
+        a(href="#").name Puuuu
+        button.search__invite Пригласить в команду
+
+
+.l-commands.modal.fade#commandsModal
+    .commands.commands--commander
+        .commands__team
+            span Члены команды
+            ul.team__list
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+                +team__item()
+            .commands__control
+                  button().commands__change-commander Отдать полномочия
+                  button().commands__delete-gamer Убрать из команды
+        .commands__search
+            .search-wrap
+                .input-wrap
+                    input(type="search", placeholder="Поиск")#search_input
+                    button()#search_button.search_button
+            button(onclick="$('#commandsModal').modal('toggle');").close X
+
+            ul.search__list
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()
+                +search__item()

@@ -53,9 +53,14 @@
 .team__item {
   margin-bottom: .5em;
 
+  &:hover {
+    background: $backgrond-color-secondary;
+    cursor: pointer;
+  }
+
   a {
     display: inline-block;
-    width: 10%;
+    width: 50px;
     margin-right: 1em;
   }
 
@@ -103,21 +108,23 @@ input[type="search"] {
 
 .search__list {
   display: block;
-  text-align: center;
   padding: 1em;
   height: 550px;
 }
 
 .search__item {
-  float: left;
-  width: calc( 30% );
+  position: relative;
   margin-bottom: .5em;
+
+  &:hover {
+    background: $backgrond-color-secondary;
+    cursor: pointer;
+  }
 
   a {
     display: inline-block;
-    width: 40%;
+    width: 50px;
     margin-right: .5em;
-
   }
 
   img {
@@ -128,6 +135,35 @@ input[type="search"] {
   span {
     font-size: 2rem;
   }
+}
+
+//Модиффикатор для командира
+.commands--commander {
 
 }
 
+.commands__control {
+  & > button {
+    display: inline-block;
+    padding: 0;
+    margin-right: 1em;
+    font-size: $small-font-size;
+    background: none;
+    border: none;
+
+    &:hover {
+      color: $primary-color;
+      text-decoration: none;
+    }
+
+  }
+}
+
+.search__invite {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 25px;
+  font-size: $small-font-size;
+
+}

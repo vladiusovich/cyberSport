@@ -8,17 +8,13 @@
   text-transform: uppercase;
   text-decoration: none;
   border-radius: 5px;
-  background: linear-gradient(rgba(12, 12, 12, 0.81), rgba(30, 30, 30, 0.84));
+  background: $button-color;
   border: none;
   //border-top: $border-style;
   //box-shadow: inset 0px -2px 5px -2px #eee;
   color: $text-color-lite;
   cursor: pointer;
   transition: all .2s;
-
-  &:hover {
-    text-decoration: none;
-  }
 
   &:focus {
     outline-color: $border-color-button;
@@ -92,4 +88,3 @@
     height: 100%;
   }
 }
-

@@ -19,11 +19,16 @@ $placeholder-color: #2c2c2c;
 $link-color: #ededed;
 $link-hover-color: saturate($link-color, 20%);
 $link-visited-color: #4d82ff;
-$button-color:  rgba(39, 39, 39, 0.88);
+// $button-color:  rgba(39, 39, 39, 0.88);
+$button-color: linear-gradient(rgba(12, 12, 12, 0.81), rgba(30, 30, 30, 0.84));
+
+$button-color-hover:  linear-gradient(0deg, rgba(12, 12, 12, 0.81), 50%, rgba(30, 30, 30, 0.84));
 $button-shadow-color:  4px -3px 11px -2px rgba(128, 128, 128, 0.75);
 
 $backgrond-color-first: #2b2c32;
 $backgrond-color-secondary:  #2b2c32;
+$backgrond-color-secondary:  rgba(28, 28, 33, 0.61);
+
 //$backgrond-color-secondary: rgba(39, 39, 39, 1);
 $tag-color: #68061d;
 
@@ -66,4 +71,3 @@ $screen-extra-lg: 1750px;
 //$screen-lg:                  1200px !default;
 
 //$screen-lg-desktop:          $screen-lg-min !default;
-

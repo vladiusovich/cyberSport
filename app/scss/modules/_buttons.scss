@@ -8,6 +8,10 @@ button {
   cursor: pointer;
   transition: all .2s;
 
+  &:hover {
+    background: $button-color-hover;
+  }
+
 }
 
 button.button--search {
@@ -25,4 +29,3 @@ button.button--search {
     display: inline-block;
   }
 }
-
