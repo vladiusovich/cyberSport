@@ -40,8 +40,9 @@
 
 .streams__item {
   position: relative;
-  width: 90%;
-  margin-bottom: 1em;
+  float: left;
+  width: 46%;
+  margin: 0 1em 1em 0;
 
   @include clearfix;
 
@@ -59,6 +60,7 @@
   object-fit: cover;
 
   @extend %responsive_16-9;
+  padding-top: 0 !important;
 }
 
 .streams__item-info-wrap {

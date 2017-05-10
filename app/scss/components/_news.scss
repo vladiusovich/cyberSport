@@ -44,14 +44,14 @@
 }
 
 .news__arrow-l {
-  left: 1em;
+  left: 1.5em;
   img {
     float: right;
   }
 }
 
 .news__arrow-r {
-  right: 1em;
+  right: 1.5em;
   img {
     float: left;
   }
@@ -97,29 +97,17 @@
 
 
 .news__header {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
   color: $primary-color;
 }
 
 p.news__preview-text {
-  line-height: 1.4;
-  color: $text-color;
-  max-height: 105px;
+  max-height: 70px;
   overflow: hidden;
-  margin-bottom: 4rem;
-  line-height: 25px;
-  //text-overflow: ellipsis;
+  margin-bottom: 1em;
 
-
-
-
-
-  &:before {
-    content: "";
-    float: left;
-    width: 5px;
-    height: 200px;
-  }
+  color: $text-color;
+  line-height: 1.8;
 
   & > *:first-child {
     float: right;
@@ -127,21 +115,21 @@ p.news__preview-text {
     margin-left: -5px;
   }
 
-  &:after {
-    content: "\02026";
-    box-sizing: content-box;
-    float: right;
-    position: relative;
-    top: -25px;
-    width: 3em;
-    margin-left: -3em;
-    padding-right: 5px;
-    text-align: right;
-  }
+}
+
+.news__more-l {
+  text-align: right;
+}
+
+.news__more {
+  // float: right;
+  display: inline-block;
+  margin-bottom: 2rem;
 }
 
 .news__data {
-  position: absolute;
+  // position: absolute;
+  position: relative;
   display: block;
   font-size: 1.2rem;
   bottom: 10px;

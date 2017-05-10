@@ -3,7 +3,7 @@ mixin streamVideo(ref, srcImg)
         .streams__preview
             img(data-ref=ref,src=srcImg,frameborder="0", allowfullscreen)
         .streams__item-info-wrap
-            a(data-ref=ref).videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
+            span(data-ref=ref).videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
             span.videos__data 5 февраля, воскресенье
 
 mixin VideoGalary(ref)
@@ -11,7 +11,7 @@ mixin VideoGalary(ref)
         .videos__preview
             img(data-ref=ref,src="https://i.kinja-img.com/gawker-media/image/upload/s--G76fDOkv--/c_scale,fl_progressive,q_80,w_800/nvr33pslf0ukv1mtn6w2.png",frameborder="0", allowfullscreen)
         .videos__item-info-wrap
-            a(data-ref=ref).videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
+            span(data-ref=ref).videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
             span.videos__data 5 февраля, воскресенье
 
 
@@ -19,19 +19,19 @@ mixin VideoGalary(ref)
 
 .container-fluid
     .row
-        .col-lg-8.col-md-8
+        .col-lg-8.col-md-8.hidden-sm.hidden-xs
             .streams
                 .streams__wrap
                     h2.block-title Стримы
-                    .streams__containerd
+                    .streams__container
                         .row
-                            .col-lg-6.col-md-6.col-xs-12.col-sm-12
-                                .streams__video-viewer
-                                    iframe(src="https://player.twitch.tv/?autoplay=false&channel=dota2ruhub")
-                            .col-lg-6.col-md-6
+                            .col-lg-12.col-md-12
                                 .streams__list
                                     +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
                                     +streamVideo("https://www.youtube.com/watch?v=kQ2R8C8gTc0", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                                    +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                                    +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                                    +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
                                     +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
                                     +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
                                     +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
@@ -41,193 +41,66 @@ mixin VideoGalary(ref)
                 .videos__wrap
                     h2.block-title Видео
                     .videos__list
-                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                        +streamVideo("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2", "http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        +VideoGalary("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2")
+                        +VideoGalary("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2")
+                        +VideoGalary("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2")
+                        +VideoGalary("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2")
+                        +VideoGalary("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2")
+                        +VideoGalary("https://www.youtube.com/embed/Q_5IZKJlPIk?ecver=2")
+
     .row
-        .col-lg-8.col-md-8
+        .col-lg-12.col-md-12
             .news
-                .news__wrap
-                    h2.block-title Новости
-                    .news__container
-                        .news__item
-                            .news__img
-                                img(alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                            .news_tag Новости
-                            h4.news__header TaZ:»Я пришел из той эпохи, когда буквально не было никаких турниров»
-                            p.news__preview-text.
-                                Завершился европейские отборочные
-                                по CS:GO на The Inztel Challenge
-                                Katowice 2017. Слот выиграла наша
-                                команда EYESPORTS female.
-                            span.news__data 04.02.2017
+             .news__wrap
+                 h2.block-title Новости
+                 .news__container
+                    .news__item
+                        .news__img
+                            img(alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        .news_tag Новости
+                        h4.news__header TaZ:»Я пришел из той эпохи, когда буквально не было никаких турниров»
+                        p.news__preview-text.
+                            Завершился европейские отборочные
+                            по CS:GO на The Inztel Challenge
+                            Katowice 2017. Слот выиграла наша
+                            команда EYESPORTS female.
+                        .news__more-l
+                            a(href='#').news__more Подробнее...
+                        span.news__data 04.02.2017
 
 
-                        .news__item
-                            .news__img
-                                img(alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                            .news_tag Новости
-                            h4.news__header TaZ:»Я пришел из той эпохи, когда буквально не было никаких турниров»
-                            p.news__preview-text.
-                                Киберспортивный портал slingshot
-                                авершился европейские отборочные по CS:GO на The Inztel Challenge
-                                Katowice 2017. Слот выиграла наша команда EYESPORTS female.
-                            span.news__data 04.02.2017
+                     .news__item
+                        .news__img
+                            img(alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        .news_tag Новости
+                        h4.news__header TaZ:»Я пришел из той эпохи, когда буквально не было никаких турниров»
+                        p.news__preview-text.
+                            Киберспортивный портал slingshot
+                            авершился европейские отборочные по CS:GO на The Inztel Challenge
+                            Katowice 2017. Слот выиграла наша команда EYESPORTS female.
+                        .news__more-l
+                            a(href='#').news__more Подробнее...
+                        span.news__data 04.02.2017
 
-                        .news__item
-                            .news__img
-                                img(alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
-                            .news_tag Новости
-                            h4.news__header Happy создает новую команду
-                            p.news__preview-text.
-                                Винсент «Happy» Шопенгауэр
-                                создает новую команду в рамках
-                                грядущего французского решафла.
-                                Happy строит новую боевую
-                                команду …
-                            span.news__data 04.02.2017
+                    .news__item
+                        .news__img
+                            img(alt="imf cyber" src="http://mulehorngaming.com/wp-content/uploads/2015/12/gamer-wallpaperswallpaper-gamer-controllers-artwork-gamer-wallpaper-gamingholic-g1unpxck.jpg")
+                        .news_tag Новости
+                        h4.news__header Happy создает новую команду
+                        p.news__preview-text.
+                            Винсент «Happy» Шопенгауэр
+                            создает новую команду в рамках
+                            грядущего французского решафла.
+                            Happy строит новую боевую
+                            команду.
+                        .news__more-l
+                            a(href='#').news__more Подробнее...
+                        span.news__data 04.02.2017
 
                 .news__arrow-l
                     img(src='img/arrow-with-left-direction.png')
                 .news__arrow-r
                     img(src='img/arrow-with-right-direction.png')
+
             .news__more-news.center-block
                 button() Загрузить еще
-        .col-lg-4.col-md-4
-            .matches
-                .matches__wrap
-                    h2.block-title Матчи
-                    .matches__table
-                        table
-                            tr.table__title
-                                th Логотип
-                                th Название
-                                th Дата
-                                th Турнир
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-
-                            tr
-                                td
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-                            tr
-                                td
-                                    img(src="../img/team-1.png")
-                                td The International
-                                td 1 Ноября
-                                td Название турнира
-

@@ -16,13 +16,19 @@
 
 
 .videos__list {
-  @extend .streams__list;
+  // @extend .streams__list;
   width: 100%;
+  max-height: 335px;
   margin-bottom: 0;
+
+  @extend %scroll-track;
 }
 
 .videos__item {
   @extend .streams__item;
+  width: 100%;
+  float: none;
+
 }
 
 .videos__preview {
@@ -46,5 +52,3 @@
   //font-size: 1em;
   //padding: .3em 1em;
 }
-
-

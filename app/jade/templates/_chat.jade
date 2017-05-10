@@ -1,7 +1,6 @@
 
 mixin chat__messenge()
     li.chat__messenge
-        a(data-peer=143).chat_ban-actions
         .chat__user
             .chat__avatar
                 img(src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png")
@@ -39,22 +38,3 @@ mixin chat__messenge()
         .chat__send-messenge
             textarea(name="text", cols="40", rows="5", placeholder="Введите сообщение")#chat__input-text.chat__input-text
             button#chat__button.chat__button Отправить
-
-.ban-actions-menu
-
-    form(action="/context-path/ServletName" method="post")
-        a
-            span.ban-actions-menu__close(aria-hidden="true") X
-        ul.ban-actions__list
-            span Бан на:
-            li
-                #[input(type="radio" name="ban" id="ban-1" value="1")] 1 час
-            li
-                #[input(type="radio" name="ban" id="ban-2" value="2")] 2 часа
-            li
-                #[input(type="radio" name="ban" id="ban-3" value="4")] 4 часа
-            li
-                #[input(type="radio" name="ban" id="ban-4" value="inf")] Вечность
-
-     #[input(type="submit", value="Забанить").ban-actions__act]
-
