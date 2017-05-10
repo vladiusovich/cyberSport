@@ -1,0 +1,20 @@
+
+mixin VideoGalary(ref)
+    .videos__item
+        .videos__preview
+            img(data-ref=ref,src="https://i.kinja-img.com/gawker-media/image/upload/s--G76fDOkv--/c_scale,fl_progressive,q_80,w_800/nvr33pslf0ukv1mtn6w2.png",frameborder="0", allowfullscreen)
+        .videos__item-info-wrap
+            span(data-ref=ref).videos__name Выход Natus Vincere в плей-офф ELEAGUE Major
+            span.videos__data 5 февраля, воскресенье
+
+
+
+
+
+.container-fluid
+    .row
+        .col-lg-8.col-md-8.col-ms-12.col-sm-12
+          .video-view()
+              iframe.js-player-persistent-youtube(src="http://www.youtube.com/embed/M7lc1UVf-VE?enablejsapi=1&origin=http://example.com", height="540", width="960", frameborder="0", scrolling="no", allowfullscreen="true")
+
+      

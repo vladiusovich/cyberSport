@@ -16,53 +16,98 @@ $(document).ready(function() {
           latestArrow,
           isLoaded = true;
 
+      //Когда страница загр. делаем запрос на первую стр новостей
+      $(document).ready(function(e) {
+            if (!isLoaded) return;
+            var headerHeight = $(".news__header").css("height"),
+                newsContainer = $(".news__container"),
+                newsPosts = newsContainer.children(),
+                pageInfo,
+                sendNewsParams;
+
+            var pageTitleId = getIdOfPage(directlyPageTitle);
+            newsPageDirectly = 1;
+
+            sendNewsParams = {
+                theme: 2,
+                page: newsPageDirectly,
+                newsPerPage: 3
+            }
+
+            getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+
+            //Замена новыми постами
+            function replaceNewsPosts(result) {
+                newsContainer.css("opacity", 0);
+                isLoaded = false;
+                pageInfo = result.PageInfo;
+
+                setTimeout(function () {
+                    var newsArray = result.NewsViewModelList;
+                    newsArray.map(function (obj, index) {
+                        if (index > 2) return;
+                        newsContainer.append(fillBlank(obj));
+                    });
+
+                    newsPosts.remove();
+                    $(".news__header").height(headerHeight);
+                    newsContainer.css("opacity", 1);
+
+                    isLoaded = true;
+                },300);
+            }
+          });
+
+      //Когда страница прогружана, то сделать запрос на новости
+
       // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
-      $(".news").on("click", function (e) {
-          if (!isLoaded) return;
+      $(".news").on("click", getNews);
 
-          var headerHeight = $(".news__header").css("height"),
-              newsContainer = $(".news__container"),
-              newsPosts = newsContainer.children(),
-              pageInfo,
-              sendNewsParams,
-              arrowDeriction = e.target.parentNode,
-              arrowClassName = arrowDeriction.className;
+      function getNews(e) {
+        if (!isLoaded) return;
+        var headerHeight = $(".news__header").css("height"),
+            newsContainer = $(".news__container"),
+            newsPosts = newsContainer.children(),
+            pageInfo,
+            sendNewsParams,
+            arrowDeriction = e.target.parentNode,
+            arrowClassName = arrowDeriction.className;
 
-          var pageTitleId = getIdOfPage(directlyPageTitle);
-          newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
+        var pageTitleId = getIdOfPage(directlyPageTitle);
+        newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
 
-          sendNewsParams = {
-              theme: 2,
-              page: newsPageDirectly,
-              newsPerPage: 3
-          }
+        sendNewsParams = {
+            theme: 2,
+            page: newsPageDirectly,
+            newsPerPage: 3
+        }
 
-          if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
-              getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
-          }
+        if (arrowClassName == 'news__arrow-l' || arrowClassName == 'news__arrow-r') {
+            getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+        }
 
-          //Замена новыми постами
-          function replaceNewsPosts(result) {
-              newsContainer.css("opacity", 0);
-              isLoaded = false;
-              pageInfo = result.PageInfo;
-              disaibleNewsArrow(arrowDeriction, pageInfo);
+        //Замена новыми постами
+        function replaceNewsPosts(result) {
+            newsContainer.css("opacity", 0);
+            isLoaded = false;
+            pageInfo = result.PageInfo;
+            disaibleNewsArrow(arrowDeriction, pageInfo);
 
-              setTimeout(function () {
-                  var newsArray = result.NewsViewModelList;
-                  newsArray.map(function (obj, index) {
-                      if (index > 2) return;
-                      newsContainer.append(fillBlank(obj));
-                  });
+            setTimeout(function () {
+                var newsArray = result.NewsViewModelList;
+                newsArray.map(function (obj, index) {
+                    if (index > 2) return;
+                    newsContainer.append(fillBlank(obj));
+                });
 
-                  newsPosts.remove();
-                  $(".news__header").height(headerHeight);
-                  newsContainer.css("opacity", 1);
+                newsPosts.remove();
+                $(".news__header").height(headerHeight);
+                newsContainer.css("opacity", 1);
 
-                  isLoaded = true;
-              },300);
-          }
-      });
+                isLoaded = true;
+            },300);
+        }
+      }
 
       //Получить предыдущие посты для моб. устройств
       $(".news__more-news button").on('click', function (e) {
@@ -109,6 +154,10 @@ $(document).ready(function() {
             '<p class="news__preview-text">' +
             obj.Content +
             ' </p>' +
+            '<div class="news__more-l">' +
+            '<a href="/News/Index?id=' +
+             obj.NewsId +
+             '"class="news__more">Подробнее...</a></div>' +
             '<span class="news__data">' +
             obj.PublishDate +
             '</span>' +
@@ -365,16 +414,11 @@ $(document).ready(function() {
 //Добавление сообщения в чат. Добавление обработчиков на кнопки бана
     var appendMessage = function appendMessage(dataMessage) {
 
-        var messege = $('<li class="chat__messenge"><a class="chat_ban-actions"></a><div class="chat__user">' +
+        var messege = $('<li class="chat__messenge">' +
             '<div class="chat__avatar"><img src="https://support.rockstargames.com/system/photos/0001/4510/9157/profile_image_877736018_61840.png"></div>' +
             '<em class="chat__user-name">' + "Poollooer" +'</em>' +
             '<em class="chat__time">' + "12:25" + '</em></div>' +
             '<p class="chat__messenge-content">' + "кэшированию информации, чтобы на их платформах контент предоставлялся пользователю с оптимальной скоростью. Поэтому использование АМ"  + '</p></li>');
-
-        var chatBanButton = messege.find(".chat_ban-actions");
-        var chatSendDataButton = $('html').find(".ban-actions__act");
-        chatBanButton.off("click", BanAction.displayMenu).on("click", BanAction.displayMenu);
-        chatSendDataButton.off("click", BanAction.sendData).on("click", BanAction.sendData);
 
         $("#team-chat").append(messege);
     }
@@ -383,14 +427,6 @@ $(document).ready(function() {
 
     $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar({alwaysShowScrollbar: 1});
 
-// Удалить рекламу на веременном сервере
-    /*
-     $('body > div').filter(function(){
-     return $(this).css("height") === "65px";
-     }).remove();
-     $('body > center').remove();
-     $('body > div[style~="opacity:"]').remove();
-     */
 });
 
 // Чат ттугл
@@ -419,18 +455,7 @@ $(document).ready(function() {
         window.toggle = toggle;
 })();
 
-//Playlist for streams
-(function () {
-    var streams = $('.streams');
-    streams.find('.videos__name').click(function () {
-        var ref = $(this).attr('data-ref');
 
-        var videoViewerIrame = $('#stream-viewer iframe');
-        var iframe = $('<iframe frameborder="0" allowfullscreen></iframe>');
-        iframe.attr("src", ref);
-        videoViewerIrame.replaceWith(iframe);
-    });
-}());
 
 //Поиск игроков .В личном кабинете
 (function () {
@@ -593,10 +618,10 @@ $(document).ready(function() {
           success: function (result) {
             //Если выслали, то заменить эту кнопку на кнопку "Приглашение отправлено"
               console.log('result ', result);
+              button.text('Отправлено');
+              disableButtons(button);
           },
           error: function (result) {
-            button.text('Отправлено');
-            disableButtons(button);
             console.log('result fail ', this);
           }
       });
@@ -614,18 +639,43 @@ $(document).ready(function() {
 
 })();
 
-//Адартивный плейер твича
+//Адартивный плейер
 (function() {
-  $( window ).resize(function() {
-    var stream = $(".stream-view "),
-    iframe = $(".js-player-persistent"),
-    width = stream.width(),
-    height = width * .5625;
+  $(document).ready(function() {
+    makeAdaptivePlayer(".video-view", ".js-player-persistent-youtube");
+    makeAdaptivePlayer(".stream-view", ".js-player-persistent");
+  })
 
+  function makeAdaptivePlayer(wrapName, iframeName) {
+    var wrap = $(wrapName);
+    var iframe = $(iframeName),
+    width = wrap.width(),
+    height = width * .5625,
+    widthLetest,
+    heightLetest;
     iframe.attr('width',width);
     iframe.attr('height', height);
-    stream.css('height', height);
-})
+    wrap.css('height', height);
+
+    $( window ).resize(function() {
+
+      width = wrap.width();
+      if(typeof width !== 'undefined') {
+        height = width * .5625;
+
+        iframe.attr('width',width);
+        wrap.css('height', height);
+        iframe.attr('height', height);
+
+        widthLetest = width;
+        heightLetest = height;
+      } else {
+        iframe.attr('width',widthLetest);
+        wrap.css('height', heightLetest);
+        iframe.attr('height', heightLetest);
+      }
+    });
+  }
 })();
 
 
