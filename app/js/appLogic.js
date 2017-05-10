@@ -379,22 +379,7 @@ $(document).ready(function() {
         $("#team-chat").append(messege);
     }
 
-    // Автоматическая выравнивание блоков
-    $(function () {
-        $('.news__header').matchHeight({
-            byRow: true,
-            property: 'height',
-            target: null,
-            remove: false
-        });
 
-        $('[class*="col-"]').matchHeight({
-            byRow: true,
-            property: 'height',
-            target: null,
-            remove: false
-        });
-    });
 
     $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar({alwaysShowScrollbar: 1});
 
@@ -628,3 +613,35 @@ $(document).ready(function() {
   }
 
 })();
+
+//Адартивный плейер твича
+(function() {
+  $( window ).resize(function() {
+    var stream = $(".stream-view "),
+    iframe = $(".js-player-persistent"),
+    width = stream.width(),
+    height = width * .5625;
+
+    iframe.attr('width',width);
+    iframe.attr('height', height);
+    stream.css('height', height);
+})
+})();
+
+
+// Автоматическая выравнивание блоков
+$(function () {
+    $('.news__header').matchHeight({
+        byRow: true,
+        property: 'height',
+        target: null,
+        remove: false
+    });
+
+    $('[class*="col-"]').matchHeight({
+        byRow: true,
+        property: 'height',
+        target: null,
+        remove: false
+    });
+});

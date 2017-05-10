@@ -44,7 +44,7 @@
   z-index: 1;
   &:focus {
     outline: none;
-    
+
   }
 }
 
@@ -109,7 +109,7 @@
 
 .chat-container__toBottom.isScrolled {
   visibility: visible;
-  transform: translateY(-180%);
+  transform: translateY(-225%);
 }
 
 .toBottom {
@@ -122,6 +122,11 @@
   //background: url("/dist/img/down-arrow.svg") no-repeat;
   background-position: 0 0;
   background-size: contain;
+
+  &:hover {
+    opacity: 1;
+  }
+
   &:focus {
     outline: none !important;
   }
@@ -130,7 +135,10 @@
     width: 100%;
     padding: .5em;
     height: auto;
+    cursor: pointer;
+
   }
+
 }
 
 
@@ -175,5 +183,3 @@
   }
 
 }
-
-

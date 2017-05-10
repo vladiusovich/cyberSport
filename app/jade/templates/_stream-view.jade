@@ -1,36 +1,8 @@
-.stream-view
-    .stream-view__video
-        .responsive_16-9
-            iframe(src="//www.youtube.com/embed/ePbKGoIGAXY")
-    .l-chat
-        .chat-container-stream
-            h5.chat__heading Chat
-            ul.chat__dialog
-                li.chat__messenge
-                    em.chat__user-name Marcus_loo
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nesciunt dolores temporibus odio ipsa, officia.
-                li.chat__messenge
-                    em.chat__user-name Marcus_loo
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nesciunt dolores temporibus odio ipsa, officia.
-                li.chat__messenge
-                    em.chat__user-name Marcus_loo
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nesciunt dolores temporibus odio ipsa, officia.
-                li.chat__messenge
-                    em.chat__user-name Marcus_loo
-                    p.chat__messenge-content.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nesciunt dolores temporibus odio ipsa, officia.
-                li.chat__messenge
-                    em.chat__user-name Marcus_loo
-                        p.chat__messenge-content.
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nesciunt dolores temporibus odio ipsa, officia.
-                        li.chat__messenge
-                            em.chat__user-name Marcus_loo
-                                p.chat__messenge-content.
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem, nesciunt dolores temporibus odio ipsa, officia.
-                .chat__send-messenge
-                    textarea(name="text", cols="40", rows="5", placeholder="Введите сообщение").chat__input-text
-                    button().chat__button Отправить
-
+.container-fluid
+    .row
+        .col-lg-8.col-md-8.col-ms-12.col-sm-12
+          .stream-view()
+              iframe.js-player-persistent(src="http://player.twitch.tv/?channel=dota2ruhub", height="540", width="960", frameborder="0", scrolling="no", allowfullscreen="true")
+        .col-lg-4.col-md-4.col-ms-12.col-sm-12
+            .chat-container-stream
+                iframe(src="http://www.twitch.tv/dota2ruhub/chat", height="515", width="400", scrolling="no")
