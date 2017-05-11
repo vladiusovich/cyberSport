@@ -425,7 +425,7 @@ $(document).ready(function() {
 
 
 
-    $(".videos__list, .streams__list, .matches__table, .team__list, .search__list").mCustomScrollbar({alwaysShowScrollbar: 1});
+    $(".videos__list, .streams__list, .matches__table, .team__list, .search__list, .notification-list").mCustomScrollbar({alwaysShowScrollbar: 1});
 
 });
 
@@ -680,10 +680,16 @@ $(document).ready(function() {
 
 var notifArray = [
     {
-        Id:30,
+        Id:3,
         IsChecked: false,
         NotificationTime:"2017-05-10T21:34:37",
-        Title:"First notification"
+        Title:"Lapstock Хотчет добавить вас в команду"
+    },
+    {
+        Id:3450,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"Через 30 минут выхоид лялял"
     },
     {
         Id:30,
@@ -692,19 +698,37 @@ var notifArray = [
         Title:"First notification"
     },
     {
-        Id:30,
-        IsChecked:true,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"First notification"
-    },
-    {
-        Id:30,
+        Id:98,
         IsChecked:false,
         NotificationTime:"2017-05-10 T21:34:37",
         Title:" notification"
     },
     {
-        Id:30,
+        Id:3450,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"Через 30 минут выхоид лялял"
+    },
+    {
+        Id:3450,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"Через 30 минут выхоид лялял"
+    },
+    {
+        Id:3450,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"Через 30 минут выхоид лялял"
+    },
+    {
+        Id:3450,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"Через 30 минут выхоид лялял"
+    },
+    {
+        Id:350,
         IsChecked:true,
         NotificationTime:"2017-05-10T21:34:37",
         Title:"2 notification"
@@ -713,15 +737,33 @@ var notifArray = [
 
 
 
-
 //Уведомленяия pollyng ajax
 (function() {
     var notification = $('.personal-data__has-notifiction');
     var notificationList = $('.notification-list');
+    var notificationActions;
+    $('.notification-list').on('click', '.notification__invite--ok ', function () {
+        var id = $(this).closest('.notification__item').attr('data-id');
+        sendAjaxNotification('/api/Notification/SetChecked', { idNotification: id, state: 1 }, removeButtons);
+    });
 
-    setInterval(function() {
-        getNotifications();
-    }, 2000);
+    $('.notification-list').on('click', '.notification__invite--cancel ', function () {
+        var id = $(this).closest('.notification__item').attr('data-id');
+        notificationActions = $(this).closest('.notification__actions');
+        console.log("click ", notificationActions);
+        sendAjaxNotification('/api/Notification/SetChecked', { idNotification: id, state: 0 }, removeButtons);
+    });
+
+    // setInterval(function() {
+    //     getNotifications();
+    // }, 10000);
+    getNotifications();
+
+    //Замен кнопок действия на ничего
+    function removeButtons() {
+        console.log("removeButtons ", notificationActions);
+        notificationActions.remove();
+    }
 
 //Проверка есть ли непросмотренные уведомления
     function checkUncheckedNotifications() {
@@ -775,6 +817,25 @@ var notifArray = [
             ' </div>' +
             '</li>');
     }
+
+
+    function sendAjaxNotification(url, data, callback) {
+        $.ajax({
+            url: url,
+            type: 'get',
+            data: data,
+            dataType: "json",
+            success: function(data) {
+                // callback();
+            },
+            error: function() {
+                console.log('Error!');
+                console.log("sendAjaxNotification", notificationActions);
+
+                callback();
+            }
+        });
+    };
 
     function getNotifications() {
         $.ajax({
