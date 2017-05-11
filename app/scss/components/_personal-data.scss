@@ -53,9 +53,29 @@ table.user_data__common {
 }
 
 
+.l-personal-data__button {
+}
+
+.personal-data__has-notifiction {
+  position: absolute;
+  display: block;
+  top: 10px;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffac31;
+  visibility: hidden;
+  animation: impulse .5s ease infinite;
+
+  &.isVisible {
+    visibility: visible;
+  }
+}
+
 
 .personal-data__button {
-
+  position: relative;
 }
 
 .personal-data__button--stretch {
@@ -63,5 +83,16 @@ table.user_data__common {
   display: block;
   margin: auto;
   width: 60%;
+}
 
+@keyframes impulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.5);
+  }
+  100% {
+    transform: scale(1);
+  }
 }

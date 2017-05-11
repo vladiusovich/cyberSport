@@ -519,9 +519,9 @@ $(document).ready(function() {
     var checkItem = $('<input type="radio" name="changeCommandor"/>'),
         commandsControl = $('.commands__control')
         arrayItems = $('#mCSB_1_container').children(),
-    containerList = $('#mCSB_1_container');
-    containerListLatest = containerList.clone()
-    commandsAction.css({visibility: "visible"});
+        containerList = $('#mCSB_1_container');
+        containerListLatest = containerList.clone()
+        commandsAction.css({visibility: "visible"});
 
     wasClickOn = 'change-commander';
     disableButtons(buttonDeleteGamers);
@@ -677,6 +677,124 @@ $(document).ready(function() {
     });
   }
 })();
+
+var notifArray = [
+    {
+        Id:30,
+        IsChecked: false,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"First notification"
+    },
+    {
+        Id:30,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"First notification"
+    },
+    {
+        Id:30,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"First notification"
+    },
+    {
+        Id:30,
+        IsChecked:false,
+        NotificationTime:"2017-05-10 T21:34:37",
+        Title:" notification"
+    },
+    {
+        Id:30,
+        IsChecked:true,
+        NotificationTime:"2017-05-10T21:34:37",
+        Title:"2 notification"
+    }
+];
+
+
+
+
+//Уведомленяия pollyng ajax
+(function() {
+    var notification = $('.personal-data__has-notifiction');
+    var notificationList = $('.notification-list');
+
+    setInterval(function() {
+        getNotifications();
+    }, 2000);
+
+//Проверка есть ли непросмотренные уведомления
+    function checkUncheckedNotifications() {
+       return notifArray.some(function (item) {
+            return (item.IsChecked);
+        });
+    }
+
+//Отобразить элемент
+    function makeVisible(el) {
+        el.addClass('isVisible');
+    }
+
+//получаем массив с html
+    function parseNotificationToList() {
+        var notifictionsList = [];
+        notifArray.forEach( function (item) {
+            notifictionsList.push(fillBlank(item))
+        });
+        return notifictionsList;
+    }
+
+//Замена списка уведомлений на новый
+    function replaceNotifictionList(newNotifictionsList) {
+        notificationList.children().remove();
+        notificationList.append(newNotifictionsList);
+    }
+
+
+//парсим json в html разметку
+    function fillBlank(item) {
+        var isChecked;
+        if (item.IsChecked) {
+            isChecked = ' isChecked';
+        } else {
+            isChecked = '';
+        }
+
+        return $('<li data-id=' +
+            item.Id +
+            ' class="notification__item' + isChecked +'">' +
+            '<span class="notification__title">' +
+            item.Title +
+            '</span>' +
+            '<span class="notification__time">' +
+            item.NotificationTime +
+            '</span>' +
+            ' <div class="notification__actions">' +
+            ' <button class="notification__button notification__invite--ok">Принять</button>' +
+            ' <button class="notification__button notification__invite--cancel">Отклонить</button>' +
+            ' </div>' +
+            '</li>');
+    }
+
+    function getNotifications() {
+        $.ajax({
+            url: '/api/Notification/GetUserNotifications',
+            dataType: 'json',
+            type: 'get',
+            success: function(data) {
+                notification.addClass('isVisible');
+                parseNotificationToList(data);
+            },
+            error: function() {
+                console.log('Error!');
+                if (checkUncheckedNotifications()) {
+                    makeVisible(notification);
+                }
+                replaceNotifictionList(parseNotificationToList());
+            }
+        });
+    };
+   })();
 
 
 // Автоматическая выравнивание блоков

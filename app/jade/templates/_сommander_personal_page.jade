@@ -49,7 +49,10 @@
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
                 button().personal-data__button.personal-data__button--stretch(onclick="$('#commandsModal').modal('toggle');") Команды
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
-                button.personal-data__button.personal-data__button--stretch(onclick="") Уведомления
+                .l-personal-data__button
+                    button.personal-data__button.personal-data__button--stretch(onclick="$('#NotificationModal').modal('toggle');") Уведомления
+                        .personal-data__has-notifiction
+
 
 mixin team__item(id)
     li(data-id=id).team__item
@@ -64,6 +67,13 @@ mixin search__item(id)
         a(href="#").name Puuuu
         button.search__invite Пригласить в команду
 
+mixin notification__item(id)
+    li(data-id=id).notification__item
+        span.notification__title Хочет вас пригласить в команду
+        span.notification__time 2017-05-10
+        .notification__actions
+            button.notification__button.notification__invite--ok Принять
+            button.notification__button.notification__invite--cancel Отклонить
 
 .l-commands.modal.fade#commandsModal
     .commands.commands--commander
@@ -71,12 +81,6 @@ mixin search__item(id)
             span Члены команды
             ul.team__list
                 +team__item(1)
-                +team__item(3)
-                +team__item(4)
-                +team__item(5)
-                +team__item(6)
-                +team__item(7)
-                +team__item(8)
                 +team__item(9)
                 +team__item(0)
                 +team__item(64)
@@ -117,3 +121,13 @@ mixin search__item(id)
                 +search__item(45732)
                 +search__item(25)
                 +search__item(34634)
+
+
+.l-notification.modal.fade#NotificationModal
+    .notification
+        span Уведомления
+        button(onclick="$('#NotificationModal').modal('toggle');").close X
+        ul.notification-list
+          +notification__item(9)
+          +notification__item(0)
+          +notification__item(64)

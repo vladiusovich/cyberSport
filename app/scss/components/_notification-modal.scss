@@ -1,0 +1,65 @@
+.l-notification {
+  @extend .l-commands;
+}
+
+.notification {
+  position: relative;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-content: stretch;
+  background: $backgrond-color-first;
+  color: $text-color-lite;
+
+  & > span {
+    display: block;
+    padding: 0 0 1em 1em;
+    height: 3.5rem;
+    font-size: 2rem;
+    border-bottom: $border-style;
+    margin-bottom: .5em;
+  }
+}
+
+.notification-list {
+  @extend .team__list;
+  padding: 0 1em 1em 1em;
+}
+
+.notification__item {
+  margin-bottom: .5em;
+
+  &:hover {
+    background: $backgrond-color-hover;
+    cursor: pointer;
+  }
+
+  a {
+    display: inline-block;
+    width: 50px;
+    margin-right: 1em;
+  }
+
+  img {
+    width: 100%;
+    border-radius: $border-radius;
+  }
+
+  span {
+    font-size: $small-font-size;
+  }
+
+}
+
+.notification__time {
+  margin-left: 3rem;
+}
+
+.notification__actions {
+  display: inline-block;
+  float: right;
+}
+
+.notification__button {
+  font-size: $small-font-size;
+}
