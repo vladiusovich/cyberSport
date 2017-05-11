@@ -42,6 +42,7 @@
 }
 
 .notification__item {
+  position: relative;
   width: 96%;
   margin: 0 auto;
   margin-bottom: .5em;
@@ -58,7 +59,6 @@
 
   a {
     display: inline-block;
-    width: 50px;
     margin-right: 1em;
   }
 
@@ -92,4 +92,19 @@
 
 .notification__button {
   font-size: $small-font-size;
+}
+
+.notification__feedback--ok {
+  padding: .5em 1em;
+  background: rgba(0, 91, 113, .59);
+  border-radius: 5px;
+}
+
+.notification__feedback--cancel {
+  @extend .notification__feedback--ok;
+  background: rgba(189, 60, 56, 0.52);
+}
+
+.notification__new-notifiction {
+  @extend .personal-data__has-notifiction;
 }

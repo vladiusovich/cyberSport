@@ -83,6 +83,11 @@ table.user_data__common {
   display: block;
   margin: auto;
   width: 60%;
+
+  &::after {
+    content: '';
+
+  }
 }
 
 @keyframes impulse {

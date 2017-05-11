@@ -693,7 +693,7 @@ var notifArray = [
     },
     {
         Id:30,
-        IsChecked:true,
+        IsChecked:false,
         NotificationTime:"2017-05-10T21:34:37",
         Title:"First notification"
     },
@@ -717,7 +717,7 @@ var notifArray = [
     },
     {
         Id:3450,
-        IsChecked:true,
+        IsChecked:false,
         NotificationTime:"2017-05-10T21:34:37",
         Title:"Через 30 минут выхоид лялял"
     },
@@ -737,125 +737,139 @@ var notifArray = [
 
 
 
-//Уведомленяия pollyng ajax
+//Уведомленяия polliyng ajax
 (function() {
-    var notification = $('.personal-data__has-notifiction');
-    var notificationList = $('.notification-list');
-    var notificationActions;
-    $('.notification-list').on('click', '.notification__invite--ok ', function () {
-        var id = $(this).closest('.notification__item').attr('data-id');
-        sendAjaxNotification('/api/Notification/SetChecked', { idNotification: id, state: 1 }, removeButtons);
-    });
+    var notification = $('.personal-data__has-notifiction')
+        timer = 3000;
 
-    $('.notification-list').on('click', '.notification__invite--cancel ', function () {
-        var id = $(this).closest('.notification__item').attr('data-id');
-        notificationActions = $(this).closest('.notification__actions');
-        console.log("click ", notificationActions);
-        sendAjaxNotification('/api/Notification/SetChecked', { idNotification: id, state: 0 }, removeButtons);
-    });
+    if (notification.length !== 0) {
+        (function () {
+            var notificationList,
+                notificationActions;
 
-    // setInterval(function() {
-    //     getNotifications();
-    // }, 10000);
-    getNotifications();
+            $('.notification-list').on('click', '.notification__invite--ok ', function () {
+                var id = $(this).closest('.notification__item').attr('data-id');
+                notificationActions = $(this).closest('.notification__actions');
+                sendAjaxNotification('/api/Notification/SetChecked', { idNotification: id, state: 1 }, feedbackAgree);
+            });
 
-    //Замен кнопок действия на ничего
-    function removeButtons() {
-        console.log("removeButtons ", notificationActions);
-        notificationActions.remove();
-    }
+            $('.notification-list').on('click', '.notification__invite--cancel ', function () {
+                var id = $(this).closest('.notification__item').attr('data-id');
+                notificationActions = $(this).closest('.notification__actions');
+                sendAjaxNotification('/api/Notification/SetChecked', { idNotification: id, state: 0 }, feedbackCancel);
+            });
 
-//Проверка есть ли непросмотренные уведомления
-    function checkUncheckedNotifications() {
-       return notifArray.some(function (item) {
-            return (item.IsChecked);
-        });
-    }
+            setInterval(function() {
+                getNotifications();
+            }, timer);
+            // getNotifications();
 
-//Отобразить элемент
-    function makeVisible(el) {
-        el.addClass('isVisible');
-    }
-
-//получаем массив с html
-    function parseNotificationToList() {
-        var notifictionsList = [];
-        notifArray.forEach( function (item) {
-            notifictionsList.push(fillBlank(item))
-        });
-        return notifictionsList;
-    }
-
-//Замена списка уведомлений на новый
-    function replaceNotifictionList(newNotifictionsList) {
-        notificationList.children().remove();
-        notificationList.append(newNotifictionsList);
-    }
-
-
-//парсим json в html разметку
-    function fillBlank(item) {
-        var isChecked;
-        if (item.IsChecked) {
-            isChecked = ' isChecked';
-        } else {
-            isChecked = '';
-        }
-
-        return $('<li data-id=' +
-            item.Id +
-            ' class="notification__item' + isChecked +'">' +
-            '<span class="notification__title">' +
-            item.Title +
-            '</span>' +
-            '<span class="notification__time">' +
-            item.NotificationTime +
-            '</span>' +
-            ' <div class="notification__actions">' +
-            ' <button class="notification__button notification__invite--ok">Принять</button>' +
-            ' <button class="notification__button notification__invite--cancel">Отклонить</button>' +
-            ' </div>' +
-            '</li>');
-    }
-
-
-    function sendAjaxNotification(url, data, callback) {
-        $.ajax({
-            url: url,
-            type: 'get',
-            data: data,
-            dataType: "json",
-            success: function(data) {
-                // callback();
-            },
-            error: function() {
-                console.log('Error!');
-                console.log("sendAjaxNotification", notificationActions);
-
-                callback();
+            //Замен кнопок действия на ничего
+            function feedbackAgree() {
+                notificationActions.replaceWith( $('<span class="notification__feedback--ok">Заявка принята</span>'));
             }
-        });
-    };
 
-    function getNotifications() {
-        $.ajax({
-            url: '/api/Notification/GetUserNotifications',
-            dataType: 'json',
-            type: 'get',
-            success: function(data) {
-                notification.addClass('isVisible');
-                parseNotificationToList(data);
-            },
-            error: function() {
-                console.log('Error!');
-                if (checkUncheckedNotifications()) {
-                    makeVisible(notification);
+            function feedbackCancel() {
+                notificationActions.replaceWith( $('<span class="notification__feedback--cancel">Отклонено</span>'));
+
+            }
+
+            //Проверка есть ли непросмотренные уведомления
+            function checkUncheckedNotifications() {
+                return notifArray.some(function (item) {
+                    return (item.IsChecked);
+                });
+            }
+
+            //Отобразить элемент
+            function makeVisible(el) {
+                el.addClass('isVisible');
+            }
+
+            //получаем массив с html
+            function parseNotificationToList() {
+                var notifictionsList = [];
+                notifArray.forEach( function (item) {
+                    notifictionsList.push(fillBlank(item))
+                });
+                return notifictionsList;
+            }
+
+            //Замена старого списка уведомлений на новый
+            function replaceNotifictionList(newNotifictionsList) {
+                notificationList = $('#mCSB_3_container');
+                notificationList.children().remove();
+                notificationList.append(newNotifictionsList);
+            }
+
+
+            //парсим json в html разметку
+            function fillBlank(item) {
+                var isChecked;
+                if (item.IsChecked) {
+                    isChecked = '';
+                } else {
+                    isChecked = 'isVisible';
                 }
-                replaceNotifictionList(parseNotificationToList());
+
+                return $('<li data-id=' +
+                    item.Id +
+                    ' class="notification__item">' +
+                    '<div class="notification__new-notifiction ' + isChecked +' "></div>' +
+                    '<span class="notification__title">' +
+                    item.Title +
+                    '</span>' +
+                    '<span class="notification__time">' +
+                    item.NotificationTime +
+                    '</span>' +
+                    ' <div class="notification__actions">' +
+                    ' <a href="#" class="notification__button notification__invite--ok">Принять</a>' +
+                    ' <a href="#" class="notification__button notification__invite--cancel">Отклонить</a>' +
+                    ' </div>' +
+                    '</li>');
             }
-        });
-    };
-   })();
+
+
+            function sendAjaxNotification(url, data, callback) {
+                $.ajax({
+                    url: url,
+                    type: 'get',
+                    data: data,
+                    dataType: "json",
+                    success: function(data) {
+                        // callback();
+                    },
+                    error: function() {
+                        console.log('Error!');
+                        console.log("sendAjaxNotification", notificationActions);
+                        callback();
+                    }
+                });
+            };
+
+            function getNotifications() {
+                $.ajax({
+                    url: '/api/Notification/GetUserNotifications',
+                    dataType: 'json',
+                    type: 'get',
+                    success: function(data) {
+                        if (checkUncheckedNotifications(data)) {
+                            makeVisible(notification);
+                        }
+                        replaceNotifictionList(parseNotificationToList());
+                    },
+                    error: function() {
+                        console.log('Error!');
+                        if (checkUncheckedNotifications()) {
+                            makeVisible(notification);
+                        }
+                        replaceNotifictionList(parseNotificationToList());
+                    }
+                });
+            };
+        })();
+    }
+})();
 
 
 // Автоматическая выравнивание блоков

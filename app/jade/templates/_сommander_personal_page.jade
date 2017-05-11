@@ -69,11 +69,12 @@ mixin search__item(id)
 
 mixin notification__item(id)
     li(data-id=id).notification__item
+        .notification__new-notifiction
         span.notification__title Хочет вас пригласить в команду
         span.notification__time 2017-05-10
         .notification__actions
-            button.notification__button.notification__invite--ok Принять
-            button.notification__button.notification__invite--cancel Отклонить
+            a(href='#').notification__button.notification__invite--ok Принять
+            a(href='#').notification__button.notification__invite--cancel Отклонить
 
 .l-commands.modal.fade#commandsModal
     .commands.commands--commander
@@ -129,5 +130,10 @@ mixin notification__item(id)
         button(onclick="$('#NotificationModal').modal('toggle');").close X
         ul.notification-list
           +notification__item(9)
+          +notification__item(9)
           +notification__item(0)
+          +notification__item(0)
+          +notification__item(0)
+          +notification__item(0)
+          +notification__item(64)
           +notification__item(64)
