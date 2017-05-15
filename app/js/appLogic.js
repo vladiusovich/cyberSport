@@ -2,66 +2,68 @@
 
 $(document).ready(function() {
 
-
   //Обновление новосте при нажатии на стрелки. Доделать
   (function () {
       const pageTitle = {
           cs: "CS GO",
           paragon: "Paragon",
           dota: "Dota 2",
-          wot: "World of tanks",
+          wot: "World of tanks"
       }
-      var directlyPageTitle = $('head > title').html(),
+
+      var pageTitleId = $('.page-container').attr('data-id-game'),
           newsPageDirectly = 1,
           latestArrow,
           isLoaded = true;
+      // Когда страница загр. делаем запрос на первую стр новостей
+     /*
+      $(document).ready(function(e) {
+            if (!isLoaded) return;
+            var headerHeight = $(".news__header").css("height"),
+                newsContainer = $(".news__container"),
+                newsPosts = newsContainer.children(),
+                pageInfo,
+                sendNewsParams;
 
-      //Когда страница загр. делаем запрос на первую стр новостей
-      // $(document).ready(function(e) {
-      //       if (!isLoaded) return;
-      //       var headerHeight = $(".news__header").css("height"),
-      //           newsContainer = $(".news__container"),
-      //           newsPosts = newsContainer.children(),
-      //           pageInfo,
-      //           sendNewsParams;
-      //
-      //       var pageTitleId = getIdOfPage(directlyPageTitle);
-      //       newsPageDirectly = 1;
-      //
-      //       sendNewsParams = {
-      //           theme: 2,
-      //           page: newsPageDirectly,
-      //           newsPerPage: 3
-      //       }
-      //
-      //       getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
-      //
-      //       //Замена новыми постами
-      //       function replaceNewsPosts(result) {
-      //           newsContainer.css("opacity", 0);
-      //           isLoaded = false;
-      //           pageInfo = result.PageInfo;
-      //
-      //           setTimeout(function () {
-      //               var newsArray = result.NewsViewModelList;
-      //               newsArray.map(function (obj, index) {
-      //                   if (index > 2) return;
-      //                   newsContainer.append(fillBlank(obj));
-      //               });
-      //
-      //               newsPosts.remove();
-      //               $(".news__header").height(headerHeight);
-      //               newsContainer.css("opacity", 1);
-      //
-      //               isLoaded = true;
-      //           },300);
-      //       }
-      //     });
+            var pageTitleId = getIdOfPage(directlyPageTitle);
+            newsPageDirectly = 1;
+
+            sendNewsParams = {
+                theme: 2,
+                page: newsPageDirectly,
+                newsPerPage: 3
+            }
+
+            getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+
+            //Замена новыми постами
+            function replaceNewsPosts(result) {
+                newsContainer.css("opacity", 0);
+                isLoaded = false;
+                pageInfo = result.PageInfo;
+
+                setTimeout(function () {
+                    var newsArray = result.NewsViewModelList;
+                    newsArray.map(function (obj, index) {
+                        if (index > 2) return;
+                        newsContainer.append(fillBlank(obj));
+                    });
+
+                    newsPosts.remove();
+                    $(".news__header").height(headerHeight);
+                    newsContainer.css("opacity", 1);
+
+                    isLoaded = true;
+                },300);
+            }
+          });
+      */
 
       //Когда страница прогружана, то сделать запрос на новости
 
       // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
       $(".news").on("click", getNews);
+      console.log(pageTitleId);
 
       function getNews(e) {
         if (!isLoaded) return;
@@ -73,11 +75,10 @@ $(document).ready(function() {
             arrowDeriction = e.target.parentNode,
             arrowClassName = arrowDeriction.className;
 
-        var pageTitleId = getIdOfPage(directlyPageTitle);
         newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
 
         sendNewsParams = {
-            theme: 2,
+            theme: pageTitleId,
             page: newsPageDirectly,
             newsPerPage: 3
         }
@@ -142,7 +143,6 @@ $(document).ready(function() {
       });
 
   //Функции
-
       function fillBlank(obj) {
         newsItem = $(
             '<div class="news__item">' +
@@ -176,7 +176,6 @@ $(document).ready(function() {
               data: newsParams,
               dataType: "json",
               success: function (result) {
-                  console.log('result ', result);
                   callback(result);
               },
               error: function (result) {
@@ -205,15 +204,16 @@ $(document).ready(function() {
       }
 
       function disaibleNewsArrow(arrow, pageInfo) {
-      function disaibleNewsArrow(arrow, pageInfo) {
-        if (pageInfo.PageNumber == pageInfo.TotalPages) {
-          $(arrow).css({ visibility: 'hidden'});
-        } else if (pageInfo.PageNumber == 1) {
-            $(arrow).css({ visibility: 'hidden'});
-        } else {
-          $(latestArrow).css({ visibility: 'visible'});
-        }
-        latestArrow = arrow;
+          function disaibleNewsArrow(arrow, pageInfo) {
+              if (pageInfo.PageNumber == pageInfo.TotalPages) {
+                  $(arrow).css({visibility: 'hidden'});
+              } else if (pageInfo.PageNumber == 1) {
+                  $(arrow).css({visibility: 'hidden'});
+              } else {
+                  $(latestArrow).css({visibility: 'visible'});
+              }
+              latestArrow = arrow;
+          }
       }
 
   })();
@@ -563,6 +563,7 @@ $(document).ready(function() {
 
   $('.commands__ok').on('click', function (e) {
     var items = containerList.children();
+
     for(var o of items) {
       var $o = $(o);
       if($o.children().prop("checked")) {
@@ -572,7 +573,6 @@ $(document).ready(function() {
 
     if(idGamersToServer.length === 0) return;
 
-    console.log('idGamersToServer ', idGamersToServer);
     switch (wasClickOn) {
       case 'delete-gamer': sendGamersId('/deleteFromTeam', idGamersToServer);break;
       case 'change-commander': sendGamersId('/changeCommanderForTeam', idGamersToServer);break;
@@ -593,7 +593,6 @@ $(document).ready(function() {
     sendInvite('/inviteToTeam', id, $(this));
   });
 
-//тупо копипастил. Недльзя так
   function sendGamersId(methodName, data) {
       $.ajax({
           type: "GET",
@@ -610,7 +609,7 @@ $(document).ready(function() {
           }
       });
   }
-//тупо копипастил. Недльзя так
+
   function sendInvite(methodName, data, button) {
       $.ajax({
           type: "GET",
@@ -620,7 +619,6 @@ $(document).ready(function() {
           dataType: "json",
           success: function (result) {
             //Если выслали, то заменить эту кнопку на кнопку "Приглашение отправлено"
-              console.log('result ', result);
               button.text('Отправлено');
               disableButtons(button);
           },
@@ -682,6 +680,8 @@ $(document).ready(function() {
   }
 })();
 
+
+
 var notifArray = [
     {
         Id:3,
@@ -692,12 +692,14 @@ var notifArray = [
     {
         Id:3450,
         IsChecked:true,
+        hasAnswer: 1,
         NotificationTime:"2017-05-10T21:34:37",
         Title:"Через 30 минут выхоид лялял"
     },
     {
         Id:30,
         IsChecked:false,
+        hasAnswer: 0,
         NotificationTime:"2017-05-10T21:34:37",
         Title:"First notification"
     },
@@ -710,6 +712,7 @@ var notifArray = [
     {
         Id:3450,
         IsChecked:true,
+        hasAnswer: 1,
         NotificationTime:"2017-05-10T21:34:37",
         Title:"Через 30 минут выхоид лялял"
     },
@@ -739,8 +742,6 @@ var notifArray = [
     }
 ];
 
-
-
 //Уведомленяия polliyng ajax
 (function() {
     var notification = $('.personal-data__has-notifiction')
@@ -754,6 +755,12 @@ var notifArray = [
                 notificationActions;
 
 
+             $('.personal-data__button--notifiction').on('click', function (e) {
+                 $('#NotificationModal').modal('toggle');
+
+                 getSetNotifications('/api/Notification/SetCheckedByList', onFulfilledSetCheckedNotifications, onRejectedSetCheckedNotifications);
+                 getSetNotifications('/api/Notification/GetUserNotifications', onFulfilledGetNotifications, onRejectedGetNotifications);
+             });
 
             $('.notification-list').on('click', '.notification__invite--ok ', function () {
                 var id = $(this).closest('.notification__item').attr('data-id');
@@ -768,13 +775,16 @@ var notifArray = [
             });
 
             $('.notification-list').on('mouseenter','.notification__item', function () {
-                $(this).find('.notification__new-notifiction').removeClass('isVisible');
+                // $(this).find('.notification__new-notifiction').removeClass('isVisible');
+                // getSetNotifications('/api/Notification/SetCheckedByList', onFulfilledSetCheckedNotifications, onRejectedSetCheckedNotifications);
             });
 
             setInterval(function() {
-                getNotifications();
+                if( $('#NotificationModal').css('display') === 'block') {
+                    getSetNotifications('/api/Notification/SetCheckedByList', onFulfilledSetCheckedNotifications, onRejectedSetCheckedNotifications);
+                }
+                getSetNotifications('/api/Notification/GetUserNotifications', onFulfilledGetNotifications, onRejectedGetNotifications);
             }, timer);
-            // getNotifications();
 
             //Замен кнопок действия на ничего
             function feedbackAgree() {
@@ -783,7 +793,6 @@ var notifArray = [
 
             function feedbackCancel() {
                 notificationActions.replaceWith( $('<span class="notification__feedback--cancel">Отклонено</span>'));
-
             }
 
             //Проверка есть ли непросмотренные уведомления
@@ -814,32 +823,93 @@ var notifArray = [
                 notificationList.append(newNotifictionsList);
             }
 
-
             //парсим json в html разметку
             function fillBlank(item) {
-                var isChecked;
+                var isChecked,
+                    hasAnswer = ' <div class="notification__actions">' +
+                        ' <a href="#" class="notification__button notification__invite--ok">Принять</a>' +
+                        ' <a href="#" class="notification__button notification__invite--cancel">Отклонить</a>' +
+                        ' </div>';
+
                 if (item.IsChecked) {
                     isChecked = '';
                 } else {
                     isChecked = 'isVisible';
                 }
 
-                return $('<li data-id=' +
-                    item.Id +
-                    ' class="notification__item">' +
-                    '<div class="notification__new-notifiction ' + isChecked +' "></div>' +
-                    '<span class="notification__title">' +
-                    item.Title +
-                    '</span>' +
-                    '<span class="notification__time">' +
-                    item.NotificationTime +
-                    '</span>' +
-                    ' <div class="notification__actions">' +
-                    ' <a href="#" class="notification__button notification__invite--ok">Принять</a>' +
-                    ' <a href="#" class="notification__button notification__invite--cancel">Отклонить</a>' +
-                    ' </div>' +
-                    '</li>');
+                //Если уже отвечали на это уведомление
+                if (item.hasOwnProperty('hasAnswer')) {
+                    switch (item.hasAnswer) {
+                        case 0:
+                            hasAnswer = '<span class="notification__feedback--cancel">Отклонено</span>';
+                            break;
+                        case 1:
+                            hasAnswer = '<span class="notification__feedback--ok">Заявка принята</span>';
+                            break;
+                        default:  hasAnswer = ' <div class="notification__actions">' +
+                            ' <a href="#" class="notification__button notification__invite--ok">Принять</a>' +
+                            ' <a href="#" class="notification__button notification__invite--cancel">Отклонить</a>' +
+                            ' </div>';
+                    }
+                }
+
+                    return $('<li data-id=' +
+                        item.Id +
+                        ' class="notification__item">' +
+                        '<div class="notification__new-notifiction ' + isChecked + ' "></div>' +
+                        '<span class="notification__title">' +
+                        item.Title +
+                        '</span>' +
+                        '<span class="notification__time">' +
+                        item.NotificationTime +
+                        '</span>' +
+                        hasAnswer +
+                        '</li>');
+                }
+
+
+
+            //Получить список уведомлений при успешном запросе
+            function onFulfilledGetNotifications(data) {
+                if (checkUncheckedNotifications(data)) {
+                    makeVisible(notification);
+                }
+                replaceNotifictionList(parseNotificationToList());
             }
+            //Ошибка запроса при неудачном запросе
+            function onRejectedGetNotifications () {
+                console.log('Error!');
+                // $('.notification span').append( $('<span class="notification__error">Ошибка</span>'));
+                if (checkUncheckedNotifications()) {
+                    makeVisible(notification);
+                }
+                replaceNotifictionList(parseNotificationToList());
+            }
+
+
+            //оправка отмеченных уведомлений как прочинатны
+            function onFulfilledSetCheckedNotifications(data) {
+                $('.notification__new-notifiction').removeClass('isVisible');
+                console.log("Checked");
+            }
+            function onRejectedSetCheckedNotifications() {
+                console.log('Error!', 'Checked');
+            }
+
+
+            function getSetNotifications(url, resolve, reject) {
+                $.ajax({
+                    url: url,
+                    dataType: 'json',
+                    type: 'get',
+                    success: function(data) {
+                        resolve(data);
+                    },
+                    error: function() {
+                        reject();
+                    }
+                });
+            };
 
             function sendAjaxNotification(url, data, callback) {
                 $.ajax({
@@ -848,33 +918,11 @@ var notifArray = [
                     data: data,
                     dataType: "json",
                     success: function(data) {
-                        // callback();
-                    },
-                    error: function() {
-                        console.log('Error!');
-                        console.log("sendAjaxNotification", notificationActions);
                         callback();
-                    }
-                });
-            };
-
-            function getNotifications() {
-                $.ajax({
-                    url: '/api/Notification/GetUserNotifications',
-                    dataType: 'json',
-                    type: 'get',
-                    success: function(data) {
-                        if (checkUncheckedNotifications(data)) {
-                            makeVisible(notification);
-                        }
-                        replaceNotifictionList(parseNotificationToList());
                     },
                     error: function() {
                         console.log('Error!');
-                        if (checkUncheckedNotifications()) {
-                            makeVisible(notification);
-                        }
-                        replaceNotifictionList(parseNotificationToList());
+                        callback();
                     }
                 });
             };
