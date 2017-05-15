@@ -1,4 +1,3 @@
-
 .container-fluid
     .personal-data
         .row
@@ -6,7 +5,7 @@
                 .personal-page__user-img
                     img(src="../img/user-img.jpg")
                 .personal-data__button.personal-data__button--service
-                     a(href="") Загрузить фотографию
+                    a(href="") Загрузить фотографию
                 .personal-data__button.personal-data__button--service
                     a(href="") Редактировать профиль
 
@@ -49,41 +48,41 @@
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
                 button().personal-data__button.personal-data__button--stretch(onclick="$('#commandsModal').modal('toggle');") Команды
             .col-lg-6.col-md-6.col-xs-12.col-sm-12
-                button.personal-data__button.personal-data__button--stretch(onclick="") Уведомления
+                .l-personal-data__button
+                    button.personal-data__button.personal-data__button--stretch.personal-data__button--notifiction() Уведомления
+                        .personal-data__has-notifiction
 
-mixin team__item()
-    li.team__item
-            a(href="")
-                img(src="../img/user-img.jpg")
-            span.name Puuuu
 
-mixin search__item()
-    li.search__item
+mixin team__item(id)
+    li(data-id=id).team__item
         a(href="")
             img(src="../img/user-img.jpg")
-        span.name Puuuu
+        a(href="#").name Puuuu
+
+mixin search__item(id)
+    li(data-id=id).search__item
+        a(href="#")
+            img(src="../img/user-img.jpg")
+        a(href="#").name Puuuu
+
+mixin notification__item(id)
+    li(data-id=id).notification__item
+        .notification__new-notifiction
+        span.notification__title Хочет вас пригласить в команду
+        span.notification__time 2017-05-10
+        .notification__actions
+            a(href='#').notification__button.notification__invite--ok Принять
+            a(href='#').notification__button.notification__invite--cancel Отклонить
 
 .l-commands.modal.fade#commandsModal
-    .commands
+    .commands.commands--commander
         .commands__team
             span Члены команды
             ul.team__list
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
-                +team__item()
+                +team__item(1)
+                +team__item(9)
+                +team__item(0)
+                +team__item(64)
         .commands__search
             .search-wrap
                 .input-wrap
@@ -92,26 +91,40 @@ mixin search__item()
             button(onclick="$('#commandsModal').modal('toggle');").close X
 
             ul.search__list
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
-                +search__item()
+                +search__item(3)
+                +search__item(657)
+                +search__item(78)
+                +search__item(345)
+                +search__item(234)
+                +search__item(9987)
+                +search__item(554)
+                +search__item(5677)
+                +search__item(34)
+                +search__item(67)
+                +search__item(88)
+                +search__item(34)
+                +search__item(346)
+                +search__item(347)
+                +search__item(3489)
+                +search__item(3573)
+                +search__item(234)
+                +search__item(328)
+                +search__item(547)
+                +search__item(45732)
+                +search__item(25)
+                +search__item(34634)
 
+
+.l-notification.modal.fade#NotificationModal
+    .notification
+        span Уведомления
+        button(onclick="$('#NotificationModal').modal('toggle');").close X
+        ul.notification-list
+            +notification__item(9)
+            +notification__item(9)
+            +notification__item(0)
+            +notification__item(0)
+            +notification__item(0)
+            +notification__item(0)
+            +notification__item(64)
+            +notification__item(64)

@@ -694,65 +694,65 @@ $(document).ready(function() {
 
 
 
-var notifArray = [
-    {
-        Id:3,
-        IsChecked: false,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"Lapstock Хотчет добавить вас в команду"
-    },
-    {
-        Id:3450,
-        IsChecked:true,
-        hasAnswer: 1,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"Через 30 минут выхоид лялял"
-    },
-    {
-        Id:30,
-        IsChecked:false,
-        hasAnswer: 0,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"First notification"
-    },
-    {
-        Id:98,
-        IsChecked:false,
-        NotificationTime:"2017-05-10 T21:34:37",
-        Title:" notification"
-    },
-    {
-        Id:3450,
-        IsChecked:true,
-        hasAnswer: 1,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"Через 30 минут выхоид лялял"
-    },
-    {
-        Id:3450,
-        IsChecked:true,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"Через 30 минут выхоид лялял"
-    },
-    {
-        Id:3450,
-        IsChecked:false,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"Через 30 минут выхоид лялял"
-    },
-    {
-        Id:3450,
-        IsChecked:true,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"Через 30 минут выхоид лялял"
-    },
-    {
-        Id:350,
-        IsChecked:true,
-        NotificationTime:"2017-05-10T21:34:37",
-        Title:"2 notification"
-    }
-];
+// var notifArray = [
+//     {
+//         Id:3,
+//         IsChecked: false,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"Lapstock Хотчет добавить вас в команду"
+//     },
+//     {
+//         Id:3450,
+//         IsChecked:true,
+//         hasAnswer: 1,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"Через 30 минут выхоид лялял"
+//     },
+//     {
+//         Id:30,
+//         IsChecked:false,
+//         hasAnswer: 0,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"First notification"
+//     },
+//     {
+//         Id:98,
+//         IsChecked:false,
+//         NotificationTime:"2017-05-10 T21:34:37",
+//         Title:" notification"
+//     },
+//     {
+//         Id:3450,
+//         IsChecked:true,
+//         hasAnswer: 1,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"Через 30 минут выхоид лялял"
+//     },
+//     {
+//         Id:3450,
+//         IsChecked:true,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"Через 30 минут выхоид лялял"
+//     },
+//     {
+//         Id:3450,
+//         IsChecked:false,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"Через 30 минут выхоид лялял"
+//     },
+//     {
+//         Id:3450,
+//         IsChecked:true,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"Через 30 минут выхоид лялял"
+//     },
+//     {
+//         Id:350,
+//         IsChecked:true,
+//         NotificationTime:"2017-05-10T21:34:37",
+//         Title:"2 notification"
+//     }
+// ];
 
 //Уведомленяия polliyng ajax
 (function() {
@@ -806,8 +806,8 @@ var notifArray = [
             }
 
             //Проверка есть ли непросмотренные уведомления
-            function checkUncheckedNotifications() {
-                return notifArray.some(function (item) {
+            function checkUncheckedNotifications(arrNotification) {
+                return arrNotification.some(function (item) {
                     return (item.IsChecked);
                 });
             }
@@ -818,9 +818,9 @@ var notifArray = [
             }
 
             //получаем массив с html
-            function parseNotificationToList() {
+            function parseNotificationToList(data) {
                 var notifictionsList = [];
-                notifArray.forEach( function (item) {
+                data.forEach( function (item) {
                     notifictionsList.push(fillBlank(item))
                 });
                 return notifictionsList;
@@ -884,16 +884,16 @@ var notifArray = [
                 if (checkUncheckedNotifications(data)) {
                     makeVisible(notification);
                 }
-                replaceNotifictionList(parseNotificationToList());
+                replaceNotifictionList(parseNotificationToList(data));
             }
             //Ошибка запроса при неудачном запросе
             function onRejectedGetNotifications () {
                 console.log('Error!');
                 // $('.notification span').append( $('<span class="notification__error">Ошибка</span>'));
-                if (checkUncheckedNotifications()) {
-                    makeVisible(notification);
-                }
-                replaceNotifictionList(parseNotificationToList());
+                // if (checkUncheckedNotifications()) {
+                //     makeVisible(notification);
+                // }
+                // replaceNotifictionList(parseNotificationToList());
             }
 
 
