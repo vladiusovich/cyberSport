@@ -15,6 +15,14 @@ $(document).ready(function() {
           newsPageDirectly = 1,
           latestArrow,
           isLoaded = true;
+
+      localStorage.clear();
+      console.log('localStorage  length ', localStorage.length);
+
+      if (localStorage.length !== 0) {
+          newsPageDirectly = localStorage.getItem('pageNumber');
+          console.log('pageNumber from store ', localStorage.getItem('pageNumber'));
+      }
       // Когда страница загр. делаем запрос на первую стр новостей
      /*
       $(document).ready(function(e) {
@@ -63,7 +71,6 @@ $(document).ready(function() {
 
       // При нажатии на стрелки в блоке новостей отправка ajax за след/пред новостями
       $(".news").on("click", getNews);
-      console.log(pageTitleId);
 
       function getNews(e) {
         if (!isLoaded) return;
@@ -76,6 +83,7 @@ $(document).ready(function() {
             arrowClassName = arrowDeriction.className;
 
         newsPageDirectly = getPageNumber(arrowClassName, newsPageDirectly);
+        console.log('newsPageDirectly ', newsPageDirectly);
 
         sendNewsParams = {
             theme: pageTitleId,
@@ -92,6 +100,9 @@ $(document).ready(function() {
             pageInfo = result.PageInfo;
             //Если пустой список - оставить старые. Не заменять ничего
             if(result.NewsViewModelList.lenght === 0) { return; }
+
+            localStorage.setItem('pageNumber', pageInfo.PageNumber);
+            console.log('replaceNewsPosts -- newsPageDirectly ', pageInfo.PageNumber);
             newsContainer.css("opacity", 0);
             isLoaded = false;
             disaibleNewsArrow(arrowDeriction, pageInfo);
@@ -114,7 +125,6 @@ $(document).ready(function() {
 
       //Получить предыдущие посты для моб. устройств
       $(".news__more-news button").on('click', function (e) {
-          var pageTitleId = getIdOfPage(directlyPageTitle);
           newsPageDirectly += 1;
 
           var sendNewsParams = {
@@ -179,6 +189,8 @@ $(document).ready(function() {
                   callback(result);
               },
               error: function (result) {
+                  newsPageDirectly = localStorage.getItem('pageNumber');
+                  console.log('Fail newsPageDirectly: ',newsPageDirectly);
                   console.log('result fail ', result);
               }
           });
@@ -745,9 +757,7 @@ var notifArray = [
 //Уведомленяия polliyng ajax
 (function() {
     var notification = $('.personal-data__has-notifiction')
-        timer = 3000;
-
-
+        timer = 8000;
 
     if (notification.length !== 0) {
         (function () {

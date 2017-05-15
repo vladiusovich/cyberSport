@@ -34,8 +34,9 @@
   padding: 0 0 1em 1em;
   & > span {
     display: block;
-    height: 4.2rem;
-    font-size: 2.5rem;
+    padding: 0 0 1em 1em;
+    height: 3.5rem;
+    font-size: 2rem;
     border-bottom: $border-style;
     margin-bottom: .5em;
     margin-left: -15px;
@@ -90,7 +91,7 @@
 }
 
 .search-wrap {
-  height: 4.2rem;
+  height: 3.5rem;
   border-bottom: $border-style;
 }
 
@@ -102,6 +103,7 @@
 
 input[type="search"] {
   width: 85%;
+  padding: .5em;
   border: none;
   background: transparent;
   &:focus {
@@ -110,14 +112,18 @@ input[type="search"] {
   }
 }
 
-.search_button {
+#search_button {
   position: absolute;
   top: 8px;
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   border: none;
   background: url("../img/search.png") no-repeat;
   background-size: contain;
+
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
 
@@ -152,11 +158,11 @@ input[type="search"] {
   }
 
   span {
-    font-size: 2rem;
+    font-size: $input-font-size;
   }
 }
 
-//Модиффикатор для командира
+//Модификатор для командира
 .commands--commander {
 
 }
@@ -193,18 +199,9 @@ input[type="search"] {
 
 .search__invite {
   position: absolute;
-  // width: 30px;
-  // height: 30px;
-  // background: $backgrond-color-secondary url(../img/sprite-invite.png);
-  // background-size: cover;
   top: 50%;
   transform: translateY(-50%);
   right: 25px;
   font-size: $small-font-size;
-
-  // &:hover {
-  //   background: $backgrond-color-hover url(../img/sprite-invite.png);
-  //     background-size: cover;
-  // }
 
 }
