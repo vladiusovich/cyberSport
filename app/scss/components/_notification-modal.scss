@@ -1,5 +1,5 @@
 .l-notification {
-  transform: translate(25%,3%);
+  transform: translate(0%,3%);
   padding: 0 1em;
 
   .close {
@@ -17,7 +17,8 @@
 
 .notification {
   position: relative;
-  width: 50vmax;
+  width: 60%;
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-content: stretch;
@@ -36,15 +37,17 @@
 
 .notification-list {
   @extend .team__list;
+  height: 80vh !important;
   padding: 0 1em 1em 1em;
   margin-bottom: 1em;
   overflow: hidden;
+
 }
 
 .notification__item {
   position: relative;
   width: 96%;
-  margin: 0 auto;
+  margin: auto;
   margin-bottom: .5em;
   padding: 1em 1.5em 1em 1.5em;
   box-shadow: 0 4px 13px 0px rgba(0, 0, 0, 0.13);

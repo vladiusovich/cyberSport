@@ -17,46 +17,46 @@ $(document).ready(function() {
           isLoaded = true;
 
       //Когда страница загр. делаем запрос на первую стр новостей
-      $(document).ready(function(e) {
-            if (!isLoaded) return;
-            var headerHeight = $(".news__header").css("height"),
-                newsContainer = $(".news__container"),
-                newsPosts = newsContainer.children(),
-                pageInfo,
-                sendNewsParams;
-
-            var pageTitleId = getIdOfPage(directlyPageTitle);
-            newsPageDirectly = 1;
-
-            sendNewsParams = {
-                theme: 2,
-                page: newsPageDirectly,
-                newsPerPage: 3
-            }
-
-            getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
-
-            //Замена новыми постами
-            function replaceNewsPosts(result) {
-                newsContainer.css("opacity", 0);
-                isLoaded = false;
-                pageInfo = result.PageInfo;
-
-                setTimeout(function () {
-                    var newsArray = result.NewsViewModelList;
-                    newsArray.map(function (obj, index) {
-                        if (index > 2) return;
-                        newsContainer.append(fillBlank(obj));
-                    });
-
-                    newsPosts.remove();
-                    $(".news__header").height(headerHeight);
-                    newsContainer.css("opacity", 1);
-
-                    isLoaded = true;
-                },300);
-            }
-          });
+      // $(document).ready(function(e) {
+      //       if (!isLoaded) return;
+      //       var headerHeight = $(".news__header").css("height"),
+      //           newsContainer = $(".news__container"),
+      //           newsPosts = newsContainer.children(),
+      //           pageInfo,
+      //           sendNewsParams;
+      //
+      //       var pageTitleId = getIdOfPage(directlyPageTitle);
+      //       newsPageDirectly = 1;
+      //
+      //       sendNewsParams = {
+      //           theme: 2,
+      //           page: newsPageDirectly,
+      //           newsPerPage: 3
+      //       }
+      //
+      //       getNewPosts("/News/GetPagedNews", sendNewsParams, replaceNewsPosts);
+      //
+      //       //Замена новыми постами
+      //       function replaceNewsPosts(result) {
+      //           newsContainer.css("opacity", 0);
+      //           isLoaded = false;
+      //           pageInfo = result.PageInfo;
+      //
+      //           setTimeout(function () {
+      //               var newsArray = result.NewsViewModelList;
+      //               newsArray.map(function (obj, index) {
+      //                   if (index > 2) return;
+      //                   newsContainer.append(fillBlank(obj));
+      //               });
+      //
+      //               newsPosts.remove();
+      //               $(".news__header").height(headerHeight);
+      //               newsContainer.css("opacity", 1);
+      //
+      //               isLoaded = true;
+      //           },300);
+      //       }
+      //     });
 
       //Когда страница прогружана, то сделать запрос на новости
 
@@ -88,9 +88,11 @@ $(document).ready(function() {
 
         //Замена новыми постами
         function replaceNewsPosts(result) {
+            pageInfo = result.PageInfo;
+            //Если пустой список - оставить старые. Не заменять ничего
+            if(result.NewsViewModelList.lenght === 0) { return; }
             newsContainer.css("opacity", 0);
             isLoaded = false;
-            pageInfo = result.PageInfo;
             disaibleNewsArrow(arrowDeriction, pageInfo);
 
             setTimeout(function () {
@@ -202,6 +204,7 @@ $(document).ready(function() {
           } else return newsPageDirectly;
       }
 
+      function disaibleNewsArrow(arrow, pageInfo) {
       function disaibleNewsArrow(arrow, pageInfo) {
         if (pageInfo.PageNumber == pageInfo.TotalPages) {
           $(arrow).css({ visibility: 'hidden'});
@@ -402,9 +405,9 @@ $(document).ready(function() {
                 error: function (result) {
                     //Тест. Потом убрать
                     //Ессли проскролили сообщения то при добалении новой не скролить вниз. Отобразить кнопку для скролинга вниз
-                    if (isBottom()) scrollDown(chatDialog);
-                    //Тест. Потом убрать
-                    appendMessage(dataMessage);
+                    // if (isBottom()) scrollDown(chatDialog);
+                    // //Тест. Потом убрать
+                    // appendMessage(dataMessage);
                     console.log('Error :(');
                 }
             });
@@ -653,6 +656,7 @@ $(document).ready(function() {
     height = width * .5625,
     widthLetest,
     heightLetest;
+
     iframe.attr('width',width);
     iframe.attr('height', height);
     wrap.css('height', height);
@@ -742,10 +746,14 @@ var notifArray = [
     var notification = $('.personal-data__has-notifiction')
         timer = 3000;
 
+
+
     if (notification.length !== 0) {
         (function () {
             var notificationList,
                 notificationActions;
+
+
 
             $('.notification-list').on('click', '.notification__invite--ok ', function () {
                 var id = $(this).closest('.notification__item').attr('data-id');
@@ -757,6 +765,10 @@ var notifArray = [
                 var id = $(this).closest('.notification__item').attr('data-id');
                 notificationActions = $(this).closest('.notification__actions');
                 sendAjaxNotification('/api/Notification/SetChecked', { idNotification: id, state: 0 }, feedbackCancel);
+            });
+
+            $('.notification-list').on('mouseenter','.notification__item', function () {
+                $(this).find('.notification__new-notifiction').removeClass('isVisible');
             });
 
             setInterval(function() {
@@ -828,7 +840,6 @@ var notifArray = [
                     ' </div>' +
                     '</li>');
             }
-
 
             function sendAjaxNotification(url, data, callback) {
                 $.ajax({
